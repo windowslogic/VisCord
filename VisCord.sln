@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.36530.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VisCord", "VisCord\VisCord.vbproj", "{9D14C2BA-9985-4694-A40C-79522F44030B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D14C2BA-9985-4694-A40C-79522F44030B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D14C2BA-9985-4694-A40C-79522F44030B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D14C2BA-9985-4694-A40C-79522F44030B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D14C2BA-9985-4694-A40C-79522F44030B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6DEC56A-423B-4784-B2A9-4AF8ACDD0FDC}
+	EndGlobalSection
+EndGlobal
