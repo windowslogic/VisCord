@@ -65,6 +65,54 @@ Namespace My
                 Me("Startup") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property SysTray() As Integer
+            Get
+                Return CType(Me("SysTray"),Integer)
+            End Get
+            Set
+                Me("SysTray") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property NotifBadge() As Integer
+            Get
+                Return CType(Me("NotifBadge"),Integer)
+            End Get
+            Set
+                Me("NotifBadge") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property Notify() As Integer
+            Get
+                Return CType(Me("Notify"),Integer)
+            End Get
+            Set
+                Me("Notify") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property HA() As Integer
+            Get
+                Return CType(Me("HA"),Integer)
+            End Get
+            Set
+                Me("HA") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

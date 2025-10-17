@@ -22,6 +22,16 @@ VisCord
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:VisCord.My.Resources.Resources.Discord">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.DiscordNotif">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
 <member name="P:VisCord.My.Resources.Resources.WinAccount">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

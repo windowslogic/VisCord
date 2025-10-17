@@ -23,19 +23,27 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.StartupCheckbox = New System.Windows.Forms.CheckBox()
         Me.SysTrayCheckbox = New System.Windows.Forms.CheckBox()
         Me.BadgeCheckbox = New System.Windows.Forms.CheckBox()
         Me.NotifyCheckbox = New System.Windows.Forms.CheckBox()
+        Me.CacheButton = New System.Windows.Forms.Button()
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GeneralTitle = New System.Windows.Forms.Label()
         Me.VCSettingsTitle = New System.Windows.Forms.Label()
         Me.SysTrayIcon = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NotifTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.FixTitle = New System.Windows.Forms.Timer(Me.components)
+        Me.DataButton = New System.Windows.Forms.Button()
+        Me.HardwareCheckbox = New System.Windows.Forms.CheckBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -86,7 +94,7 @@ Partial Class Main
         Me.BadgeCheckbox.Size = New System.Drawing.Size(154, 17)
         Me.BadgeCheckbox.TabIndex = 6
         Me.BadgeCheckbox.Text = "Show notification badge"
-        Me.ToolTip1.SetToolTip(Me.BadgeCheckbox, "Show a notification badge on the system tray icon.")
+        Me.ToolTip1.SetToolTip(Me.BadgeCheckbox, "Show a notification badge on the system tray icon and taskbar icon.")
         Me.BadgeCheckbox.UseVisualStyleBackColor = True
         '
         'NotifyCheckbox
@@ -98,8 +106,20 @@ Partial Class Main
         Me.NotifyCheckbox.Size = New System.Drawing.Size(156, 17)
         Me.NotifyCheckbox.TabIndex = 7
         Me.NotifyCheckbox.Text = "Notify on communication"
-        Me.ToolTip1.SetToolTip(Me.NotifyCheckbox, "Send a real-time notification when communication is detected.")
+        Me.ToolTip1.SetToolTip(Me.NotifyCheckbox, "Send a real-time notification when communication is detected." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VisCord needs to" &
+        " be minimised for real-time notifications to work.")
         Me.NotifyCheckbox.UseVisualStyleBackColor = True
+        '
+        'CacheButton
+        '
+        Me.CacheButton.Location = New System.Drawing.Point(13, 199)
+        Me.CacheButton.Name = "CacheButton"
+        Me.CacheButton.Size = New System.Drawing.Size(111, 23)
+        Me.CacheButton.TabIndex = 9
+        Me.CacheButton.Text = "Clear Cache"
+        Me.ToolTip1.SetToolTip(Me.CacheButton, "Clears cache and reloads VisCord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Useful if VisCord is running slow or lagging" &
+        ".")
+        Me.CacheButton.UseVisualStyleBackColor = True
         '
         'ContentTimer
         '
@@ -110,6 +130,11 @@ Partial Class Main
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.HardwareCheckbox)
+        Me.Panel1.Controls.Add(Me.DataButton)
+        Me.Panel1.Controls.Add(Me.CacheButton)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.NotifyCheckbox)
         Me.Panel1.Controls.Add(Me.BadgeCheckbox)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -123,6 +148,17 @@ Partial Class Main
         Me.Panel1.Size = New System.Drawing.Size(182, 354)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(10, 183)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(77, 13)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "Cache && Data"
         '
         'Label2
         '
@@ -170,8 +206,53 @@ Partial Class Main
         '
         'SysTrayIcon
         '
-        Me.SysTrayIcon.Text = "NotifyIcon1"
+        Me.SysTrayIcon.Icon = CType(resources.GetObject("SysTrayIcon.Icon"), System.Drawing.Icon)
+        Me.SysTrayIcon.Text = "VisCord"
         Me.SysTrayIcon.Visible = True
+        '
+        'NotifTimer
+        '
+        Me.NotifTimer.Enabled = True
+        '
+        'FixTitle
+        '
+        Me.FixTitle.Enabled = True
+        Me.FixTitle.Interval = 1000
+        '
+        'DataButton
+        '
+        Me.DataButton.Location = New System.Drawing.Point(13, 228)
+        Me.DataButton.Name = "DataButton"
+        Me.DataButton.Size = New System.Drawing.Size(111, 23)
+        Me.DataButton.TabIndex = 10
+        Me.DataButton.Text = "Clear User Data"
+        Me.ToolTip1.SetToolTip(Me.DataButton, "Clears user data and reloads VisCord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Useful if VisCord is running slow or lag" &
+        "ging.")
+        Me.DataButton.UseVisualStyleBackColor = True
+        '
+        'HardwareCheckbox
+        '
+        Me.HardwareCheckbox.AutoSize = True
+        Me.HardwareCheckbox.ForeColor = System.Drawing.Color.White
+        Me.HardwareCheckbox.Location = New System.Drawing.Point(13, 314)
+        Me.HardwareCheckbox.Name = "HardwareCheckbox"
+        Me.HardwareCheckbox.Size = New System.Drawing.Size(141, 17)
+        Me.HardwareCheckbox.TabIndex = 11
+        Me.HardwareCheckbox.Text = "Hardware acceleration"
+        Me.ToolTip1.SetToolTip(Me.HardwareCheckbox, "Send a real-time notification when communication is detected." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VisCord needs to" &
+        " be minimised for real-time notifications to work.")
+        Me.HardwareCheckbox.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(10, 298)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(71, 13)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "Performance"
         '
         'Main
         '
@@ -181,6 +262,7 @@ Partial Class Main
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.WebView21)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(1280, 700)
         Me.Name = "Main"
         Me.Text = "VisCord"
@@ -204,4 +286,11 @@ Partial Class Main
     Friend WithEvents NotifyCheckbox As CheckBox
     Friend WithEvents BadgeCheckbox As CheckBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents NotifTimer As Timer
+    Friend WithEvents FixTitle As Timer
+    Friend WithEvents CacheButton As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DataButton As Button
+    Friend WithEvents HardwareCheckbox As CheckBox
+    Friend WithEvents Label4 As Label
 End Class
