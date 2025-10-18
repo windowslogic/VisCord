@@ -153,6 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Discord.ico" />
+    <None Include="Resources\WinForward.png" />
+    <None Include="Resources\WinMore.png" />
+    <None Include="Resources\WinClose.png" />
+    <None Include="Resources\WinRefresh.png" />
     <None Include="Resources\Discord1.ico" />
     <None Include="Resources\Discord.ico" />
     <None Include="Resources\DiscordNotif.ico" />

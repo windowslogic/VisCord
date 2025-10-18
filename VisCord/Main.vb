@@ -122,6 +122,7 @@ Public Class Main
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         'Load Startup settings.
         If My.Settings.Startup = 0 Then
             StartupCheckbox.Checked = False
@@ -288,5 +289,66 @@ Public Class Main
     Private Sub AboutLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles AboutLink.LinkClicked
         About.labelVersion.Text = "VisCord " + My.Application.Info.Version.ToString()
         About.ShowDialog()
+    End Sub
+
+    Private Sub UserSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserSettingsToolStripMenuItem.Click
+        Try
+            OpenDiscordSettingsAsync()
+        Catch
+            MsgBox("Discord is not initialised, please wait to access user settings.")
+        End Try
+        Try
+            Me.Visible = True
+            Me.WindowState = FormWindowState.Normal
+            SysTrayIcon.Visible = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Async Function OpenDiscordSettingsAsync() As Task
+        ' wait until the WebView2 core is ready and page loaded
+        Await Task.Delay(0) ' small delay to let Discord app JS initialize (adjust as needed)
+
+        Dim js As String = "
+    (function(){
+      try {
+        var sel = '[aria-label=""User Settings""] button, [data-list-item-id=""user-settings""], button[aria-label*=""Settings""]';
+        var btn = document.querySelector(sel);
+        if(btn){ btn.click(); return 'clicked'; }
+        // fallback: try hash route
+        location.hash = '/settings';
+        return 'fallback';
+      } catch(e){ return 'error:'+e.message; }
+    })();
+    "
+        Dim resultJson As String = Await WebView21.CoreWebView2.ExecuteScriptAsync(js)
+        ' resultJson is a quoted string like "clicked" — trim quotes if needed
+    End Function
+
+    Private Sub RestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreToolStripMenuItem.Click
+        Try
+            Me.Visible = True
+            Me.WindowState = FormWindowState.Normal
+            SysTrayIcon.Visible = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub AboutVisCordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutVisCordToolStripMenuItem.Click
+        About.labelVersion.Text = "VisCord " + My.Application.Info.Version.ToString()
+        About.ShowDialog()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        If MsgBox("Would you like to exit VisCord?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            End
+        End If
+    End Sub
+
+    Private Sub LogOffToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOffToolStripMenuItem.Click
+        WebView21.CoreWebView2.Profile.ClearBrowsingDataAsync()
+        WebView21.Reload()
     End Sub
 End Class

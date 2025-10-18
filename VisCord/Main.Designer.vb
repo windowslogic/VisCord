@@ -33,8 +33,11 @@ Partial Class Main
         Me.CacheButton = New System.Windows.Forms.Button()
         Me.DataButton = New System.Windows.Forms.Button()
         Me.HardwareCheckbox = New System.Windows.Forms.CheckBox()
+        Me.NavCheckbox = New System.Windows.Forms.CheckBox()
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.AboutLink = New System.Windows.Forms.LinkLabel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,13 +45,19 @@ Partial Class Main
         Me.GeneralTitle = New System.Windows.Forms.Label()
         Me.VCSettingsTitle = New System.Windows.Forms.Label()
         Me.SysTrayIcon = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.SysTrayMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.UserSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutVisCordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LogOffToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NotifTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FixTitle = New System.Windows.Forms.Timer(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.NavCheckbox = New System.Windows.Forms.CheckBox()
-        Me.AboutLink = New System.Windows.Forms.LinkLabel()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.SysTrayMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebView21
@@ -148,6 +157,19 @@ Partial Class Main
         "he page when this option is checked/unchecked.")
         Me.HardwareCheckbox.UseVisualStyleBackColor = True
         '
+        'NavCheckbox
+        '
+        Me.NavCheckbox.AutoSize = True
+        Me.NavCheckbox.ForeColor = System.Drawing.Color.White
+        Me.NavCheckbox.Location = New System.Drawing.Point(13, 182)
+        Me.NavCheckbox.Name = "NavCheckbox"
+        Me.NavCheckbox.Size = New System.Drawing.Size(149, 17)
+        Me.NavCheckbox.TabIndex = 14
+        Me.NavCheckbox.Text = "Open links in a browser"
+        Me.ToolTip1.SetToolTip(Me.NavCheckbox, "Open links in an external browser." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "If unchecked, will open links in a new WebV" &
+        "iew2 window.")
+        Me.NavCheckbox.UseVisualStyleBackColor = True
+        '
         'ContentTimer
         '
         Me.ContentTimer.Enabled = True
@@ -178,6 +200,28 @@ Partial Class Main
         Me.Panel1.Size = New System.Drawing.Size(182, 354)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
+        '
+        'AboutLink
+        '
+        Me.AboutLink.AutoSize = True
+        Me.AboutLink.LinkColor = System.Drawing.Color.White
+        Me.AboutLink.Location = New System.Drawing.Point(88, 335)
+        Me.AboutLink.Name = "AboutLink"
+        Me.AboutLink.Size = New System.Drawing.Size(91, 13)
+        Me.AboutLink.TabIndex = 15
+        Me.AboutLink.TabStop = True
+        Me.AboutLink.Text = "About VisCord..."
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(10, 166)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Navigation"
         '
         'Label4
         '
@@ -247,9 +291,67 @@ Partial Class Main
         '
         'SysTrayIcon
         '
+        Me.SysTrayIcon.ContextMenuStrip = Me.SysTrayMenu
         Me.SysTrayIcon.Icon = CType(resources.GetObject("SysTrayIcon.Icon"), System.Drawing.Icon)
         Me.SysTrayIcon.Text = "VisCord"
         Me.SysTrayIcon.Visible = True
+        '
+        'SysTrayMenu
+        '
+        Me.SysTrayMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RestoreToolStripMenuItem, Me.ToolStripSeparator1, Me.UserSettingsToolStripMenuItem, Me.AboutVisCordToolStripMenuItem, Me.ToolStripSeparator2, Me.LogOffToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.SysTrayMenu.Name = "SysTrayMenu"
+        Me.SysTrayMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.SysTrayMenu.Size = New System.Drawing.Size(170, 176)
+        '
+        'RestoreToolStripMenuItem
+        '
+        Me.RestoreToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinRefresh
+        Me.RestoreToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem"
+        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.RestoreToolStripMenuItem.Text = "Restore"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
+        '
+        'UserSettingsToolStripMenuItem
+        '
+        Me.UserSettingsToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinAccount
+        Me.UserSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.UserSettingsToolStripMenuItem.Name = "UserSettingsToolStripMenuItem"
+        Me.UserSettingsToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.UserSettingsToolStripMenuItem.Text = "User settings..."
+        '
+        'AboutVisCordToolStripMenuItem
+        '
+        Me.AboutVisCordToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinMore
+        Me.AboutVisCordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.AboutVisCordToolStripMenuItem.Name = "AboutVisCordToolStripMenuItem"
+        Me.AboutVisCordToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.AboutVisCordToolStripMenuItem.Text = "About VisCord..."
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(166, 6)
+        '
+        'LogOffToolStripMenuItem
+        '
+        Me.LogOffToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinForward
+        Me.LogOffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.LogOffToolStripMenuItem.Name = "LogOffToolStripMenuItem"
+        Me.LogOffToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.LogOffToolStripMenuItem.Text = "Log off"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinClose
+        Me.ExitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'NotifTimer
         '
@@ -259,41 +361,6 @@ Partial Class Main
         '
         Me.FixTitle.Enabled = True
         Me.FixTitle.Interval = 1000
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(10, 166)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(63, 13)
-        Me.Label5.TabIndex = 13
-        Me.Label5.Text = "Navigation"
-        '
-        'NavCheckbox
-        '
-        Me.NavCheckbox.AutoSize = True
-        Me.NavCheckbox.ForeColor = System.Drawing.Color.White
-        Me.NavCheckbox.Location = New System.Drawing.Point(13, 182)
-        Me.NavCheckbox.Name = "NavCheckbox"
-        Me.NavCheckbox.Size = New System.Drawing.Size(149, 17)
-        Me.NavCheckbox.TabIndex = 14
-        Me.NavCheckbox.Text = "Open links in a browser"
-        Me.ToolTip1.SetToolTip(Me.NavCheckbox, "Open links in an external browser." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "If unchecked, will open links in a new WebV" &
-        "iew2 window.")
-        Me.NavCheckbox.UseVisualStyleBackColor = True
-        '
-        'AboutLink
-        '
-        Me.AboutLink.AutoSize = True
-        Me.AboutLink.LinkColor = System.Drawing.Color.White
-        Me.AboutLink.Location = New System.Drawing.Point(88, 335)
-        Me.AboutLink.Name = "AboutLink"
-        Me.AboutLink.Size = New System.Drawing.Size(91, 13)
-        Me.AboutLink.TabIndex = 15
-        Me.AboutLink.TabStop = True
-        Me.AboutLink.Text = "About VisCord..."
         '
         'Main
         '
@@ -310,6 +377,7 @@ Partial Class Main
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.SysTrayMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -337,4 +405,12 @@ Partial Class Main
     Friend WithEvents NavCheckbox As CheckBox
     Friend WithEvents Label5 As Label
     Friend WithEvents AboutLink As LinkLabel
+    Friend WithEvents SysTrayMenu As ContextMenuStrip
+    Friend WithEvents RestoreToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents UserSettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AboutVisCordToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogOffToolStripMenuItem As ToolStripMenuItem
 End Class

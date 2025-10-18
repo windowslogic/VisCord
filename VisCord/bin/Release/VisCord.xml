@@ -24,6 +24,11 @@ VisCord
 </member>
 <member name="P:VisCord.My.Resources.Resources.Discord">
 <summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.Discord1">
+<summary>
   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
 </summary>
 </member>
@@ -33,6 +38,26 @@ VisCord
 </summary>
 </member>
 <member name="P:VisCord.My.Resources.Resources.WinAccount">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.WinClose">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.WinForward">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.WinMore">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.WinRefresh">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
