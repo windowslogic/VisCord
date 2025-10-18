@@ -24,6 +24,11 @@ VisCord
 </member>
 <member name="P:VisCord.My.Resources.Resources.Discord">
 <summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:VisCord.My.Resources.Resources.Discord1">
+<summary>
   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
 </summary>
 </member>

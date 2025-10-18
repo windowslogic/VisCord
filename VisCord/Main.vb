@@ -3,16 +3,25 @@ Imports Microsoft.Web.WebView2.Core
 
 Public Class Main
 
+    Private initialUrl As String = "https://discord.com/app"
+
+    Private Async Sub InitialiseWebView()
+        Await WebView21.EnsureCoreWebView2Async(Nothing)
+        AddHandler WebView21.CoreWebView2.NavigationStarting, AddressOf WebView21_NavigationStarting
+        WebView21.Source = New Uri(initialUrl)
+    End Sub
+
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
         WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
-        WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
+        WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = True
         WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
         If My.Settings.HA = 0 Then
             Dim options As New CoreWebView2EnvironmentOptions()
             options.AdditionalBrowserArguments = "--disable-gpu"
         Else
         End If
+        AddHandler WebView21.CoreWebView2.NewWindowRequested, AddressOf CoreWebView2_NewWindowRequested
     End Sub
 
     Private Sub Ping()
@@ -146,6 +155,12 @@ Public Class Main
         Else
             HardwareCheckbox.Checked = False
         End If
+
+        If My.Settings.OpenExternal = 1 Then
+            NavCheckbox.Checked = True
+        Else
+            NavCheckbox.Checked = False
+        End If
     End Sub
 
     Private Sub SysTrayCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles SysTrayCheckbox.CheckedChanged
@@ -164,8 +179,8 @@ Public Class Main
             End If
         Else
             My.Settings.NotifBadge = 0
-            SysTrayIcon.Icon = My.Resources.Discord
-            Me.Icon = My.Resources.Discord
+            SysTrayIcon.Icon = My.Resources.Discord1
+            Me.Icon = My.Resources.Discord1
         End If
     End Sub
 
@@ -192,16 +207,16 @@ Public Class Main
     Private Sub FixTitle_Tick(sender As Object, e As EventArgs) Handles FixTitle.Tick
         If Me.WindowState = FormWindowState.Minimized = False Then
             If Me.Text.Contains("- VisCord") Then
-                SysTrayIcon.Icon = My.Resources.Discord
-                Me.Icon = My.Resources.Discord
+                SysTrayIcon.Icon = My.Resources.Discord1
+                Me.Icon = My.Resources.Discord1
                 ContentTimer.Start()
             End If
 
             If Me.Text = "New messages" Then
                 Me.Text = WebView21.CoreWebView2.DocumentTitle + " - VisCord"
                 SysTrayIcon.Text = "VisCord"
-                SysTrayIcon.Icon = My.Resources.Discord
-                Me.Icon = My.Resources.Discord
+                SysTrayIcon.Icon = My.Resources.Discord1
+                Me.Icon = My.Resources.Discord1
             End If
         End If
     End Sub
@@ -221,12 +236,57 @@ Public Class Main
     End Sub
 
     Private Sub HardwareCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles HardwareCheckbox.CheckedChanged
-        If HardwareCheckbox.Checked = True Then
-            My.Settings.HA = 1
-            WebView21.Reload()
-        Else
-            My.Settings.HA = 0
-            WebView21.Reload()
+        Try
+            If HardwareCheckbox.Checked = True Then
+                My.Settings.HA = 1
+                WebView21.Reload()
+            Else
+                My.Settings.HA = 0
+                WebView21.Reload()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub WebView21_NavigationStarting(sender As Object, e As CoreWebView2NavigationStartingEventArgs) Handles WebView21.NavigationStarting
+        If Not e.Uri.Contains("discord.com") Then
+            e.Cancel = True ' Cancel the navigation in WebView2
+            OpenInExternalBrowser(e.Uri) ' Open in external browser
         End If
+    End Sub
+
+    Private Sub OpenInExternalBrowser(url As String)
+        Try
+            Dim psi As New ProcessStartInfo(url)
+            psi.UseShellExecute = True
+            Process.Start(psi)
+        Catch ex As Exception
+            MessageBox.Show("Unable to open the link in the external browser: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub CoreWebView2_NewWindowRequested(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2NewWindowRequestedEventArgs)
+        If My.Settings.OpenExternal = 0 Then
+        Else
+            If Not e.Uri.Contains("discord.com") Then
+                e.NewWindow = WebView21.CoreWebView2
+                e.Handled = True
+                WebView21.CoreWebView2.Navigate("https://discord.com/app")
+            End If
+        End If
+
+    End Sub
+
+    Private Sub NavCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles NavCheckbox.CheckedChanged
+        If NavCheckbox.Checked = True Then
+            My.Settings.OpenExternal = 1
+        Else
+            My.Settings.OpenExternal = 0
+        End If
+    End Sub
+
+    Private Sub AboutLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles AboutLink.LinkClicked
+        About.labelVersion.Text = "VisCord " + My.Application.Info.Version.ToString()
+        About.ShowDialog()
     End Sub
 End Class

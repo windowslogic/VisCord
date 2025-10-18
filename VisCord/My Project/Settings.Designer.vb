@@ -113,6 +113,18 @@ Namespace My
                 Me("HA") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property OpenExternal() As Integer
+            Get
+                Return CType(Me("OpenExternal"),Integer)
+            End Get
+            Set
+                Me("OpenExternal") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

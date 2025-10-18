@@ -31,8 +31,11 @@ Partial Class Main
         Me.BadgeCheckbox = New System.Windows.Forms.CheckBox()
         Me.NotifyCheckbox = New System.Windows.Forms.CheckBox()
         Me.CacheButton = New System.Windows.Forms.Button()
+        Me.DataButton = New System.Windows.Forms.Button()
+        Me.HardwareCheckbox = New System.Windows.Forms.CheckBox()
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -41,9 +44,9 @@ Partial Class Main
         Me.SysTrayIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NotifTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FixTitle = New System.Windows.Forms.Timer(Me.components)
-        Me.DataButton = New System.Windows.Forms.Button()
-        Me.HardwareCheckbox = New System.Windows.Forms.CheckBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.NavCheckbox = New System.Windows.Forms.CheckBox()
+        Me.AboutLink = New System.Windows.Forms.LinkLabel()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -112,7 +115,7 @@ Partial Class Main
         '
         'CacheButton
         '
-        Me.CacheButton.Location = New System.Drawing.Point(13, 199)
+        Me.CacheButton.Location = New System.Drawing.Point(13, 254)
         Me.CacheButton.Name = "CacheButton"
         Me.CacheButton.Size = New System.Drawing.Size(111, 23)
         Me.CacheButton.TabIndex = 9
@@ -120,6 +123,30 @@ Partial Class Main
         Me.ToolTip1.SetToolTip(Me.CacheButton, "Clears cache and reloads VisCord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Useful if VisCord is running slow or lagging" &
         ".")
         Me.CacheButton.UseVisualStyleBackColor = True
+        '
+        'DataButton
+        '
+        Me.DataButton.Location = New System.Drawing.Point(13, 283)
+        Me.DataButton.Name = "DataButton"
+        Me.DataButton.Size = New System.Drawing.Size(111, 23)
+        Me.DataButton.TabIndex = 10
+        Me.DataButton.Text = "Clear User Data"
+        Me.ToolTip1.SetToolTip(Me.DataButton, "Clears user data and reloads VisCord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Useful if VisCord is running slow or lag" &
+        "ging.")
+        Me.DataButton.UseVisualStyleBackColor = True
+        '
+        'HardwareCheckbox
+        '
+        Me.HardwareCheckbox.AutoSize = True
+        Me.HardwareCheckbox.ForeColor = System.Drawing.Color.White
+        Me.HardwareCheckbox.Location = New System.Drawing.Point(13, 218)
+        Me.HardwareCheckbox.Name = "HardwareCheckbox"
+        Me.HardwareCheckbox.Size = New System.Drawing.Size(141, 17)
+        Me.HardwareCheckbox.TabIndex = 11
+        Me.HardwareCheckbox.Text = "Hardware acceleration"
+        Me.ToolTip1.SetToolTip(Me.HardwareCheckbox, "Select whether to use your GPU or CPU to render Discord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VisCord will reload t" &
+        "he page when this option is checked/unchecked.")
+        Me.HardwareCheckbox.UseVisualStyleBackColor = True
         '
         'ContentTimer
         '
@@ -130,6 +157,9 @@ Partial Class Main
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.AboutLink)
+        Me.Panel1.Controls.Add(Me.NavCheckbox)
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.HardwareCheckbox)
         Me.Panel1.Controls.Add(Me.DataButton)
@@ -149,12 +179,23 @@ Partial Class Main
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(10, 202)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(71, 13)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "Performance"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(10, 183)
+        Me.Label3.Location = New System.Drawing.Point(10, 238)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(77, 13)
         Me.Label3.TabIndex = 8
@@ -219,40 +260,40 @@ Partial Class Main
         Me.FixTitle.Enabled = True
         Me.FixTitle.Interval = 1000
         '
-        'DataButton
+        'Label5
         '
-        Me.DataButton.Location = New System.Drawing.Point(13, 228)
-        Me.DataButton.Name = "DataButton"
-        Me.DataButton.Size = New System.Drawing.Size(111, 23)
-        Me.DataButton.TabIndex = 10
-        Me.DataButton.Text = "Clear User Data"
-        Me.ToolTip1.SetToolTip(Me.DataButton, "Clears user data and reloads VisCord." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Useful if VisCord is running slow or lag" &
-        "ging.")
-        Me.DataButton.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(10, 166)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Navigation"
         '
-        'HardwareCheckbox
+        'NavCheckbox
         '
-        Me.HardwareCheckbox.AutoSize = True
-        Me.HardwareCheckbox.ForeColor = System.Drawing.Color.White
-        Me.HardwareCheckbox.Location = New System.Drawing.Point(13, 314)
-        Me.HardwareCheckbox.Name = "HardwareCheckbox"
-        Me.HardwareCheckbox.Size = New System.Drawing.Size(141, 17)
-        Me.HardwareCheckbox.TabIndex = 11
-        Me.HardwareCheckbox.Text = "Hardware acceleration"
-        Me.ToolTip1.SetToolTip(Me.HardwareCheckbox, "Send a real-time notification when communication is detected." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VisCord needs to" &
-        " be minimised for real-time notifications to work.")
-        Me.HardwareCheckbox.UseVisualStyleBackColor = True
+        Me.NavCheckbox.AutoSize = True
+        Me.NavCheckbox.ForeColor = System.Drawing.Color.White
+        Me.NavCheckbox.Location = New System.Drawing.Point(13, 182)
+        Me.NavCheckbox.Name = "NavCheckbox"
+        Me.NavCheckbox.Size = New System.Drawing.Size(149, 17)
+        Me.NavCheckbox.TabIndex = 14
+        Me.NavCheckbox.Text = "Open links in a browser"
+        Me.ToolTip1.SetToolTip(Me.NavCheckbox, "Open links in an external browser." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "If unchecked, will open links in a new WebV" &
+        "iew2 window.")
+        Me.NavCheckbox.UseVisualStyleBackColor = True
         '
-        'Label4
+        'AboutLink
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(10, 298)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 13)
-        Me.Label4.TabIndex = 12
-        Me.Label4.Text = "Performance"
+        Me.AboutLink.AutoSize = True
+        Me.AboutLink.LinkColor = System.Drawing.Color.White
+        Me.AboutLink.Location = New System.Drawing.Point(88, 335)
+        Me.AboutLink.Name = "AboutLink"
+        Me.AboutLink.Size = New System.Drawing.Size(91, 13)
+        Me.AboutLink.TabIndex = 15
+        Me.AboutLink.TabStop = True
+        Me.AboutLink.Text = "About VisCord..."
         '
         'Main
         '
@@ -293,4 +334,7 @@ Partial Class Main
     Friend WithEvents DataButton As Button
     Friend WithEvents HardwareCheckbox As CheckBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents NavCheckbox As CheckBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents AboutLink As LinkLabel
 End Class
