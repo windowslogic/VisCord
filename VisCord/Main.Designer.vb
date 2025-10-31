@@ -98,7 +98,7 @@ Partial Class Main
         Me.NoVWPic = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TipLabel = New System.Windows.Forms.Label()
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ChromiumWebBrowser1 = New CefSharp.WinForms.ChromiumWebBrowser()
         Me.VisCordSettings.SuspendLayout()
         Me.IconBox.SuspendLayout()
         Me.SysTrayMenu.SuspendLayout()
@@ -111,19 +111,6 @@ Partial Class Main
         Me.NoWVPanel.SuspendLayout()
         CType(Me.NoVWPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'WebView21
-        '
-        Me.WebView21.AllowExternalDrop = True
-        Me.WebView21.CreationProperties = Nothing
-        Me.WebView21.DefaultBackgroundColor = System.Drawing.Color.Transparent
-        Me.WebView21.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebView21.Location = New System.Drawing.Point(0, 0)
-        Me.WebView21.Name = "WebView21"
-        Me.WebView21.Size = New System.Drawing.Size(1264, 661)
-        Me.WebView21.Source = New System.Uri("https://discord.com/app", System.UriKind.Absolute)
-        Me.WebView21.TabIndex = 0
-        Me.WebView21.ZoomFactor = 1.0R
         '
         'StartupCheckbox
         '
@@ -187,6 +174,7 @@ Partial Class Main
         '
         'DataButton
         '
+        Me.DataButton.Enabled = False
         Me.DataButton.Location = New System.Drawing.Point(12, 287)
         Me.DataButton.Name = "DataButton"
         Me.DataButton.Size = New System.Drawing.Size(111, 23)
@@ -212,6 +200,7 @@ Partial Class Main
         'NavCheckbox
         '
         Me.NavCheckbox.AutoSize = True
+        Me.NavCheckbox.Enabled = False
         Me.NavCheckbox.ForeColor = System.Drawing.Color.White
         Me.NavCheckbox.Location = New System.Drawing.Point(12, 199)
         Me.NavCheckbox.Name = "NavCheckbox"
@@ -883,7 +872,7 @@ Partial Class Main
         'TipPic
         '
         Me.TipPic.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TipPic.Image = Global.VisCord.My.Resources.Resources.Alethila_Big
+        Me.TipPic.Image = Global.VisCord.My.Resources.Resources.SplashPone
         Me.TipPic.Location = New System.Drawing.Point(-103, 176)
         Me.TipPic.Name = "TipPic"
         Me.TipPic.Size = New System.Drawing.Size(576, 612)
@@ -963,6 +952,15 @@ Partial Class Main
     "rd."
         Me.TipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'ChromiumWebBrowser1
+        '
+        Me.ChromiumWebBrowser1.ActivateBrowserOnCreation = False
+        Me.ChromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ChromiumWebBrowser1.Location = New System.Drawing.Point(0, 0)
+        Me.ChromiumWebBrowser1.Name = "ChromiumWebBrowser1"
+        Me.ChromiumWebBrowser1.Size = New System.Drawing.Size(1264, 661)
+        Me.ChromiumWebBrowser1.TabIndex = 24
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -974,8 +972,8 @@ Partial Class Main
         Me.Controls.Add(Me.ToolPanel)
         Me.Controls.Add(Me.OfflinePanel)
         Me.Controls.Add(Me.TitlePanel)
-        Me.Controls.Add(Me.WebView21)
         Me.Controls.Add(Me.NoWVPanel)
+        Me.Controls.Add(Me.ChromiumWebBrowser1)
         Me.Controls.Add(Me.TipLabel)
         Me.Controls.Add(Me.TipPic)
         Me.DoubleBuffered = True
@@ -984,7 +982,6 @@ Partial Class Main
         Me.MinimumSize = New System.Drawing.Size(1280, 700)
         Me.Name = "Main"
         Me.Text = "Initialising... - VisCord"
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.VisCordSettings.ResumeLayout(False)
         Me.VisCordSettings.PerformLayout()
         Me.IconBox.ResumeLayout(False)
@@ -1007,7 +1004,6 @@ Partial Class Main
 
     End Sub
 
-    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ContentTimer As Timer
     Friend WithEvents VisCordSettings As Panel
@@ -1082,4 +1078,5 @@ Partial Class Main
     Friend WithEvents Timer1 As Timer
     Friend WithEvents TipLabel As Label
     Friend WithEvents TipCheckBox As CheckBox
+    Friend WithEvents ChromiumWebBrowser1 As CefSharp.WinForms.ChromiumWebBrowser
 End Class

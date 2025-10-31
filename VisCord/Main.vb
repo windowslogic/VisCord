@@ -83,7 +83,7 @@ Public Class Main
         End If
 
         'Load NSFW icon settings.
-        If My.Settings.NSFWIcon = 1 Then
+        If My.Settings.NSFWFeatures = 1 Then
             NSFWCheckbox.Checked = True
             AleNSFWButton.Enabled = True
             VeloNSFWButton.Enabled = True
@@ -106,33 +106,51 @@ Public Class Main
         'Load random tip.
         If My.Settings.AleTips = 1 Then
             TipCheckBox.Checked = True
-            PictureBox1.Visible = True
+            TipPic.Visible = True
             TipLabel.Visible = True
-            Dim rand As New Random
-            Select Case rand.Next(1, 6)
-                Case 1
-                    TipLabel.Text = "Tip: If VisCord isn't running as fast as it used to, you can clear cache via the VisCord Settings."
-                Case 2
-                    TipLabel.Text = "Tip: You can set custom JavaScript to run at startup via the VisCord Toolbox."
-                Case 3
-                    TipLabel.Text = "Tip: You can access your Discord user settings via the system tray menu."
-                Case 4
-                    TipLabel.Text = "Tip: Choose from a selection of app icons to use in the VisCord Settings."
-                Case 5
-                    TipLabel.Text = "Tip: You can send important messages to the outbox when offline."
-                Case Else
+            If My.Settings.NSFWFeatures = 1 Then
+                Dim lewdrand As New Random
+                Select Case lewdrand.Next(1, 6)
+                    Case 1
+                        TipLabel.Text = "A single human male produces enough sperm in two weeks to impregnate every fertile woman on the planet."
+                    Case 2
+                        TipLabel.Text = "A single sperm contains 37.5 MB of DNA information. One ejaculation represents a data transfer of 15,875 GB."
+                    Case 3
+                        TipLabel.Text = "The clitoris is the only organ in the body solely dedicated to pleasure."
+                    Case 4
+                        TipLabel.Text = "84 percent of women have sex to get their guy to do more around the house."
+                    Case 5
+                        TipLabel.Text = "Cumming is better for your brain than a game of Sudoku."
+                    Case Else
+                        TipLabel.Text = "1 of 4 acts of vaginal intercourse are condom protected."
+                End Select
+            Else
+                Dim rand As New Random
+                Select Case rand.Next(1, 6)
+                    Case 1
+                        TipLabel.Text = "Tip: If VisCord isn't running as fast as it used to, you can clear cache via the VisCord Settings."
+                    Case 2
+                        TipLabel.Text = "Tip: You can set custom JavaScript to run at startup via the VisCord Toolbox."
+                    Case 3
+                        TipLabel.Text = "Tip: You can access your Discord user settings via the system tray menu."
+                    Case 4
+                        TipLabel.Text = "Tip: Choose from a selection of app icons to use in the VisCord Settings."
+                    Case 5
+                        TipLabel.Text = "Tip: You can send important messages to the outbox when offline."
+                    Case Else
 
-            End Select
+                End Select
+            End If
         Else
             TipCheckBox.Checked = False
-            PictureBox1.Visible = False
+            TipPic.Visible = False
             TipLabel.Visible = False
         End If
 
         'Check Windows version.
-        If My.Computer.Info.OSVersion.Contains("6.1") Then
+        If Not My.Computer.Info.OSVersion.Contains("6.2") Then
             Me.Hide()
-            MsgBox("This version of VisCord is incompatible with Windows 7 due to Chromium no longer being updated for Windows 7." + vbNewLine + vbNewLine + "Please use the Windows 7 version of VisCord.")
+            MsgBox("This version of VisCord is incompatible with Windows 10 & 11." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord.")
             End
         Else
 
@@ -243,7 +261,10 @@ Public Class Main
     End Sub
 
     Private Sub DeleteMessageLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles DeleteMessageLink.LinkClicked
-        OutboxView.SelectedItems.Clear()
+        For Each obi In OutboxView.Items
+            OutboxView.Items.Remove(obi)
+            Exit For
+        Next
     End Sub
 
     Private Sub ClearOutboxLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ClearOutboxLink.LinkClicked
@@ -350,12 +371,12 @@ Public Class Main
                 ChromiumWebBrowser1.Visible = False
                 Me.Text = "Initialising... - VisCord"
                 SysTrayIcon.Text = "Initialising... - VisCord"
-                Thread.Sleep(1000)
             Else
                 ChromiumWebBrowser1.Visible = True
                 Me.Text = WebTitle + " - VisCord"
                 If WebTitle = "Discord" Then
                     AreaLabel.Text = ""
+                    NoWVPanel.Visible = False
                 Else
                     AreaLabel.Text = "- " + WebTitle
                 End If
@@ -592,11 +613,11 @@ Public Class Main
 
     Private Sub NSFWCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles NSFWCheckbox.CheckedChanged
         If NSFWCheckbox.Checked = True Then
-            My.Settings.NSFWIcon = 1
+            My.Settings.NSFWFeatures = 1
             AleNSFWButton.Enabled = True
             VeloNSFWButton.Enabled = True
         Else
-            My.Settings.NSFWIcon = 0
+            My.Settings.NSFWFeatures = 0
             AleNSFWButton.Enabled = False
             VeloNSFWButton.Enabled = False
         End If
@@ -776,6 +797,14 @@ Public Class Main
             End
         Else
 
+        End If
+    End Sub
+
+    Private Sub TipCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles TipCheckBox.CheckedChanged
+        If TipCheckBox.Checked = True Then
+            My.Settings.AleTips = 1
+        Else
+            My.Settings.AleTips = 0
         End If
     End Sub
 #End Region
