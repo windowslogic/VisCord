@@ -2,3 +2,4 @@
 "packages/cef.redist.x86.109.1.11/**" filter=lfs diff=lfs merge=lfs -text
 "VisCord/bin/x64/**" filter=lfs diff=lfs merge=lfs -text
 "VisCord/bin/Release/**" filter=lfs diff=lfs merge=lfs -text
+"VisCord/bin/**" filter=lfs diff=lfs merge=lfs -text

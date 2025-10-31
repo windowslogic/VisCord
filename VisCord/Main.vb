@@ -147,19 +147,15 @@ Public Class Main
             TipLabel.Visible = False
         End If
 
-        'Check Windows version.
-        If My.Computer.Info.OSVersion.Contains("6.1") Then
-
-        Else
-            Me.Hide()
-            MsgBox("This version of VisCord is incompatible with Windows 10 & 11." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord.")
-            End
-        End If
+        'Warn users of outdated Chromium browser.
+        Me.Hide()
+        MsgBox("This version of VisCord is designed for Windows 7 and 8.1 systems only. While using this version on Windows 10 & 11 may work for now, there is no guarantee that it will keep working in the future." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord for updated web technologies.")
+        Me.Show()
 
         ChromiumWebBrowser1.Load("https://discord.com/app")
     End Sub
 #End Region
-#Region "Gecko"
+#Region "CEFSharp"
 
     Private Sub ChromiumWebBrowser1_TitleChanged(sender As Object, e As TitleChangedEventArgs) Handles ChromiumWebBrowser1.TitleChanged
         WebTitle = e.Title()

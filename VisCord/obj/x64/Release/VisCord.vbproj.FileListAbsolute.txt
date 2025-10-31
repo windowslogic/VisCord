@@ -100,3 +100,4 @@ J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.vbproj.CopyComplete
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.exe
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.xml
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.pdb
+J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.vbprojAssemblyReference.cache

@@ -726,6 +726,7 @@ Partial Class Main
         'JSButton
         '
         Me.JSButton.BackColor = System.Drawing.Color.Transparent
+        Me.JSButton.Enabled = False
         Me.JSButton.Location = New System.Drawing.Point(484, 20)
         Me.JSButton.Name = "JSButton"
         Me.JSButton.Size = New System.Drawing.Size(126, 23)
