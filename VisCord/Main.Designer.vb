@@ -24,7 +24,6 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.StartupCheckbox = New System.Windows.Forms.CheckBox()
         Me.SysTrayCheckbox = New System.Windows.Forms.CheckBox()
@@ -43,6 +42,11 @@ Partial Class Main
         Me.NSFWContentChecbox = New System.Windows.Forms.CheckBox()
         Me.OfflineMessageLink = New System.Windows.Forms.LinkLabel()
         Me.ReloadLink = New System.Windows.Forms.LinkLabel()
+        Me.ClearOutboxLink = New System.Windows.Forms.LinkLabel()
+        Me.DeleteMessageLink = New System.Windows.Forms.LinkLabel()
+        Me.NewMessageLink = New System.Windows.Forms.LinkLabel()
+        Me.OutboxView = New System.Windows.Forms.ListView()
+        Me.Outbox = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.VisCordSettings = New System.Windows.Forms.Panel()
         Me.OtherLabel = New System.Windows.Forms.Label()
@@ -83,14 +87,9 @@ Partial Class Main
         Me.OfflineLabel = New System.Windows.Forms.Label()
         Me.IconPictureBox = New System.Windows.Forms.PictureBox()
         Me.ToolPanel = New System.Windows.Forms.Panel()
-        Me.ClearOutboxLink = New System.Windows.Forms.LinkLabel()
-        Me.DeleteMessageLink = New System.Windows.Forms.LinkLabel()
-        Me.NewMessageLink = New System.Windows.Forms.LinkLabel()
         Me.ContentLabel = New System.Windows.Forms.Label()
         Me.InternetTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.OutboxView = New System.Windows.Forms.ListView()
-        Me.Outbox = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ChromiumWebBrowser1 = New CefSharp.WinForms.ChromiumWebBrowser()
         Me.VisCordSettings.SuspendLayout()
         Me.IconBox.SuspendLayout()
         Me.SysTrayMenu.SuspendLayout()
@@ -100,19 +99,6 @@ Partial Class Main
         CType(Me.IconPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolPanel.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'WebView21
-        '
-        Me.WebView21.AllowExternalDrop = True
-        Me.WebView21.CreationProperties = Nothing
-        Me.WebView21.DefaultBackgroundColor = System.Drawing.Color.Transparent
-        Me.WebView21.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebView21.Location = New System.Drawing.Point(0, 0)
-        Me.WebView21.Name = "WebView21"
-        Me.WebView21.Size = New System.Drawing.Size(1264, 661)
-        Me.WebView21.Source = New System.Uri("https://discord.com/app", System.UriKind.Absolute)
-        Me.WebView21.TabIndex = 0
-        Me.WebView21.ZoomFactor = 1.0R
         '
         'StartupCheckbox
         '
@@ -176,6 +162,7 @@ Partial Class Main
         '
         'DataButton
         '
+        Me.DataButton.Enabled = False
         Me.DataButton.Location = New System.Drawing.Point(13, 270)
         Me.DataButton.Name = "DataButton"
         Me.DataButton.Size = New System.Drawing.Size(111, 23)
@@ -331,6 +318,63 @@ Partial Class Main
         Me.ReloadLink.Text = "Try loading again..."
         Me.ToolTip1.SetToolTip(Me.ReloadLink, "Discord is down or there is no connection available." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Click here to try loading" &
         " Discord again.")
+        '
+        'ClearOutboxLink
+        '
+        Me.ClearOutboxLink.ActiveLinkColor = System.Drawing.Color.Aqua
+        Me.ClearOutboxLink.AutoSize = True
+        Me.ClearOutboxLink.LinkColor = System.Drawing.Color.White
+        Me.ClearOutboxLink.Location = New System.Drawing.Point(403, 82)
+        Me.ClearOutboxLink.Name = "ClearOutboxLink"
+        Me.ClearOutboxLink.Size = New System.Drawing.Size(75, 13)
+        Me.ClearOutboxLink.TabIndex = 21
+        Me.ClearOutboxLink.TabStop = True
+        Me.ClearOutboxLink.Text = "Clear Outbox"
+        Me.ToolTip1.SetToolTip(Me.ClearOutboxLink, "Clear all messages from the outbox.")
+        '
+        'DeleteMessageLink
+        '
+        Me.DeleteMessageLink.ActiveLinkColor = System.Drawing.Color.Aqua
+        Me.DeleteMessageLink.AutoSize = True
+        Me.DeleteMessageLink.LinkColor = System.Drawing.Color.White
+        Me.DeleteMessageLink.Location = New System.Drawing.Point(312, 82)
+        Me.DeleteMessageLink.Name = "DeleteMessageLink"
+        Me.DeleteMessageLink.Size = New System.Drawing.Size(88, 13)
+        Me.DeleteMessageLink.TabIndex = 20
+        Me.DeleteMessageLink.TabStop = True
+        Me.DeleteMessageLink.Text = "Delete Message"
+        Me.ToolTip1.SetToolTip(Me.DeleteMessageLink, "Delete a message from the outbox.")
+        '
+        'NewMessageLink
+        '
+        Me.NewMessageLink.ActiveLinkColor = System.Drawing.Color.Aqua
+        Me.NewMessageLink.AutoSize = True
+        Me.NewMessageLink.LinkColor = System.Drawing.Color.White
+        Me.NewMessageLink.Location = New System.Drawing.Point(219, 82)
+        Me.NewMessageLink.Name = "NewMessageLink"
+        Me.NewMessageLink.Size = New System.Drawing.Size(87, 13)
+        Me.NewMessageLink.TabIndex = 19
+        Me.NewMessageLink.TabStop = True
+        Me.NewMessageLink.Text = "New Message..."
+        Me.ToolTip1.SetToolTip(Me.NewMessageLink, "Send a message to the outbox." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can send the messages to anyone you desire l" &
+        "ater.")
+        '
+        'OutboxView
+        '
+        Me.OutboxView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Outbox})
+        Me.OutboxView.HideSelection = False
+        Me.OutboxView.Location = New System.Drawing.Point(222, 7)
+        Me.OutboxView.Name = "OutboxView"
+        Me.OutboxView.Size = New System.Drawing.Size(256, 72)
+        Me.OutboxView.TabIndex = 22
+        Me.ToolTip1.SetToolTip(Me.OutboxView, "Double click an outboxed message to copy it to the clipboard.")
+        Me.OutboxView.UseCompatibleStateImageBehavior = False
+        Me.OutboxView.View = System.Windows.Forms.View.Details
+        '
+        'Outbox
+        '
+        Me.Outbox.Text = "Outbox"
+        Me.Outbox.Width = 251
         '
         'ContentTimer
         '
@@ -574,27 +618,28 @@ Partial Class Main
         Me.SysTrayMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RestoreToolStripMenuItem, Me.ToolStripSeparator1, Me.UserSettingsToolStripMenuItem, Me.AboutVisCordToolStripMenuItem, Me.ToolStripSeparator2, Me.LogOffToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.SysTrayMenu.Name = "SysTrayMenu"
         Me.SysTrayMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.SysTrayMenu.Size = New System.Drawing.Size(170, 176)
+        Me.SysTrayMenu.Size = New System.Drawing.Size(190, 198)
         '
         'RestoreToolStripMenuItem
         '
         Me.RestoreToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinRefresh
         Me.RestoreToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem"
-        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(189, 32)
         Me.RestoreToolStripMenuItem.Text = "Restore"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
         '
         'UserSettingsToolStripMenuItem
         '
+        Me.UserSettingsToolStripMenuItem.Enabled = False
         Me.UserSettingsToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinAccount
         Me.UserSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UserSettingsToolStripMenuItem.Name = "UserSettingsToolStripMenuItem"
-        Me.UserSettingsToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.UserSettingsToolStripMenuItem.Size = New System.Drawing.Size(189, 32)
         Me.UserSettingsToolStripMenuItem.Text = "User settings..."
         '
         'AboutVisCordToolStripMenuItem
@@ -602,20 +647,20 @@ Partial Class Main
         Me.AboutVisCordToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinMore
         Me.AboutVisCordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.AboutVisCordToolStripMenuItem.Name = "AboutVisCordToolStripMenuItem"
-        Me.AboutVisCordToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.AboutVisCordToolStripMenuItem.Size = New System.Drawing.Size(189, 32)
         Me.AboutVisCordToolStripMenuItem.Text = "About VisCord..."
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(186, 6)
         '
         'LogOffToolStripMenuItem
         '
         Me.LogOffToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinForward
         Me.LogOffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LogOffToolStripMenuItem.Name = "LogOffToolStripMenuItem"
-        Me.LogOffToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.LogOffToolStripMenuItem.Size = New System.Drawing.Size(189, 32)
         Me.LogOffToolStripMenuItem.Text = "Log off"
         '
         'ExitToolStripMenuItem
@@ -623,7 +668,7 @@ Partial Class Main
         Me.ExitToolStripMenuItem.Image = Global.VisCord.My.Resources.Resources.WinClose
         Me.ExitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(189, 32)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'NotifTimer
@@ -638,6 +683,7 @@ Partial Class Main
         'JSButton
         '
         Me.JSButton.BackColor = System.Drawing.Color.Transparent
+        Me.JSButton.Enabled = False
         Me.JSButton.Location = New System.Drawing.Point(484, 20)
         Me.JSButton.Name = "JSButton"
         Me.JSButton.Size = New System.Drawing.Size(126, 23)
@@ -649,6 +695,7 @@ Partial Class Main
         '
         Me.JSLabel.AutoSize = True
         Me.JSLabel.BackColor = System.Drawing.Color.Transparent
+        Me.JSLabel.Enabled = False
         Me.JSLabel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JSLabel.ForeColor = System.Drawing.Color.White
         Me.JSLabel.Location = New System.Drawing.Point(483, 4)
@@ -764,46 +811,6 @@ Partial Class Main
         Me.ToolPanel.TabIndex = 22
         Me.ToolPanel.Visible = False
         '
-        'ClearOutboxLink
-        '
-        Me.ClearOutboxLink.ActiveLinkColor = System.Drawing.Color.Aqua
-        Me.ClearOutboxLink.AutoSize = True
-        Me.ClearOutboxLink.LinkColor = System.Drawing.Color.White
-        Me.ClearOutboxLink.Location = New System.Drawing.Point(403, 82)
-        Me.ClearOutboxLink.Name = "ClearOutboxLink"
-        Me.ClearOutboxLink.Size = New System.Drawing.Size(75, 13)
-        Me.ClearOutboxLink.TabIndex = 21
-        Me.ClearOutboxLink.TabStop = True
-        Me.ClearOutboxLink.Text = "Clear Outbox"
-        Me.ToolTip1.SetToolTip(Me.ClearOutboxLink, "Clear all messages from the outbox.")
-        '
-        'DeleteMessageLink
-        '
-        Me.DeleteMessageLink.ActiveLinkColor = System.Drawing.Color.Aqua
-        Me.DeleteMessageLink.AutoSize = True
-        Me.DeleteMessageLink.LinkColor = System.Drawing.Color.White
-        Me.DeleteMessageLink.Location = New System.Drawing.Point(312, 82)
-        Me.DeleteMessageLink.Name = "DeleteMessageLink"
-        Me.DeleteMessageLink.Size = New System.Drawing.Size(88, 13)
-        Me.DeleteMessageLink.TabIndex = 20
-        Me.DeleteMessageLink.TabStop = True
-        Me.DeleteMessageLink.Text = "Delete Message"
-        Me.ToolTip1.SetToolTip(Me.DeleteMessageLink, "Delete a message from the outbox.")
-        '
-        'NewMessageLink
-        '
-        Me.NewMessageLink.ActiveLinkColor = System.Drawing.Color.Aqua
-        Me.NewMessageLink.AutoSize = True
-        Me.NewMessageLink.LinkColor = System.Drawing.Color.White
-        Me.NewMessageLink.Location = New System.Drawing.Point(219, 82)
-        Me.NewMessageLink.Name = "NewMessageLink"
-        Me.NewMessageLink.Size = New System.Drawing.Size(87, 13)
-        Me.NewMessageLink.TabIndex = 19
-        Me.NewMessageLink.TabStop = True
-        Me.NewMessageLink.Text = "New Message..."
-        Me.ToolTip1.SetToolTip(Me.NewMessageLink, "Send a message to the outbox." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can send the messages to anyone you desire l" &
-        "ater.")
-        '
         'ContentLabel
         '
         Me.ContentLabel.AutoSize = True
@@ -821,22 +828,14 @@ Partial Class Main
         Me.InternetTimer.Enabled = True
         Me.InternetTimer.Interval = 1000
         '
-        'OutboxView
+        'ChromiumWebBrowser1
         '
-        Me.OutboxView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Outbox})
-        Me.OutboxView.HideSelection = False
-        Me.OutboxView.Location = New System.Drawing.Point(222, 7)
-        Me.OutboxView.Name = "OutboxView"
-        Me.OutboxView.Size = New System.Drawing.Size(256, 72)
-        Me.OutboxView.TabIndex = 22
-        Me.ToolTip1.SetToolTip(Me.OutboxView, "Double click an outboxed message to copy it to the clipboard.")
-        Me.OutboxView.UseCompatibleStateImageBehavior = False
-        Me.OutboxView.View = System.Windows.Forms.View.Details
-        '
-        'Outbox
-        '
-        Me.Outbox.Text = "Outbox"
-        Me.Outbox.Width = 251
+        Me.ChromiumWebBrowser1.ActivateBrowserOnCreation = False
+        Me.ChromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ChromiumWebBrowser1.Location = New System.Drawing.Point(0, 0)
+        Me.ChromiumWebBrowser1.Name = "ChromiumWebBrowser1"
+        Me.ChromiumWebBrowser1.Size = New System.Drawing.Size(1264, 661)
+        Me.ChromiumWebBrowser1.TabIndex = 23
         '
         'Main
         '
@@ -849,14 +848,13 @@ Partial Class Main
         Me.Controls.Add(Me.OfflinePanel)
         Me.Controls.Add(Me.VisCordSettings)
         Me.Controls.Add(Me.TitlePanel)
-        Me.Controls.Add(Me.WebView21)
+        Me.Controls.Add(Me.ChromiumWebBrowser1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(1280, 700)
         Me.Name = "Main"
         Me.Text = "Initialising... - VisCord"
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.VisCordSettings.ResumeLayout(False)
         Me.VisCordSettings.PerformLayout()
         Me.IconBox.ResumeLayout(False)
@@ -873,8 +871,6 @@ Partial Class Main
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ContentTimer As Timer
     Friend WithEvents VisCordSettings As Panel
@@ -940,4 +936,5 @@ Partial Class Main
     Friend WithEvents ReloadLink As LinkLabel
     Friend WithEvents OutboxView As ListView
     Friend WithEvents Outbox As ColumnHeader
+    Friend WithEvents ChromiumWebBrowser1 As CefSharp.WinForms.ChromiumWebBrowser
 End Class

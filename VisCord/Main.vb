@@ -1,10 +1,39 @@
 ﻿Imports System.Net
 Imports System.Threading
-Imports Microsoft.Web.WebView2.Core
+Imports CefSharp
+Imports CefSharp.WinForms
 
 Public Class Main
+
+    Public Sub New()
+        InitializeComponent()
+
+        Dim settings As New CefSettings()
+        Dim username As String = Environment.UserName()
+        Dim cachePath = Application.StartupPath + "\Data"
+        settings.CachePath = cachePath
+        If My.Settings.HA = 0 Then
+            settings.CefCommandLineArgs.Add("disable-gpu", "1")
+        Else
+        End If
+        Cef.Initialize(settings)
+    End Sub
+
+    Dim WebTitle As String
 #Region "Load Settings"
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Check for Internet connection.
+        If My.Settings.EnableNetwork = 1 Then
+            If CheckForInternetConnection() = False Then
+                Offline()
+                ReloadLink.Enabled = True
+            End If
+        Else
+            Offline()
+            ReloadLink.Enabled = False
+        End If
 
         'Load Startup settings.
         If My.Settings.Startup = 0 Then
@@ -73,39 +102,22 @@ Public Class Main
 
         'Load correct icon.
         UpdateIcon()
+
+        ChromiumWebBrowser1.Load("https://discord.com/app")
     End Sub
 #End Region
-#Region "WebView2"
-    Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
-        WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
-        WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
-        WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = True
-        WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
-        If My.Settings.HA = 0 Then
-            Dim options As New CoreWebView2EnvironmentOptions()
-            options.AdditionalBrowserArguments = "--disable-gpu"
-        Else
-        End If
-        AddHandler WebView21.CoreWebView2.NewWindowRequested, AddressOf CoreWebView2_NewWindowRequested
+#Region "Gecko"
 
-        'Check for Internet connection.
-        If My.Settings.EnableNetwork = 1 Then
-            If CheckForInternetConnection() = False Then
-                Offline()
-                ReloadLink.Enabled = True
-            End If
-        Else
-            Offline()
-            ReloadLink.Enabled = False
-        End If
-
-        LoadJS()
+    Private Sub ChromiumWebBrowser1_TitleChanged(sender As Object, e As TitleChangedEventArgs) Handles ChromiumWebBrowser1.TitleChanged
+        WebTitle = e.Title()
     End Sub
 
-    Private Sub WebView21_NavigationStarting(sender As Object, e As CoreWebView2NavigationStartingEventArgs) Handles WebView21.NavigationStarting
-        If Not e.Uri.Contains("discord.com") Then
-            e.Cancel = True
-            OpenInExternalBrowser(e.Uri)
+    Private Sub ChromiumWebBrowser1_LoadingStateChanged(sender As Object, e As LoadingStateChangedEventArgs) Handles ChromiumWebBrowser1.LoadingStateChanged
+        If Not e.IsLoading Then
+            Dim url As String = ChromiumWebBrowser1.Address
+            If Not url.Contains("discord.com") Then
+                OpenInExternalBrowser(url)
+            End If
         End If
     End Sub
 
@@ -113,23 +125,23 @@ Public Class Main
         Process.Start(url)
     End Sub
 
-    Private Sub CoreWebView2_NewWindowRequested(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2NewWindowRequestedEventArgs)
-        If My.Settings.OpenExternal = 0 Then
-        Else
-            If Not e.Uri.Contains("discord.com") Then
-                Process.Start(e.Uri)
-                e.Handled = True
-            End If
-        End If
-    End Sub
+    'Private Sub CoreWebView2_NewWindowRequested(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2NewWindowRequestedEventArgs)
+    '    If My.Settings.OpenExternal = 0 Then
+    '    Else
+    '        If Not e.Uri.Contains("discord.com") Then
+    '            Process.Start(e.Uri)
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
 #End Region
 #Region "Title Bar"
     Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click
-        WebView21.CoreWebView2.GoBack()
+        ChromiumWebBrowser1.BrowserCore.GoBack()
     End Sub
 
     Private Sub ForwardButton_Click(sender As Object, e As EventArgs) Handles ForwardButton.Click
-        WebView21.CoreWebView2.GoForward()
+        ChromiumWebBrowser1.BrowserCore.GoForward()
     End Sub
 
     Private Sub ToolboxButton_Click(sender As Object, e As EventArgs) Handles ToolboxButton.Click
@@ -140,7 +152,7 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub WebView21_Click(sender As Object, e As EventArgs) Handles WebView21.Click
+    Private Sub GeckoWebBrowser1_Click(sender As Object, e As EventArgs)
         ToolPanel.Visible = False
     End Sub
 
@@ -211,8 +223,8 @@ Public Class Main
     Private Sub ReloadLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ReloadLink.LinkClicked
         If My.Settings.EnableNetwork = 1 Then
             If CheckForInternetConnection() = True Then
-                WebView21.CoreWebView2.Navigate("https://discord.com/app")
-                WebView21.Visible = True
+                ChromiumWebBrowser1.Load("https://discord.com/app")
+                ChromiumWebBrowser1.Visible = True
                 VisCordSettings.Visible = False
                 OfflinePanel.Visible = False
                 HelpButton.Enabled = True
@@ -261,7 +273,7 @@ Public Class Main
 
     Private Sub UserSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserSettingsToolStripMenuItem.Click
         Try
-            OpenDiscordSettingsAsync()
+            'OpenDiscordSettingsAsync()
         Catch
             MsgBox("Discord is not initialised, please wait to access user settings.")
         End Try
@@ -286,28 +298,31 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub LogOffToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOffToolStripMenuItem.Click
-        WebView21.CoreWebView2.Profile.ClearBrowsingDataAsync()
-        WebView21.Reload()
-    End Sub
+    'Private Sub LogOffToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOffToolStripMenuItem.Click
+    '    Dim CookieMan As nsICookieManager
+    '    CookieMan = Xpcom.GetService(Of nsICookieManager)("@mozilla.org/cookiemanager;1")
+    '    CookieMan = Xpcom.QueryInterface(Of nsICookieManager)(CookieMan)
+    '    CookieMan.RemoveAll()
+    '    GeckoWebBrowser1.Reload()
+    'End Sub
 #End Region
 #Region "Timers"
     Private Sub ContentTimer_Tick(sender As Object, e As EventArgs) Handles ContentTimer.Tick
 
-        'Attempt to update window title to match area of Discord. 
+        'Attempt to update window title to match area of Discord.
         Try
-            If WebView21.CoreWebView2.DocumentTitle = "" Then
-                WebView21.Visible = False
+            If WebTitle = "" Then
+                ChromiumWebBrowser1.Visible = False
                 Me.Text = "Initialising... - VisCord"
                 SysTrayIcon.Text = "Initialising... - VisCord"
                 Thread.Sleep(1000)
             Else
-                WebView21.Visible = True
-                Me.Text = WebView21.CoreWebView2.DocumentTitle + " - VisCord"
-                If WebView21.CoreWebView2.DocumentTitle = "Discord" Then
+                ChromiumWebBrowser1.Visible = True
+                Me.Text = WebTitle + " - VisCord"
+                If WebTitle = "Discord" Then
                     AreaLabel.Text = ""
                 Else
-                    AreaLabel.Text = "- " + WebView21.CoreWebView2.DocumentTitle
+                    AreaLabel.Text = "- " + WebTitle
                 End If
 
             End If
@@ -330,7 +345,7 @@ Public Class Main
             'Check if user is on a NSFW area.
             If My.Settings.NSFWContent = 1 Then
                 If Me.Text.Contains("nsfw") Then
-                    WebView21.CoreWebView2.Navigate("https://discord.com/app")
+                    ChromiumWebBrowser1.Load("https://discord.com/app")
                 End If
             Else
             End If
@@ -339,13 +354,13 @@ Public Class Main
             TitlePanel.Visible = True
 
             'Check WebView2 history for back/forward buttons.
-            If WebView21.CoreWebView2.CanGoBack = True Then
+            If ChromiumWebBrowser1.CanGoBack = True Then
                 BackButton.Enabled = True
             Else
                 BackButton.Enabled = False
             End If
 
-            If WebView21.CoreWebView2.CanGoForward = True Then
+            If ChromiumWebBrowser1.CanGoForward = True Then
                 ForwardButton.Enabled = True
             Else
                 ForwardButton.Enabled = False
@@ -378,8 +393,8 @@ Public Class Main
                     ContentTimer.Start()
                 End If
 
-                If Not Me.WebView21.CoreWebView2.DocumentTitle.Contains("(") Then
-                    Me.Text = WebView21.CoreWebView2.DocumentTitle + " - VisCord"
+                If Not WebTitle.Contains("(") Then
+                    Me.Text = WebTitle + " - VisCord"
                     SysTrayIcon.Text = "VisCord"
                     UpdateIcon()
                 End If
@@ -445,27 +460,21 @@ Public Class Main
         Try
             If HardwareCheckbox.Checked = True Then
                 My.Settings.HA = 1
-                WebView21.Reload()
+                ChromiumWebBrowser1.Reload()
             Else
                 My.Settings.HA = 0
-                WebView21.Reload()
+                ChromiumWebBrowser1.Reload()
             End If
         Catch
         End Try
     End Sub
-    Private Sub CacheButton_Click(sender As Object, e As EventArgs) Handles CacheButton.Click
-        If MsgBox("Would you like to clear VisCord's cache? It may take a while for VisCord to reload fully and you may be logged out of Discord.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            WebView21.CoreWebView2.Profile.ClearBrowsingDataAsync()
-            WebView21.Reload()
-        End If
-    End Sub
 
-    Private Sub DataButton_Click(sender As Object, e As EventArgs) Handles DataButton.Click
-        If MsgBox("Would you like to clear VisCord's user data? You may be logged out of Discord.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            WebView21.CoreWebView2.ExecuteScriptAsync("javascript:localStorage.clear()")
-            WebView21.Reload()
-        End If
-    End Sub
+    'Private Sub DataButton_Click(sender As Object, e As EventArgs) Handles DataButton.Click
+    '    If MsgBox("Would you like to clear VisCord's user data? You may be logged out of Discord.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+    '        GeckoWebBrowser1.CoreWebView2.ExecuteScriptAsync("javascript:localStorage.clear()")
+    '        GeckoWebBrowser1.Reload()
+    '    End If
+    'End Sub
 
     Private Sub CFULink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles CFULink.LinkClicked
         Process.Start("https://github.com/windowslogic/VisCord/releases")
@@ -475,7 +484,7 @@ Public Class Main
     Private Sub NetworkCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles NetworkCheckbox.CheckedChanged
         If NetworkCheckbox.Checked = True Then
             My.Settings.EnableNetwork = 1
-            WebView21.Visible = True
+            ChromiumWebBrowser1.Visible = True
             VisCordSettings.Visible = False
             OfflinePanel.Visible = False
             BackButton.Enabled = True
@@ -484,10 +493,9 @@ Public Class Main
             ContentTimer.Start()
             NotifTimer.Start()
             FixTitle.Start()
-            OpenDiscordSettingsAsync()
         Else
             My.Settings.EnableNetwork = 0
-            WebView21.Visible = False
+            ChromiumWebBrowser1.Visible = False
             VisCordSettings.Visible = True
             OfflinePanel.Visible = True
             Me.Text = "Offline Mode - VisCord"
@@ -593,16 +601,17 @@ Public Class Main
 #End Region
 #End Region
 #Region "Functions"
-    Private Async Function LoadJS() As Task
-        Await Task.Delay(0)
-        Dim js As String = My.Settings.AddNavJS
-        Dim resultJson As String = Await WebView21.CoreWebView2.ExecuteScriptAsync(js)
-    End Function
+
+    Private Sub ClearCache()
+        Dim cachePath = Application.StartupPath + "\Data"
+        System.IO.Directory.Delete(cachePath, True)
+    End Sub
+
 
     Private Sub Ping()
         For val As Integer = 0 To 1
-            If WebView21.CoreWebView2.DocumentTitle.Contains("(") Then
-                Me.Text = WebView21.CoreWebView2.DocumentTitle + " - VisCord"
+            If WebTitle.Contains("(") Then
+                Me.Text = WebTitle + " - VisCord"
                 SysTrayIcon.ShowBalloonTip(1, "VisCord - Notification", "You have unread messages.", ToolTipIcon.Info)
                 Me.Text = "New messages - VisCord"
                 SysTrayIcon.Text = "New messages - VisCord"
@@ -677,23 +686,6 @@ Public Class Main
         End Select
     End Sub
 
-    Private Async Function OpenDiscordSettingsAsync() As Task
-        Await Task.Delay(0)
-        Dim js As String = "
-    (function(){
-      try {
-        var sel = '[aria-label=""User Settings""] button, [data-list-item-id=""user-settings""], button[aria-label*=""Settings""]';
-        var btn = document.querySelector(sel);
-        if(btn){ btn.click(); return 'clicked'; }
-        // fallback: try hash route
-        location.hash = '/settings';
-        return 'fallback';
-      } catch(e){ return 'error:'+e.message; }
-    })();
-    "
-        Dim resultJson As String = Await WebView21.CoreWebView2.ExecuteScriptAsync(js)
-    End Function
-
     Public Shared Function CheckForInternetConnection() As Boolean
         Try
             Using client = New WebClient()
@@ -708,7 +700,7 @@ Public Class Main
     End Function
 
     Private Sub Offline()
-        WebView21.Visible = False
+        ChromiumWebBrowser1.Visible = False
         VisCordSettings.Visible = True
         OfflinePanel.Visible = True
         Me.Text = "Offline Mode - VisCord"
@@ -725,9 +717,30 @@ Public Class Main
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If MsgBox("Would you like to exit VisCord?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             My.Settings.Save()
+            Cef.Shutdown()
             End
         Else
             e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub CacheButton_Click(sender As Object, e As EventArgs) Handles CacheButton.Click
+        If MsgBox("Would you like to delete VisCord's cache? This will end the VisCord process and you may be logged out.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Cef.Shutdown()
+            ClearCache()
+            End
+        Else
+
+        End If
+    End Sub
+
+    Private Sub LogOffToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOffToolStripMenuItem.Click
+        If MsgBox("Would you like to log out of VisCord? This will end the VisCord process and you will be logged out.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Cef.Shutdown()
+            ClearCache()
+            End
+        Else
+
         End If
     End Sub
 #End Region
