@@ -981,7 +981,7 @@ Partial Class Main
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(1280, 700)
         Me.Name = "Main"
-        Me.Text = "Initialising... - VisCord"
+        Me.Text = "VisCord"
         Me.VisCordSettings.ResumeLayout(False)
         Me.VisCordSettings.PerformLayout()
         Me.IconBox.ResumeLayout(False)

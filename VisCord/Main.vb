@@ -148,12 +148,12 @@ Public Class Main
         End If
 
         'Check Windows version.
-        If Not My.Computer.Info.OSVersion.Contains("6.2") Then
+        If My.Computer.Info.OSVersion.Contains("6.1") Then
+
+        Else
             Me.Hide()
             MsgBox("This version of VisCord is incompatible with Windows 10 & 11." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord.")
             End
-        Else
-
         End If
 
         ChromiumWebBrowser1.Load("https://discord.com/app")
