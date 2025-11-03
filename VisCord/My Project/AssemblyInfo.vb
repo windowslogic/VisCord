@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("VisCord")>
-<Assembly: AssemblyDescription("The Windows 7 version of VisCord using CEFSharp.")>
+<Assembly: AssemblyDescription("The Windows 7/8.1 version of VisCord using CEFSharp.")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("VisCord")>
 <Assembly: AssemblyCopyright("Copyright © 2025 Alethila")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.3.2.0")>
-<Assembly: AssemblyFileVersion("1.3.2.0")>
+<Assembly: AssemblyVersion("1.3.2.1")>
+<Assembly: AssemblyFileVersion("1.3.2.1")>

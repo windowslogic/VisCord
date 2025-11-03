@@ -149,7 +149,7 @@ Public Class Main
 
         'Warn users of outdated Chromium browser.
         Me.Hide()
-        MsgBox("This version of VisCord is designed for Windows 7 and 8.1 systems only. While using this version on Windows 10 & 11 may work for now, there is no guarantee that it will keep working in the future." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord for updated web technologies.")
+        MsgBox("This version of VisCord is designed for Windows 7 and 8.1 systems only. While using this version on Windows 10 and 11 may work for now, there is no guarantee that it will keep working in the future." + vbNewLine + vbNewLine + "Please use the regular WebView2 version of VisCord for updated web technologies.")
         Me.Show()
 
         ChromiumWebBrowser1.Load("https://discord.com/app")
@@ -380,7 +380,9 @@ Public Class Main
             End If
 
             'Check if user is on the settings area of Discord.
-            If Me.Text.Contains("User Settings") Then
+            If Me.Text.Contains("Profiles") Then
+                VisCordSettings.Visible = False
+            ElseIf Me.Text.Contains("User Settings") Then
                 VisCordSettings.Visible = True
             Else
                 VisCordSettings.Visible = False
@@ -424,14 +426,14 @@ Public Class Main
 
     Private Sub NotifTimer_Tick(sender As Object, e As EventArgs) Handles NotifTimer.Tick
         Try
-            If Me.Text.Contains("(") Then
+            If WebTitle.Contains("(") Then
                 UpdateBadge()
             End If
         Catch
         End Try
 
         If Me.Focused = True Then
-            If Not Me.Text.Contains("(") Then
+            If Not WebTitle.Contains("(") Then
                 ContentTimer.Start()
             End If
         End If
@@ -440,7 +442,7 @@ Public Class Main
     Private Sub FixTitle_Tick(sender As Object, e As EventArgs) Handles FixTitle.Tick
         Try
             If Me.WindowState = FormWindowState.Minimized = False Then
-                If Me.Text.Contains("•") Then
+                If WebTitle.Contains("•") Then
                     UpdateIcon()
                     ContentTimer.Start()
                 End If
@@ -670,6 +672,8 @@ Public Class Main
                 If My.Settings.NotifBadge = 1 Then
                     UpdateBadge()
                 End If
+            ElseIf Not WebTitle.Contains("(") Then
+                Exit For
             End If
             If val = 1 Then
                 ContentTimer.Stop()

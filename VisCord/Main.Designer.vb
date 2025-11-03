@@ -157,8 +157,7 @@ Partial Class Main
         Me.NotifyCheckbox.Size = New System.Drawing.Size(156, 17)
         Me.NotifyCheckbox.TabIndex = 6
         Me.NotifyCheckbox.Text = "Notify on communication"
-        Me.ToolTip1.SetToolTip(Me.NotifyCheckbox, "Send a real-time notification when communication is detected." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Notifications do" &
-        " not work if VisCord is minimised.")
+        Me.ToolTip1.SetToolTip(Me.NotifyCheckbox, "Send a real-time notification when communication is detected.")
         Me.NotifyCheckbox.UseVisualStyleBackColor = True
         '
         'CacheButton
@@ -416,7 +415,7 @@ Partial Class Main
         Me.TipCheckBox.Size = New System.Drawing.Size(133, 17)
         Me.TipCheckBox.TabIndex = 19
         Me.TipCheckBox.Text = "Enable Alethila's tips"
-        Me.ToolTip1.SetToolTip(Me.TipCheckBox, "Before WebView2 fully starts, show Alethila (pony) and useful tips.")
+        Me.ToolTip1.SetToolTip(Me.TipCheckBox, "Before CEFSharp fully starts, show Alethila (pony) and useful tips.")
         Me.TipCheckBox.UseVisualStyleBackColor = True
         '
         'ContentTimer
