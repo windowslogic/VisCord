@@ -52,6 +52,7 @@ Partial Class Main
         Me.PinsButton = New System.Windows.Forms.Button()
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.VisCordSettings = New System.Windows.Forms.Panel()
+        Me.UpdatesCheckbox = New System.Windows.Forms.CheckBox()
         Me.OtherLabel = New System.Windows.Forms.Label()
         Me.IconBox = New System.Windows.Forms.GroupBox()
         Me.VeloNSFWButton = New System.Windows.Forms.RadioButton()
@@ -103,7 +104,6 @@ Partial Class Main
         Me.Updater = New System.ComponentModel.BackgroundWorker()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.UDLabel = New System.Windows.Forms.Label()
-        Me.UpdatesCheckbox = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.VisCordSettings.SuspendLayout()
         Me.IconBox.SuspendLayout()
@@ -474,6 +474,15 @@ Partial Class Main
         Me.VisCordSettings.Size = New System.Drawing.Size(182, 519)
         Me.VisCordSettings.TabIndex = 2
         Me.VisCordSettings.Visible = False
+        '
+        'UpdatesCheckbox
+        '
+        Me.UpdatesCheckbox.AutoSize = True
+        Me.UpdatesCheckbox.Location = New System.Drawing.Point(11, 313)
+        Me.UpdatesCheckbox.Name = "UpdatesCheckbox"
+        Me.UpdatesCheckbox.Size = New System.Drawing.Size(15, 14)
+        Me.UpdatesCheckbox.TabIndex = 20
+        Me.UpdatesCheckbox.UseVisualStyleBackColor = True
         '
         'OtherLabel
         '
@@ -1007,22 +1016,14 @@ Partial Class Main
         Me.UDLabel.Text = "UDLabel"
         Me.UDLabel.Visible = False
         '
-        'UpdatesCheckbox
-        '
-        Me.UpdatesCheckbox.AutoSize = True
-        Me.UpdatesCheckbox.Location = New System.Drawing.Point(11, 313)
-        Me.UpdatesCheckbox.Name = "UpdatesCheckbox"
-        Me.UpdatesCheckbox.Size = New System.Drawing.Size(15, 14)
-        Me.UpdatesCheckbox.TabIndex = 20
-        Me.UpdatesCheckbox.UseVisualStyleBackColor = True
-        '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(209, 609)
+        Me.TextBox1.Location = New System.Drawing.Point(60, 625)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 27
+        Me.TextBox1.Visible = False
         '
         'Main
         '

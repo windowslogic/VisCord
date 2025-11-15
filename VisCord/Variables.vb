@@ -2,9 +2,9 @@
     Public Shared ver As String = My.Application.Info.Version.ToString + " (" + Date.Now.ToString("MMMM") + " " + Date.Now.Year.ToString + ")"
     Public Shared user As String = System.Windows.Forms.SystemInformation.UserName
     Public Shared appname As String = "VisCord"
-    Public Shared vertext As String = "https://u.windowslogic.co.uk/Updates/VISCORD/VISCORD.txt"
-    Public Shared setup As String = "https://u.windowslogic.co.uk/Updates/VISCORD/VISCORD%20Setup.exe"
-    Public Shared patchnotes As String = "https://u.windowslogic.co.uk/updates/VISCORD/patchnotes.txt"
+    Public Shared vertext As String = "https://u.windowslogic.co.uk/Updates/VISCORD/LVISCORD.txt"
+    Public Shared setup As String = "https://u.windowslogic.co.uk/Updates/VISCORD/VISCORD%20Legacy%20Setup.exe"
+    Public Shared patchnotes As String = "https://u.windowslogic.co.uk/updates/VISCORD/legacypatchnotes.txt"
 
     Public Shared Sub ParseVariables(input As Label)
         input.Text = input.Text.Replace("%ver%", Variables.ver).Replace("%user%", Variables.user).Replace("%appname%", Variables.appname)

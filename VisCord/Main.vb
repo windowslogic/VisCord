@@ -161,6 +161,12 @@ Public Class Main
             TipLabel.Visible = False
         End If
 
+        'Load outbox data from external file.
+        Try
+            My.Settings.OutboxList = File.ReadAllText(Application.StartupPath & "\Outbox.vco").ToString()
+        Catch
+        End Try
+
         'Load settings from INI file.
         Try
 
