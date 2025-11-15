@@ -49,6 +49,7 @@ Partial Class Main
         Me.Outbox = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GetWVLink = New System.Windows.Forms.LinkLabel()
         Me.TipCheckBox = New System.Windows.Forms.CheckBox()
+        Me.PinsButton = New System.Windows.Forms.Button()
         Me.ContentTimer = New System.Windows.Forms.Timer(Me.components)
         Me.VisCordSettings = New System.Windows.Forms.Panel()
         Me.OtherLabel = New System.Windows.Forms.Label()
@@ -99,6 +100,11 @@ Partial Class Main
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TipLabel = New System.Windows.Forms.Label()
         Me.ChromiumWebBrowser1 = New CefSharp.WinForms.ChromiumWebBrowser()
+        Me.Updater = New System.ComponentModel.BackgroundWorker()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.UDLabel = New System.Windows.Forms.Label()
+        Me.UpdatesCheckbox = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.VisCordSettings.SuspendLayout()
         Me.IconBox.SuspendLayout()
         Me.SysTrayMenu.SuspendLayout()
@@ -418,6 +424,19 @@ Partial Class Main
         Me.ToolTip1.SetToolTip(Me.TipCheckBox, "Before CEFSharp fully starts, show Alethila (pony) and useful tips.")
         Me.TipCheckBox.UseVisualStyleBackColor = True
         '
+        'PinsButton
+        '
+        Me.PinsButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PinsButton.FlatAppearance.BorderSize = 0
+        Me.PinsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PinsButton.Image = Global.VisCord.My.Resources.Resources.Pins
+        Me.PinsButton.Location = New System.Drawing.Point(1179, 1)
+        Me.PinsButton.Name = "PinsButton"
+        Me.PinsButton.Size = New System.Drawing.Size(28, 28)
+        Me.PinsButton.TabIndex = 23
+        Me.ToolTip1.SetToolTip(Me.PinsButton, "VisCord Toolbox")
+        Me.PinsButton.UseVisualStyleBackColor = True
+        '
         'ContentTimer
         '
         Me.ContentTimer.Enabled = True
@@ -427,6 +446,7 @@ Partial Class Main
         '
         Me.VisCordSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.VisCordSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(53, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(61, Byte), Integer))
+        Me.VisCordSettings.Controls.Add(Me.UpdatesCheckbox)
         Me.VisCordSettings.Controls.Add(Me.TipCheckBox)
         Me.VisCordSettings.Controls.Add(Me.OtherLabel)
         Me.VisCordSettings.Controls.Add(Me.NSFWCheckbox)
@@ -564,7 +584,7 @@ Partial Class Main
         Me.CFULink.ActiveLinkColor = System.Drawing.Color.Aqua
         Me.CFULink.AutoSize = True
         Me.CFULink.LinkColor = System.Drawing.Color.White
-        Me.CFULink.Location = New System.Drawing.Point(9, 313)
+        Me.CFULink.Location = New System.Drawing.Point(25, 313)
         Me.CFULink.Name = "CFULink"
         Me.CFULink.Size = New System.Drawing.Size(110, 13)
         Me.CFULink.TabIndex = 11
@@ -749,6 +769,7 @@ Partial Class Main
         '
         Me.TitlePanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.TitlePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TitlePanel.Controls.Add(Me.PinsButton)
         Me.TitlePanel.Controls.Add(Me.ToolboxButton)
         Me.TitlePanel.Controls.Add(Me.HelpButton)
         Me.TitlePanel.Controls.Add(Me.AreaLabel)
@@ -961,6 +982,48 @@ Partial Class Main
         Me.ChromiumWebBrowser1.Size = New System.Drawing.Size(1264, 661)
         Me.ChromiumWebBrowser1.TabIndex = 24
         '
+        'Updater
+        '
+        Me.Updater.WorkerReportsProgress = True
+        Me.Updater.WorkerSupportsCancellation = True
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ProgressBar1.Location = New System.Drawing.Point(0, 651)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(1264, 10)
+        Me.ProgressBar1.TabIndex = 25
+        Me.ProgressBar1.Visible = False
+        '
+        'UDLabel
+        '
+        Me.UDLabel.AutoSize = True
+        Me.UDLabel.ForeColor = System.Drawing.Color.White
+        Me.UDLabel.Location = New System.Drawing.Point(4, 635)
+        Me.UDLabel.Name = "UDLabel"
+        Me.UDLabel.Size = New System.Drawing.Size(50, 13)
+        Me.UDLabel.TabIndex = 26
+        Me.UDLabel.Text = "UDLabel"
+        Me.UDLabel.Visible = False
+        '
+        'UpdatesCheckbox
+        '
+        Me.UpdatesCheckbox.AutoSize = True
+        Me.UpdatesCheckbox.Location = New System.Drawing.Point(11, 313)
+        Me.UpdatesCheckbox.Name = "UpdatesCheckbox"
+        Me.UpdatesCheckbox.Size = New System.Drawing.Size(15, 14)
+        Me.UpdatesCheckbox.TabIndex = 20
+        Me.UpdatesCheckbox.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(209, 609)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 27
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -968,6 +1031,9 @@ Partial Class Main
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 661)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.UDLabel)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.VisCordSettings)
         Me.Controls.Add(Me.ToolPanel)
         Me.Controls.Add(Me.OfflinePanel)
@@ -1079,4 +1145,10 @@ Partial Class Main
     Friend WithEvents TipLabel As Label
     Friend WithEvents TipCheckBox As CheckBox
     Friend WithEvents ChromiumWebBrowser1 As CefSharp.WinForms.ChromiumWebBrowser
+    Friend WithEvents Updater As System.ComponentModel.BackgroundWorker
+    Friend WithEvents PinsButton As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents UDLabel As Label
+    Friend WithEvents UpdatesCheckbox As CheckBox
+    Friend WithEvents TextBox1 As TextBox
 End Class

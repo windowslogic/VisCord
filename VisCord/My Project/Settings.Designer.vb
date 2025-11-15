@@ -209,6 +209,102 @@ Namespace My
                 Me("AleTips") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList1() As String
+            Get
+                Return CType(Me("PinList1"),String)
+            End Get
+            Set
+                Me("PinList1") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList2() As String
+            Get
+                Return CType(Me("PinList2"),String)
+            End Get
+            Set
+                Me("PinList2") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList3() As String
+            Get
+                Return CType(Me("PinList3"),String)
+            End Get
+            Set
+                Me("PinList3") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList1Name() As String
+            Get
+                Return CType(Me("PinList1Name"),String)
+            End Get
+            Set
+                Me("PinList1Name") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList2Name() As String
+            Get
+                Return CType(Me("PinList2Name"),String)
+            End Get
+            Set
+                Me("PinList2Name") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PinList3Name() As String
+            Get
+                Return CType(Me("PinList3Name"),String)
+            End Get
+            Set
+                Me("PinList3Name") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property WebURL() As String
+            Get
+                Return CType(Me("WebURL"),String)
+            End Get
+            Set
+                Me("WebURL") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property Updates() As Integer
+            Get
+                Return CType(Me("Updates"),Integer)
+            End Get
+            Set
+                Me("Updates") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

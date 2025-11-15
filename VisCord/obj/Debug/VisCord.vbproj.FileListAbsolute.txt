@@ -101,3 +101,4 @@ J:\Projects\VisCord\VisCord\bin\Debug\CefSharp.Core.pdb
 J:\Projects\VisCord\VisCord\bin\Debug\CefSharp.Core.xml
 J:\Projects\VisCord\VisCord\bin\Debug\CefSharp.WinForms.pdb
 J:\Projects\VisCord\VisCord\bin\Debug\CefSharp.WinForms.xml
+J:\Projects\VisCord\VisCord\obj\Debug\VisCord.AddPins.resources
