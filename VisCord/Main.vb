@@ -985,6 +985,14 @@ Public Class Main
             'Save all user settings to application settings.
             My.Settings.Save()
 
+            'Save outbox to file.
+            File.Create(Application.StartupPath & "\Outbox.vco").Dispose()
+            System.IO.File.WriteAllText(Application.StartupPath & "\Outbox.vco", "")
+            Dim objWriter1 As New System.IO.StreamWriter(Application.StartupPath & "\Outbox.vco", True)
+            objWriter1.Write(My.Settings.OutboxList)
+
+            objWriter1.Close()
+
             'Save all user settings to INI file.
             File.Create(Application.StartupPath & "\VisCord.ini").Dispose()
 
