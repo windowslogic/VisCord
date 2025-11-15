@@ -101,3 +101,6 @@ J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.exe
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.xml
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.pdb
 J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.vbprojAssemblyReference.cache
+J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.AddPins.resources
+J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.Pins.resources
+J:\Projects\VisCord\VisCord\obj\x64\Release\VisCord.UpdaterPrompt.resources
