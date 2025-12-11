@@ -101,3 +101,6 @@ J:\Projects\VisCord\VisCord\bin\Release\CefSharp.Core.pdb
 J:\Projects\VisCord\VisCord\bin\Release\CefSharp.Core.xml
 J:\Projects\VisCord\VisCord\bin\Release\CefSharp.WinForms.pdb
 J:\Projects\VisCord\VisCord\bin\Release\CefSharp.WinForms.xml
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.AddPins.resources
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.Pins.resources
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.UpdaterPrompt.resources

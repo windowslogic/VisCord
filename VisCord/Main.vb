@@ -391,7 +391,6 @@ Public Class Main
             If CheckForInternetConnection() = True Then
                 ChromiumWebBrowser1.Load("https://discord.com/app")
                 ChromiumWebBrowser1.Visible = True
-                VisCordSettings.Visible = False
                 OfflinePanel.Visible = False
                 HelpButton.Enabled = True
                 ContentTimer.Start()
@@ -493,15 +492,6 @@ Public Class Main
 
             End If
 
-            'Check if user is on the settings area of Discord.
-            If Me.Text.Contains("Profiles") Then
-                VisCordSettings.Visible = False
-            ElseIf Me.Text.Contains("User Settings") Then
-                VisCordSettings.Visible = True
-            Else
-                VisCordSettings.Visible = False
-            End If
-
             'Check if user is on friends or DMs.
             If WebURL.Contains("@me") Then
                 PinsButton.Visible = True
@@ -520,7 +510,95 @@ Public Class Main
             'Check if user is on a NSFW area.
             If My.Settings.NSFWContent = 1 Then
                 If Me.Text.Contains("nsfw") Then
-                    ChromiumWebBrowser1.Load("https://discord.com/app")
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("lewd") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("horny") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("dungeon") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("adult") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("boobs") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("pussy") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("anal") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("sex") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("hentai") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("yaoi") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("bisexual") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("futa") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("yuri") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("cum") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("squirting") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("tit") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("solo") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("duo") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("shaved") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("milf") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("latina") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("gangbang") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("porn") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("alternative") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("asian") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("bbc") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("bbw") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("ass") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("arse") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("creampie") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("penetration") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("ebony") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("piss") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("bdsm") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("furry") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("breeding") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("cuck") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("hairy") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("pegging") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("femdom") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("pregnant") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("oral") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("feet") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
+                ElseIf Me.Text.Contains("naughty") Then
+                    ChromiumWebBrowser1.BrowserCore.GoBack()
                 End If
             Else
             End If
@@ -547,14 +625,14 @@ Public Class Main
 
     Private Sub NotifTimer_Tick(sender As Object, e As EventArgs) Handles NotifTimer.Tick
         Try
-            If WebTitle.Contains("(") Then
+            If WebTitle.Contains("(1)") Then
                 UpdateBadge()
             End If
         Catch
         End Try
 
         If Me.Focused = True Then
-            If Not WebTitle.Contains("(") Then
+            If Not WebTitle.Contains("(1)") Then
                 ContentTimer.Start()
             End If
         End If
@@ -568,7 +646,7 @@ Public Class Main
                     ContentTimer.Start()
                 End If
 
-                If Not WebTitle.Contains("(") Then
+                If Not WebTitle.Contains("(1)") Then
                     Me.Text = WebTitle + " - VisCord"
                     SysTrayIcon.Text = "VisCord"
                     UpdateIcon()
@@ -668,7 +746,6 @@ Public Class Main
         If NetworkCheckbox.Checked = True Then
             My.Settings.EnableNetwork = 1
             ChromiumWebBrowser1.Visible = True
-            VisCordSettings.Visible = False
             OfflinePanel.Visible = False
             BackButton.Enabled = True
             ForwardButton.Enabled = True
@@ -679,7 +756,6 @@ Public Class Main
         Else
             My.Settings.EnableNetwork = 0
             ChromiumWebBrowser1.Visible = False
-            VisCordSettings.Visible = True
             OfflinePanel.Visible = True
             Me.Text = "Offline Mode - VisCord"
             AreaLabel.Text = ""
@@ -793,7 +869,9 @@ Public Class Main
 
     Private Sub Ping()
         For val As Integer = 0 To 1
-            If WebTitle.Contains("(") Then
+            If WebTitle.Contains("❀") Then
+                Exit For
+            ElseIf WebTitle.Contains("(1)") Then
                 Me.Text = WebTitle + " - VisCord"
                 SysTrayIcon.ShowBalloonTip(1, "VisCord - Notification", "You have unread messages.", ToolTipIcon.Info)
                 Me.Text = "New messages - VisCord"
@@ -801,7 +879,7 @@ Public Class Main
                 If My.Settings.NotifBadge = 1 Then
                     UpdateBadge()
                 End If
-            ElseIf Not WebTitle.Contains("(") Then
+            ElseIf Not WebTitle.Contains("(1)") Then
                 Exit For
             End If
             If val = 1 Then
@@ -880,13 +958,11 @@ Public Class Main
             End Using
         Catch
             Return False
-            Main.VisCordSettings.Visible = True
         End Try
     End Function
 
     Private Sub Offline()
         ChromiumWebBrowser1.Visible = False
-        VisCordSettings.Visible = True
         OfflinePanel.Visible = True
         Me.Text = "Offline Mode - VisCord"
         AreaLabel.Text = ""
