@@ -122,10 +122,10 @@
     <Compile Include="About.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPins.Designer.vb">
-      <DependentUpon>AddPins.vb</DependentUpon>
+    <Compile Include="Recommended.Designer.vb">
+      <DependentUpon>Recommended.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddPins.vb">
+    <Compile Include="Recommended.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Injection.Designer.vb">
@@ -181,8 +181,8 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPins.resx">
-      <DependentUpon>AddPins.vb</DependentUpon>
+    <EmbeddedResource Include="Recommended.resx">
+      <DependentUpon>Recommended.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Injection.resx">
       <DependentUpon>Injection.vb</DependentUpon>

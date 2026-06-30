@@ -228,9 +228,9 @@ Public Class Pins
 #End Region
 #Region "Buttons"
     Private Sub AddList1_Click(sender As Object, e As EventArgs) Handles AddList1.Click
-        AddPins.Text = "Add To List: " + PinView1.Columns(0).Text
-        AddPins.Label2.Text = "Specify a custom name for the pin."
-        AddPins.ShowDialog()
+        Recommended.Text = "Add To List: " + PinView1.Columns(0).Text
+        Recommended.Label2.Text = "Specify a custom name for the pin."
+        Recommended.ShowDialog()
     End Sub
 
 #End Region
@@ -260,9 +260,9 @@ Public Class Pins
     End Sub
 
     Private Sub AddList2_Click(sender As Object, e As EventArgs) Handles AddList2.Click
-        AddPins.Text = "Add To List: " + PinView2.Columns(0).Text
-        AddPins.Label2.Text = "Specify a custom name for the pin."
-        AddPins.ShowDialog()
+        Recommended.Text = "Add To List: " + PinView2.Columns(0).Text
+        Recommended.Label2.Text = "Specify a custom name for the pin."
+        Recommended.ShowDialog()
     End Sub
 
     Private Sub DelList2_Click(sender As Object, e As EventArgs) Handles DelList2.Click
@@ -274,9 +274,9 @@ Public Class Pins
     End Sub
 
     Private Sub AddList3_Click(sender As Object, e As EventArgs) Handles AddList3.Click
-        AddPins.Text = "Add To List: " + PinView3.Columns(0).Text
-        AddPins.Label2.Text = "Specify a custom name for the pin."
-        AddPins.ShowDialog()
+        Recommended.Text = "Add To List: " + PinView3.Columns(0).Text
+        Recommended.Label2.Text = "Specify a custom name for the pin."
+        Recommended.ShowDialog()
     End Sub
 
     Private Sub DelList3_Click(sender As Object, e As EventArgs) Handles DelList3.Click
@@ -297,21 +297,21 @@ Public Class Pins
     End Sub
 
     Private Sub RenameListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameListToolStripMenuItem.Click
-        AddPins.Text = "Rename: " + PinView1.Columns(0).Text
-        AddPins.Label2.Text = "Choose a new name for the selected list."
-        AddPins.ShowDialog()
+        Recommended.Text = "Rename: " + PinView1.Columns(0).Text
+        Recommended.Label2.Text = "Choose a new name for the selected list."
+        Recommended.ShowDialog()
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        AddPins.Text = "Rename: " + PinView2.Columns(0).Text
-        AddPins.Label2.Text = "Choose a new name for the selected list."
-        AddPins.ShowDialog()
+        Recommended.Text = "Rename: " + PinView2.Columns(0).Text
+        Recommended.Label2.Text = "Choose a new name for the selected list."
+        Recommended.ShowDialog()
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
-        AddPins.Text = "Rename: " + PinView3.Columns(0).Text
-        AddPins.Label2.Text = "Choose a new name for the selected list."
-        AddPins.ShowDialog()
+        Recommended.Text = "Rename: " + PinView3.Columns(0).Text
+        Recommended.Label2.Text = "Choose a new name for the selected list."
+        Recommended.ShowDialog()
     End Sub
 
     Private Sub ExportList1_Click(sender As Object, e As EventArgs) Handles ExportList1.Click

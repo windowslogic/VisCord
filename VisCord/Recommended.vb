@@ -1,4 +1,4 @@
-﻿Public Class AddPins
+﻿Public Class Recommended
     Private Sub OKButton_Click(sender As Object, e As EventArgs) Handles OKButton.Click
         If Me.Text = "Add To List: " + Pins.PinView1.Columns(0).Text Then
             If TextBox2.Text = "" Then

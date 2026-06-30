@@ -494,9 +494,9 @@ Public Class Main
 
             'Check if user is on friends or DMs.
             If WebURL.Contains("@me") Then
-                PinsButton.Visible = True
+                RecButton.Visible = True
             Else
-                PinsButton.Visible = False
+                RecButton.Visible = False
             End If
 
             'Ping user if message is detected.
@@ -1142,7 +1142,7 @@ Public Class Main
         My.Settings.WebURL = e.Address()
     End Sub
 
-    Private Sub PinsButton_Click(sender As Object, e As EventArgs) Handles PinsButton.Click
+    Private Sub PinsButton_Click(sender As Object, e As EventArgs) Handles RecButton.Click
         Pins.Show()
     End Sub
 #End Region
