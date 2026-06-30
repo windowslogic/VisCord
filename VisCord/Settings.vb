@@ -445,7 +445,7 @@ Public Class Settings
         End Try
     End Sub
 
-    Private Sub ClearCache()
+    Public Shared Sub ClearCache()
         Dim cachePath = Application.StartupPath + "\Data"
         System.IO.Directory.Delete(cachePath, True)
     End Sub
