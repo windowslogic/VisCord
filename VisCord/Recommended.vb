@@ -1,57 +1,27 @@
 ﻿Public Class Recommended
-    Private Sub OKButton_Click(sender As Object, e As EventArgs) Handles OKButton.Click
-        If Me.Text = "Add To List: " + Pins.PinView1.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom name cannot be blank.")
-            ElseIf Me.Text.Contains(Pins.PinView1.Columns(0).Text) Then
-                Dim addlist1 As New ListViewItem(TextBox2.Text)
-                addlist1.SubItems.Add(My.Settings.WebURL)
-                Pins.PinView1.Items.Add(addlist1)
-                Me.Close()
-            End If
-        ElseIf Me.Text = "Add To List: " + Pins.PinView2.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom name cannot be blank.")
-            ElseIf Me.Text.Contains(Pins.PinView2.Columns(0).Text) Then
-                Dim addlist1 As New ListViewItem(TextBox2.Text)
-                addlist1.SubItems.Add(My.Settings.WebURL)
-                Pins.PinView2.Items.Add(addlist1)
-                Me.Close()
-            End If
-        ElseIf Me.Text = "Add To List: " + Pins.PinView3.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom name cannot be blank.")
-            ElseIf Me.Text.Contains(Pins.PinView3.Columns(0).Text) Then
-                Dim addlist1 As New ListViewItem(TextBox2.Text)
-                addlist1.SubItems.Add(My.Settings.WebURL)
-                Pins.PinView3.Items.Add(addlist1)
-                Me.Close()
-            End If
-        ElseIf Me.Text = "Rename: " & Pins.PinView1.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom list name cannot be blank.")
-            Else
-                Pins.PinView1.Columns(0).Text = TextBox2.Text
-                Me.Close()
-            End If
-        ElseIf Me.Text = "Rename: " & Pins.PinView2.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom list name cannot be blank.")
-            Else
-                Pins.PinView2.Columns(0).Text = TextBox2.Text
-                Me.Close()
-            End If
-        ElseIf Me.Text = "Rename: " & Pins.PinView3.Columns(0).Text Then
-            If TextBox2.Text = "" Then
-                MsgBox("The custom list name cannot be blank.")
-            Else
-                Pins.PinView3.Columns(0).Text = TextBox2.Text
-                Me.Close()
-            End If
-        End If
+#Region "Load Settings"
+    Private Sub Recommended_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Load correct icon.
+        Select Case My.Settings.Icon
+            Case 0
+                Me.Icon = My.Resources.Discord1
+            Case 1
+                Me.Icon = My.Resources.PDiscord
+            Case 2
+                Me.Icon = My.Resources.Alethila_Discord
+            Case 3
+                Me.Icon = My.Resources.Velo
+        End Select
     End Sub
+#End Region
+#Region "Functions"
+    Private Sub TitleLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles TitleLink.LinkClicked
+        Process.Start("https://github.com/windowslogic/viscord/issues")
+    End Sub
+#End Region
+#Region "Buttons"
+    Private Sub WLPButton_Click(sender As Object, e As EventArgs) Handles WLPButton.Click
 
-    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
-        Me.Close()
     End Sub
+#End Region
 End Class

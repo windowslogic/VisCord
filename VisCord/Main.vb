@@ -861,10 +861,7 @@ Public Class Main
 #End Region
 #Region "Functions"
 
-    Private Sub ClearCache()
-        Dim cachePath = Application.StartupPath + "\Data"
-        System.IO.Directory.Delete(cachePath, True)
-    End Sub
+
 
 
     Private Sub Ping()

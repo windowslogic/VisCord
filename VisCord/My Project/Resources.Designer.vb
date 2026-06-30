@@ -163,9 +163,29 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property FiMA() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("FiMA", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property gradient() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("gradient", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property GreyLine() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("GreyLine", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -216,6 +236,16 @@ Namespace My.Resources
         Friend ReadOnly Property Pins() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Pins", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property PKG() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PKG", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -406,6 +436,26 @@ Namespace My.Resources
         Friend ReadOnly Property WinRefresh() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("WinRefresh", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property WLP() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WLP", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property WLPFull() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WLPFull", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
