@@ -21,7 +21,11 @@
 #End Region
 #Region "Buttons"
     Private Sub WLPButton_Click(sender As Object, e As EventArgs) Handles WLPButton.Click
+        Process.Start("https://discord.gg/kHFJrXwQSA")
+    End Sub
 
+    Private Sub FiMAButton_Click(sender As Object, e As EventArgs) Handles FiMAButton.Click
+        Process.Start("https://discord.gg/mkXGFB7rBW")
     End Sub
 #End Region
 End Class
