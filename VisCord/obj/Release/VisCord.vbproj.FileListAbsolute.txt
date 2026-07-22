@@ -22,6 +22,8 @@ J:\Projects\VisCord\VisCord\obj\Release\VisCord.Injection.resources
 J:\Projects\VisCord\VisCord\obj\Release\VisCord.SendOfflineMessage.resources
 J:\Projects\VisCord\VisCord\obj\Release\VisCord.UpdaterPrompt.resources
 J:\Projects\VisCord\VisCord\obj\Release\VisCord.Settings.resources
-J:\Projects\VisCord\VisCord\obj\Release\VisCord.vbprojResolveAssemblyReference.cache
 J:\Projects\VisCord\VisCord\obj\Release\VisCord.Fluxer.resources
 J:\Projects\VisCord\VisCord\obj\Release\VisCord.Recommended.resources
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.vbprojAssemblyReference.cache
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.vbproj.CoreCompileInputs.cache
+J:\Projects\VisCord\VisCord\obj\Release\VisCord.vbproj.CopyComplete
