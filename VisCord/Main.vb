@@ -205,6 +205,27 @@ Public Class Main
             End If
         End If
     End Sub
+
+    Private Sub CoreWebView2_ContextMenuRequested(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2ContextMenuRequestedEventArgs)
+        e.Handled = True
+        Dim x As Integer = e.Location.X
+        Dim y As Integer = e.Location.Y
+        Dim screenlocation As Point = WebView21.PointToScreen(New Point(x, y))
+
+        If Clipboard.ContainsText(TextDataFormat.Text) Then
+            PasteToolStripMenuItem.Enabled = True
+        End If
+
+        If WebView21.CoreWebView2.StatusBarText = "" Then
+            CopyLinkToolStripMenuItem.Enabled = False
+        Else
+            CopyLinkToolStripMenuItem.Enabled = True
+            GetStatusText()
+        End If
+
+
+        RCM_Test.Show(screenlocation)
+    End Sub
 #End Region
 #Region "Title Bar"
     Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click

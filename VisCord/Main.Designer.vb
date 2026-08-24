@@ -66,6 +66,11 @@ Partial Class Main
         Me.Updater = New System.ComponentModel.BackgroundWorker()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.UDLabel = New System.Windows.Forms.Label()
+        Me.RCM_Test = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyLinkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SysTrayMenu.SuspendLayout()
         Me.TitlePanel.SuspendLayout()
         CType(Me.VisCordPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,6 +80,7 @@ Partial Class Main
         Me.NoWVPanel.SuspendLayout()
         CType(Me.NoVWPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RCM_Test.SuspendLayout()
         Me.SuspendLayout()
         '
         'BackButton
@@ -510,6 +516,36 @@ Partial Class Main
         Me.UDLabel.Text = "UDLabel"
         Me.UDLabel.Visible = False
         '
+        'RCM_Test
+        '
+        Me.RCM_Test.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.CopyLinkToolStripMenuItem, Me.PasteToolStripMenuItem})
+        Me.RCM_Test.Name = "RCM_Test"
+        Me.RCM_Test.Size = New System.Drawing.Size(125, 92)
+        '
+        'CutToolStripMenuItem
+        '
+        Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.CutToolStripMenuItem.Text = "Cut"
+        '
+        'CopyToolStripMenuItem
+        '
+        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.CopyToolStripMenuItem.Text = "Copy"
+        '
+        'CopyLinkToolStripMenuItem
+        '
+        Me.CopyLinkToolStripMenuItem.Name = "CopyLinkToolStripMenuItem"
+        Me.CopyLinkToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.CopyLinkToolStripMenuItem.Text = "Copy link"
+        '
+        'PasteToolStripMenuItem
+        '
+        Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.PasteToolStripMenuItem.Text = "Paste"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -543,6 +579,7 @@ Partial Class Main
         Me.NoWVPanel.PerformLayout()
         CType(Me.NoVWPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RCM_Test.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -589,4 +626,9 @@ Partial Class Main
     Friend WithEvents UDLabel As Label
     Friend WithEvents NoWVCloseButton As Button
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RCM_Test As ContextMenuStrip
+    Friend WithEvents CutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CopyToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CopyLinkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PasteToolStripMenuItem As ToolStripMenuItem
 End Class
