@@ -539,5 +539,16 @@ Public Class Settings
 
         objWriter.Close()
     End Sub
+
+    Private Sub ColourButton_Click(sender As Object, e As EventArgs) Handles ColourButton.Click
+        If ColorDialog1.ShowDialog() = DialogResult.OK Then
+            My.Settings.CustomColour = ColorDialog1.Color
+            Main.TitlePanel.BackColor = My.Settings.CustomColour
+            Main.HelpButton.BackColor = My.Settings.CustomColour
+            Main.RecButton.BackColor = My.Settings.CustomColour
+            Main.ToolboxButton.BackColor = My.Settings.CustomColour
+            My.Settings.Save()
+        End If
+    End Sub
 #End Region
 End Class

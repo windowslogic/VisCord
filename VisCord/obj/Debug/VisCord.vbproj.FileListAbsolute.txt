@@ -24,4 +24,6 @@ J:\Projects\VisCord\VisCord\obj\Debug\VisCord.UpdaterPrompt.resources
 J:\Projects\VisCord\VisCord\obj\Debug\VisCord.Settings.resources
 J:\Projects\VisCord\VisCord\obj\Debug\VisCord.Fluxer.resources
 J:\Projects\VisCord\VisCord\obj\Debug\VisCord.Recommended.resources
-J:\Projects\VisCord\VisCord\obj\Debug\VisCord.vbprojResolveAssemblyReference.cache
+J:\Projects\VisCord\VisCord\obj\Debug\VisCord.vbprojAssemblyReference.cache
+J:\Projects\VisCord\VisCord\obj\Debug\VisCord.vbproj.CoreCompileInputs.cache
+J:\Projects\VisCord\VisCord\obj\Debug\VisCord.vbproj.CopyComplete
