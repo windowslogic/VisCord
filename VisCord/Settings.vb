@@ -136,6 +136,22 @@ Public Class Settings
             Case 5
                 VeloNSFWButton.Checked = True
         End Select
+
+        Select Case My.Settings.CustomColour
+            Case Color.White
+                WhiteButton.Checked = True
+            Case Color.FromArgb(255, 50, 51, 57)
+                GreyButton.Checked = True
+            Case Color.FromArgb(255, 29, 29, 33)
+                DarkButton.Checked = True
+            Case Color.Black
+                BlackButton.Checked = True
+            Case Else
+                WhiteButton.Checked = False
+                GreyButton.Checked = False
+                DarkButton.Checked = False
+                BlackButton.Checked = False
+        End Select
     End Sub
 #Region "Buttons"
     Private Sub GeneralButton_Click(sender As Object, e As EventArgs) Handles GeneralButton.Click
@@ -548,8 +564,69 @@ Public Class Settings
             Main.HelpButton.BackColor = My.Settings.CustomColour
             Main.RecButton.BackColor = My.Settings.CustomColour
             Main.ToolboxButton.BackColor = My.Settings.CustomColour
+
+            If ColorDialog1.Color = Color.White Then
+                WhiteButton.Checked = True
+            Else
+                WhiteButton.Checked = False
+            End If
+
+            If ColorDialog1.Color = Color.FromArgb(255, 50, 51, 57) Then
+                GreyButton.Checked = True
+            Else
+                GreyButton.Checked = False
+            End If
+
+            If ColorDialog1.Color = Color.FromArgb(255, 29, 29, 33) Then
+                DarkButton.Checked = True
+            Else
+                DarkButton.Checked = False
+            End If
+
+            If ColorDialog1.Color = Color.Black Then
+                BlackButton.Checked = True
+            Else
+                BlackButton.Checked = False
+            End If
+
             My.Settings.Save()
         End If
+    End Sub
+
+    Private Sub WhiteButton_CheckedChanged(sender As Object, e As EventArgs) Handles WhiteButton.CheckedChanged
+        My.Settings.CustomColour = Color.White
+        Main.TitlePanel.BackColor = Color.White
+        Main.HelpButton.BackColor = Color.White
+        Main.RecButton.BackColor = Color.White
+        Main.ToolboxButton.BackColor = Color.White
+        My.Settings.Save()
+    End Sub
+
+    Private Sub GreyButton_CheckedChanged(sender As Object, e As EventArgs) Handles GreyButton.CheckedChanged
+        My.Settings.CustomColour = Color.FromArgb(255, 50, 51, 57)
+        Main.TitlePanel.BackColor = Color.FromArgb(255, 50, 51, 57)
+        Main.HelpButton.BackColor = Color.FromArgb(255, 50, 51, 57)
+        Main.RecButton.BackColor = Color.FromArgb(255, 50, 51, 57)
+        Main.ToolboxButton.BackColor = Color.FromArgb(255, 50, 51, 57)
+        My.Settings.Save()
+    End Sub
+
+    Private Sub DarkButton_CheckedChanged(sender As Object, e As EventArgs) Handles DarkButton.CheckedChanged
+        My.Settings.CustomColour = Color.FromArgb(255, 29, 29, 33)
+        Main.TitlePanel.BackColor = Color.FromArgb(255, 29, 29, 33)
+        Main.HelpButton.BackColor = Color.FromArgb(255, 29, 29, 33)
+        Main.RecButton.BackColor = Color.FromArgb(255, 29, 29, 33)
+        Main.ToolboxButton.BackColor = Color.FromArgb(255, 29, 29, 33)
+        My.Settings.Save()
+    End Sub
+
+    Private Sub BlackButton_CheckedChanged(sender As Object, e As EventArgs) Handles BlackButton.CheckedChanged
+        My.Settings.CustomColour = Color.Black
+        Main.TitlePanel.BackColor = Color.Black
+        Main.HelpButton.BackColor = Color.Black
+        Main.RecButton.BackColor = Color.Black
+        Main.ToolboxButton.BackColor = Color.Black
+        My.Settings.Save()
     End Sub
 #End Region
 End Class
