@@ -1,4 +1,6 @@
-﻿Imports System.ComponentModel
+﻿Option Infer On
+Imports System.Text.RegularExpressions
+Imports System.ComponentModel
 Imports System.IO
 Imports System.Net
 Imports System.Threading
@@ -79,11 +81,6 @@ Public Class Main
         Catch
         End Try
 
-        'Load custom colour settings.
-        If My.Settings.CustomColourEnable = 1 Then
-            Me.TitlePanel.BackColor = My.Settings.CustomColour
-        End If
-
         'Load settings from INI file.
         Try
 
@@ -154,9 +151,22 @@ Public Class Main
             TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(25).ToString()
 
             My.Settings.CloseMinimise = (Convert.ToInt32(TextBox1.Text))
+
+            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(26).ToString()
+
+            Dim C = ColourConvert(TextBox1.Text)
+            My.Settings.CustomColour = C
         Catch
 
         End Try
+
+        'Load custom colour settings.
+        If My.Settings.CustomColourEnable = 1 Then
+            Me.TitlePanel.BackColor = My.Settings.CustomColour
+            Me.RecButton.BackColor = My.Settings.CustomColour
+            Me.ToolboxButton.BackColor = My.Settings.CustomColour
+            Me.HelpButton.BackColor = My.Settings.CustomColour
+        End If
     End Sub
 #End Region
 #Region "WebView2"
@@ -553,6 +563,66 @@ Public Class Main
         NotifTimer.Stop()
         FixTitle.Stop()
     End Sub
+
+    ' ...
+    ''' <summary>
+    ''' Convert a string of the format "color [nameOfColor]" or
+    ''' "color [A=a, R=r, G=g, B=b]" to a System.Drawing.Color.
+    ''' </summary>
+    ''' <param name="s">A String representing the colour.</param>
+    ''' <returns>A System.Drawing.Color.</returns>
+    ''' <remarks>Returns fallbackColour if the colour could not be parsed.</remarks>
+    Public Shared Function ColourConvert(s As String) As Color
+        Dim fallbackColour = Color.Black
+
+        If Not s.StartsWith("color", StringComparison.OrdinalIgnoreCase) Then
+            Return fallbackColour
+        End If
+
+        ' Extract whatever is between the brackets.
+        Dim re = New Regex("\[(.+?)]")
+        Dim colorNameMatch = re.Match(s)
+        If Not colorNameMatch.Success Then
+            Return fallbackColour
+        End If
+
+        Dim colourName = colorNameMatch.Groups(1).Value
+
+        ' Get the names of the known colours.
+        'TODO: If this function is called frequently, consider creating allColours as a variable with a larger scope.
+        Dim allColours = [Enum].GetNames(GetType(System.Drawing.KnownColor))
+
+        ' Attempt a case-insensitive match to the known colours.
+        Dim nameOfColour = allColours.FirstOrDefault(Function(c) String.Compare(c, colourName, StringComparison.OrdinalIgnoreCase) = 0)
+
+        If Not String.IsNullOrEmpty(nameOfColour) Then
+            Return Color.FromName(nameOfColour)
+        End If
+
+        ' Was not a named colour. Parse for ARGB values.
+        re = New Regex("A=(\d+).*?R=(\d+).*?G=(\d+).*?B=(\d+)", RegexOptions.IgnoreCase)
+        Dim componentMatches = re.Match(colourName)
+
+        If componentMatches.Success Then
+
+            Dim a = Integer.Parse(componentMatches.Groups(1).Value)
+            Dim r = Integer.Parse(componentMatches.Groups(2).Value)
+            Dim g = Integer.Parse(componentMatches.Groups(3).Value)
+            Dim b = Integer.Parse(componentMatches.Groups(4).Value)
+
+            Dim maxValue = 255
+
+            If a > maxValue OrElse r > maxValue OrElse g > maxValue OrElse b > maxValue Then
+                Return fallbackColour
+            End If
+
+            Return System.Drawing.Color.FromArgb(a, r, g, b)
+
+        End If
+
+        Return fallbackColour
+
+    End Function
 #End Region
 #Region "Updater"
     Private Sub Updater_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Updater.DoWork
@@ -685,6 +755,7 @@ Public Class Main
             objWriter.WriteLine(My.Settings.NSFWContent.ToString())
             objWriter.WriteLine(My.Settings.HideNav.ToString())
             objWriter.WriteLine(My.Settings.CloseMinimise.ToString())
+            objWriter.WriteLine(My.Settings.CustomColour.ToString())
 
             objWriter.Close()
 

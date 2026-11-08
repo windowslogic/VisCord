@@ -222,5 +222,14 @@ VisCord
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="M:VisCord.Main.ColourConvert(System.String)">
+ <summary>
+ Convert a string of the format "color [nameOfColor]" or
+ "color [A=a, R=r, G=g, B=b]" to a System.Drawing.Color.
+ </summary>
+ <param name="s">A String representing the colour.</param>
+ <returns>A System.Drawing.Color.</returns>
+ <remarks>Returns fallbackColour if the colour could not be parsed.</remarks>
+</member>
 </members>
 </doc>

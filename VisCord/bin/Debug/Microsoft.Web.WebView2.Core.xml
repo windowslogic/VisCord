@@ -899,18 +899,10 @@
             the failure.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedKind.PpapiPluginProcessExited">
-            <summary>Indicates that a PPAPI plugin process ended unexpectedly. This failure
-            is not fatal. Your application does **not** need to handle recovery for
-            this event, but can use `ICoreWebView2ProcessFailedEventArgs` and
-            `ICoreWebView2ProcessFailedEventArgs2` to collect information about
-            the failure, including `ProcessDescription`.</summary>
+            <summary>Deprecated. This value is unused.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedKind.PpapiBrokerProcessExited">
-            <summary>Indicates that a PPAPI plugin broker process ended unexpectedly. This failure
-            is not fatal. Your application does **not** need to handle recovery for
-            this event, but can use `ICoreWebView2ProcessFailedEventArgs` and
-            `ICoreWebView2ProcessFailedEventArgs2` to collect information about
-            the failure.</summary>
+            <summary>Deprecated. This value is unused.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedKind.UnknownProcessExited">
             <summary>Indicates that a process of unspecified kind ended unexpectedly. Your
@@ -978,10 +970,10 @@
             <summary>Indicates the GPU process kind.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ProcessKind.PpapiPlugin">
-            <summary>Indicates the PPAPI plugin process kind.</summary>
+            <summary>Deprecated. This value is unused.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ProcessKind.PpapiBroker">
-            <summary>Indicates the PPAPI plugin broker process kind.</summary>
+            <summary>Deprecated. This value is unused.</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2ReleaseChannels">
             <summary>
@@ -2044,7 +2036,7 @@
             A web resource request with a resource context that matches this filter's resource context and a URI that matches this filter's URI wildcard string for corresponding request sources will be raised via the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event. To receive all raised events filters have to be added before main page navigation.<remarks>
             The <c>uri</c> parameter value is a wildcard string matched against the URI of the web resource request. This is a glob style wildcard string in which a <c>*</c> matches zero or more characters and a <c>?</c> matches exactly one character. These wildcard characters can be escaped using a backslash just before the wildcard character in order to represent the literal <c>*</c> or <c>?</c>. The matching occurs over the URI as a whole string and not limiting wildcard matches to particular parts of the URI. The wildcard filter is compared to the URI after the URI has been normalized, any URI fragment has been removed, and non-ASCII hostnames have been converted to punycode. Specifying a <c>null</c> for the uri is equivalent to an empty string which matches no URIs. For more information about resource context filters, navigate to <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceContext" />.
             <list type="table"><listheader><description>URI Filter String</description><description>Request URI</description><description>Match</description><description>Notes</description></listheader><item><description><c>*</c></description><description><c>https://contoso.com/a/b/c</c></description><description>Yes</description><description>A single * will match all URIs</description></item><item><description><c>*://contoso.com/*</c></description><description><c>https://contoso.com/a/b/c</c></description><description>Yes</description><description>Matches everything in contoso.com across all schemes</description></item><item><description><c>*://contoso.com/*</c></description><description><c>https://example.com/?https://contoso.com/</c></description><description>Yes</description><description>But also matches a URI with just the same text anywhere in the URI</description></item><item><description><c>example</c></description><description><c>https://contoso.com/example</c></description><description>No</description><description>The filter does not perform partial matches</description></item><item><description><c>*example</c></description><description><c>https://contoso.com/example</c></description><description>Yes</description><description>The filter matches across URI parts </description></item><item><description><c>*example</c></description><description><c>https://contoso.com/path/?example</c></description><description>Yes</description><description>The filter matches across URI parts</description></item><item><description><c>*example</c></description><description><c>https://contoso.com/path/?query#example</c></description><description>No</description><description>The filter is matched against the URI with no fragment</description></item><item><description><c>*example</c></description><description><c>https://example</c></description><description>No</description><description>The URI is normalized before filter matching so the actual URI used for comparison is <c>https://example.com/</c></description></item><item><description><c>*example/</c></description><description><c>https://example</c></description><description>Yes</description><description>Just like above, but this time the filter ends with a / just like the normalized URI</description></item><item><description><c>https://xn--qei.example/</c></description><description><c>https://❤.example/</c></description><description>Yes</description><description>Non-ASCII hostnames are normalized to punycode before wildcard comparison</description></item><item><description><c>https://❤.example/</c></description><description><c>https://xn--qei.example/</c></description><description>No</description><description>Non-ASCII hostnames are normalized to punycode before wildcard comparison</description></item></list>
-            To form the <c>requestSourceKinds</c> parameter OR operation(s) can be applied to multiple <c>CoreWebView2WebResourceRequestSourceKind</c> to create a mask representing those source kinds. API will fail with <c>E_INVALIDARG</c> if <c>requestSourceKinds</c> equals to zero. Because service workers and shared workers run separately from any one HTML document their WebResourceRequested will be raised for all CoreWebView2s that have appropriate filters added in the corresponding CoreWebView2Environment. You should only add a WebResourceRequested filter for <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.ServiceWorker" /> or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.SharedWorker" /> on one CoreWebView2 to avoid handling the same WebResourceRequested event multiple times.
+            To form the <c>requestSourceKinds</c> parameter OR operation(s) can be applied to multiple <c>CoreWebView2WebResourceRequestSourceKinds</c> to create a mask representing those source kinds. API will fail with <c>E_INVALIDARG</c> if <c>requestSourceKinds</c> equals to zero. Because service workers and shared workers run separately from any one HTML document their WebResourceRequested may be raised for any CoreWebView2 that has appropriate filters added in the same CoreWebView2Profile. WebResourceRequested is not raised for requests from service workers or shared workers that belong to a different CoreWebView2Profile, including an InPrivate profile, even if both profiles share the same CoreWebView2Environment. You should only add a WebResourceRequested filter for <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.ServiceWorker" /> or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.SharedWorker" /> on one CoreWebView2 per CoreWebView2Profile to avoid handling the same WebResourceRequested event multiple times.
             </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveWebResourceRequestedFilter(System.String,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceContext,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds)">
@@ -3338,6 +3330,48 @@
             <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2CookieSameSiteKind.Lax"/>.
             </remarks>
             <seealso cref="T:System.Net.Cookie"/>
+        </member>
+        <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport">
+            <summary>
+            Provides crash signature data captured at the moment of process failure.
+            
+            `CrashReport` is `null` when the failure did not produce a crash report
+            (normal exit, external kill, launch failure, hang). Host apps should
+            always check for `null` before accessing properties.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.BucketId">
+            <summary>
+            Crash bucket identifier assigned by Microsoft's crash telemetry
+            service. Returned as a 32-character hex string. Empty when no bucket
+            was assigned: crash data was not uploaded to Microsoft's telemetry
+            service (custom crash reporting enabled), or no response was received
+            from the telemetry service (network throttled or unavailable).</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.CrashReportId">
+            <summary>
+            The unique identifier (UUID) for this crash report. Use this to locate the
+            corresponding dump file in `FailureReportFolderPath`.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.ExceptionCode">
+            <summary>The Windows exception code for the failure, e.g. `0xC0000005` for
+            `STATUS_ACCESS_VIOLATION`. `0` if not available.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.FaultOffset">
+            <summary>Relative virtual address (RVA) of the faulting instruction within
+            `FaultingModuleName`. `0` if not available.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.FaultingModuleName">
+            <summary>
+            Basename of the module containing the faulting instruction,
+            e.g. `renderer.dll`.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.FaultingModuleVersion">
+            <summary>
+            Version of the faulting module, e.g. `128.0.2739.42`.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport.ReportTime">
+            <summary>Time the crash report was recorded, as a Windows FILETIME value
+            (100-nanosecond intervals since Jan 1 1601 UTC). `0` if unavailable.</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2CustomSchemeRegistration">
             <summary>
@@ -5133,7 +5167,15 @@
             </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.IsUserInitiated">
-            <summary><c>true</c> when the launching external URI scheme request was initiated through a user gesture.</summary>
+            <summary><c>true</c> when the request was initiated through a WebView2 API, or
+            when a renderer-initiated request reports a user gesture correlated with
+            recent browser-observed user activation.
+            </summary><remarks>
+            This property indicates activation correlation, not that the activation
+            caused the request or that the user intended to access the associated
+            resource. Applications should validate the URI, scheme, and
+            <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.InitiatingOrigin" />.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.Uri">
             <summary>
@@ -5941,6 +5983,7 @@
             Event args for the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.ProcessFailed" /> event.</summary>
             <summary></summary>
             <summary></summary>
+            <summary></summary>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs.ProcessFailedKind">
             <summary>
@@ -5981,6 +6024,13 @@
             <summary>
             When ProcessFailed occurred due to a failed Code Integrity check, this property returns the full path of the file that was prevented from loading on the system.
             The webview2 process which tried to load the DLL will fail with exit code STATUS_INVALID_IMAGE_HASH(-1073740760).</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2ProcessFailedEventArgs.CrashReport">
+            <summary>
+            The <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2CrashReport" /> for this process failure,
+            or `null` if no crash report is available (normal exit, external
+            kill, launch failure, hang, or crash-type failure that produced no
+            report).</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo">
             <summary>

@@ -536,6 +536,7 @@ Public Class Settings
         objWriter.WriteLine(My.Settings.NSFWContent.ToString())
         objWriter.WriteLine(My.Settings.HideNav.ToString())
         objWriter.WriteLine(My.Settings.CloseMinimise.ToString())
+        objWriter.WriteLine(My.Settings.CustomColour.ToString())
 
         objWriter.Close()
     End Sub
