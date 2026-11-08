@@ -12,6 +12,7 @@ A 64-bit Windows 7 version is available which uses CefSharp 109 instead of WebVi
 - Offline mode.
 - Clear cache & data.
 - Load custom JavaScript at startup.
+- Native personalisation options.
 
 ## Want to help?
 You'll need Visual Studio 2022 with .NET Desktop Development to contribute to the project.
