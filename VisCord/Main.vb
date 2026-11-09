@@ -564,14 +564,6 @@ Public Class Main
         FixTitle.Stop()
     End Sub
 
-    ' ...
-    ''' <summary>
-    ''' Convert a string of the format "color [nameOfColor]" or
-    ''' "color [A=a, R=r, G=g, B=b]" to a System.Drawing.Color.
-    ''' </summary>
-    ''' <param name="s">A String representing the colour.</param>
-    ''' <returns>A System.Drawing.Color.</returns>
-    ''' <remarks>Returns fallbackColour if the colour could not be parsed.</remarks>
     Public Shared Function ColourConvert(s As String) As Color
         Dim fallbackColour = Color.Black
 

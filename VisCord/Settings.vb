@@ -334,6 +334,7 @@ Public Class Settings
     Private Sub NetworkCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles NetworkCheckbox.CheckedChanged
         If NetworkCheckbox.Checked = True Then
             My.Settings.EnableNetwork = 1
+            Main.WebView21.Enabled = True
             Main.WebView21.Visible = True
             Main.OfflinePanel.Visible = False
             Main.BackButton.Enabled = True
@@ -344,6 +345,7 @@ Public Class Settings
             Main.FixTitle.Start()
         Else
             My.Settings.EnableNetwork = 0
+            Main.WebView21.Enabled = False
             Main.WebView21.Visible = False
             Main.OfflinePanel.Visible = True
             Main.Text = "Offline Mode - VisCord"
