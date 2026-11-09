@@ -140,7 +140,7 @@ Public Class Settings
         Select Case My.Settings.CustomColour
             Case Color.White
                 WhiteButton.Checked = True
-            Case Color.FromArgb(255, 50, 51, 57)
+            Case Color.FromArgb(255, 43, 44, 49)
                 GreyButton.Checked = True
             Case Color.FromArgb(255, 29, 29, 33)
                 DarkButton.Checked = True
@@ -571,7 +571,7 @@ Public Class Settings
                 WhiteButton.Checked = False
             End If
 
-            If ColorDialog1.Color = Color.FromArgb(255, 50, 51, 57) Then
+            If ColorDialog1.Color = Color.FromArgb(255, 43, 44, 49) Then
                 GreyButton.Checked = True
             Else
                 GreyButton.Checked = False
@@ -603,11 +603,11 @@ Public Class Settings
     End Sub
 
     Private Sub GreyButton_CheckedChanged(sender As Object, e As EventArgs) Handles GreyButton.CheckedChanged
-        My.Settings.CustomColour = Color.FromArgb(255, 50, 51, 57)
-        Main.TitlePanel.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.HelpButton.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.RecButton.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.ToolboxButton.BackColor = Color.FromArgb(255, 50, 51, 57)
+        My.Settings.CustomColour = Color.FromArgb(255, 43, 44, 49)
+        Main.TitlePanel.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.HelpButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.RecButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.ToolboxButton.BackColor = Color.FromArgb(255, 43, 44, 49)
         My.Settings.Save()
     End Sub
 
