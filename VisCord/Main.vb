@@ -757,12 +757,10 @@ Public Class Main
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles NoWVTimer.Tick
-        If Me.AreaLabel.Text = "" Then
-            NoWVPanel.Visible = True
-            NoWVPanel.BringToFront()
-        Else
+        If Me.Text.Contains("Discord") Then
             NoWVPanel.Visible = False
-            NoWVPanel.SendToBack()
+        Else
+            NoWVPanel.Visible = True
         End If
     End Sub
 
