@@ -1,5 +1,6 @@
-﻿Imports System.Net
+﻿Option Infer On
 Imports System.ComponentModel
+Imports System.Net
 Imports System.IO
 Imports System.Threading
 Imports CefSharp
@@ -101,11 +102,6 @@ Public Class Main
         Catch
         End Try
 
-        'Load custom colour settings.
-        If My.Settings.CustomColourEnable = 1 Then
-            Me.TitlePanel.BackColor = My.Settings.CustomColour
-        End If
-
         'Load settings from INI file.
         Try
 
@@ -176,9 +172,22 @@ Public Class Main
             TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(25).ToString()
 
             My.Settings.CloseMinimise = (Convert.ToInt32(TextBox1.Text))
+
+            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(26).ToString()
+
+            Dim C = ColourConvert(TextBox1.Text)
+            My.Settings.CustomColour = C
         Catch
 
         End Try
+
+        'Load custom colour settings.
+        If My.Settings.CustomColourEnable = 1 Then
+            Me.TitlePanel.BackColor = My.Settings.CustomColour
+            Me.RecButton.BackColor = My.Settings.CustomColour
+            Me.ToolboxButton.BackColor = My.Settings.CustomColour
+            Me.HelpButton.BackColor = My.Settings.CustomColour
+        End If
 
         'Warn users of outdated Chromium browser.
         Me.Hide()
@@ -684,6 +693,7 @@ Public Class Main
             objWriter.WriteLine(My.Settings.NSFWContent.ToString())
             objWriter.WriteLine(My.Settings.HideNav.ToString())
             objWriter.WriteLine(My.Settings.CloseMinimise.ToString())
+            objWriter.WriteLine(My.Settings.CustomColour.ToString())
 
             objWriter.Close()
             Cef.Shutdown()

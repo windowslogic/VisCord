@@ -54,6 +54,7 @@ Partial Class Settings
         Me.AboutLink = New System.Windows.Forms.LinkLabel()
         Me.NavButton = New System.Windows.Forms.Button()
         Me.NavigationPanel = New System.Windows.Forms.Panel()
+        Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.PictureBox11 = New System.Windows.Forms.PictureBox()
         Me.HideNavBarCheckBox = New System.Windows.Forms.CheckBox()
@@ -72,6 +73,15 @@ Partial Class Settings
         Me.PersonaliseButton = New System.Windows.Forms.Button()
         Me.AdvButton = New System.Windows.Forms.Button()
         Me.PersonalisePanel = New System.Windows.Forms.Panel()
+        Me.CCPanel = New System.Windows.Forms.Panel()
+        Me.WhiteButton = New System.Windows.Forms.RadioButton()
+        Me.BlackButton = New System.Windows.Forms.RadioButton()
+        Me.GreyButton = New System.Windows.Forms.RadioButton()
+        Me.ColourButton = New System.Windows.Forms.Button()
+        Me.DarkButton = New System.Windows.Forms.RadioButton()
+        Me.PictureBox14 = New System.Windows.Forms.PictureBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.CLabel = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.NSFWCheckbox = New System.Windows.Forms.CheckBox()
         Me.VeloNSFWButton = New System.Windows.Forms.RadioButton()
@@ -95,6 +105,7 @@ Partial Class Settings
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.GeneralPanel.SuspendLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,11 +114,14 @@ Partial Class Settings
         Me.NotifPanel.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.NavigationPanel.SuspendLayout()
+        CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PersonalisePanel.SuspendLayout()
+        Me.CCPanel.SuspendLayout()
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AdvancedPanel.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,7 +195,7 @@ Partial Class Settings
         '
         'PictureBox12
         '
-        Me.PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), System.Drawing.Image)
+        Me.PictureBox12.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox12.Location = New System.Drawing.Point(43, 357)
         Me.PictureBox12.Name = "PictureBox12"
         Me.PictureBox12.Size = New System.Drawing.Size(590, 1)
@@ -202,7 +216,7 @@ Partial Class Settings
         '
         'PictureBox10
         '
-        Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
+        Me.PictureBox10.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox10.Location = New System.Drawing.Point(43, 261)
         Me.PictureBox10.Name = "PictureBox10"
         Me.PictureBox10.Size = New System.Drawing.Size(590, 1)
@@ -270,7 +284,7 @@ Partial Class Settings
         '
         'PictureBox3
         '
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox3.Location = New System.Drawing.Point(43, 180)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(590, 1)
@@ -326,7 +340,7 @@ Partial Class Settings
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox1.Location = New System.Drawing.Point(43, 93)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(590, 1)
@@ -448,7 +462,7 @@ Partial Class Settings
         '
         'PictureBox6
         '
-        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
+        Me.PictureBox6.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox6.Location = New System.Drawing.Point(43, 95)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(590, 1)
@@ -489,6 +503,7 @@ Partial Class Settings
         '
         Me.NavigationPanel.AutoScroll = True
         Me.NavigationPanel.BackColor = System.Drawing.Color.Black
+        Me.NavigationPanel.Controls.Add(Me.PictureBox13)
         Me.NavigationPanel.Controls.Add(Me.Label17)
         Me.NavigationPanel.Controls.Add(Me.PictureBox11)
         Me.NavigationPanel.Controls.Add(Me.HideNavBarCheckBox)
@@ -509,6 +524,16 @@ Partial Class Settings
         Me.NavigationPanel.Size = New System.Drawing.Size(676, 360)
         Me.NavigationPanel.TabIndex = 22
         '
+        'PictureBox13
+        '
+        Me.PictureBox13.Image = Global.VisCord.My.Resources.Resources.GreyLine
+        Me.PictureBox13.Location = New System.Drawing.Point(43, 431)
+        Me.PictureBox13.Name = "PictureBox13"
+        Me.PictureBox13.Size = New System.Drawing.Size(590, 1)
+        Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox13.TabIndex = 34
+        Me.PictureBox13.TabStop = False
+        '
         'Label17
         '
         Me.Label17.AutoSize = True
@@ -522,7 +547,7 @@ Partial Class Settings
         '
         'PictureBox11
         '
-        Me.PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), System.Drawing.Image)
+        Me.PictureBox11.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox11.Location = New System.Drawing.Point(43, 347)
         Me.PictureBox11.Name = "PictureBox11"
         Me.PictureBox11.Size = New System.Drawing.Size(590, 1)
@@ -555,7 +580,7 @@ Partial Class Settings
         '
         'PictureBox5
         '
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
+        Me.PictureBox5.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox5.Location = New System.Drawing.Point(43, 263)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(590, 1)
@@ -588,7 +613,7 @@ Partial Class Settings
         '
         'PictureBox4
         '
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox4.Location = New System.Drawing.Point(43, 175)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(590, 1)
@@ -674,7 +699,7 @@ Partial Class Settings
         '
         'PictureBox2
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox2.Location = New System.Drawing.Point(43, 95)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(590, 1)
@@ -718,6 +743,10 @@ Partial Class Settings
         '
         Me.PersonalisePanel.AutoScroll = True
         Me.PersonalisePanel.BackColor = System.Drawing.Color.Black
+        Me.PersonalisePanel.Controls.Add(Me.CCPanel)
+        Me.PersonalisePanel.Controls.Add(Me.PictureBox14)
+        Me.PersonalisePanel.Controls.Add(Me.Label18)
+        Me.PersonalisePanel.Controls.Add(Me.CLabel)
         Me.PersonalisePanel.Controls.Add(Me.Label9)
         Me.PersonalisePanel.Controls.Add(Me.NSFWCheckbox)
         Me.PersonalisePanel.Controls.Add(Me.VeloNSFWButton)
@@ -733,6 +762,117 @@ Partial Class Settings
         Me.PersonalisePanel.Name = "PersonalisePanel"
         Me.PersonalisePanel.Size = New System.Drawing.Size(676, 360)
         Me.PersonalisePanel.TabIndex = 31
+        '
+        'CCPanel
+        '
+        Me.CCPanel.Controls.Add(Me.WhiteButton)
+        Me.CCPanel.Controls.Add(Me.BlackButton)
+        Me.CCPanel.Controls.Add(Me.GreyButton)
+        Me.CCPanel.Controls.Add(Me.ColourButton)
+        Me.CCPanel.Controls.Add(Me.DarkButton)
+        Me.CCPanel.Location = New System.Drawing.Point(38, 251)
+        Me.CCPanel.Name = "CCPanel"
+        Me.CCPanel.Size = New System.Drawing.Size(595, 46)
+        Me.CCPanel.TabIndex = 47
+        '
+        'WhiteButton
+        '
+        Me.WhiteButton.AutoSize = True
+        Me.WhiteButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.WhiteButton.ForeColor = System.Drawing.Color.White
+        Me.WhiteButton.Location = New System.Drawing.Point(17, 11)
+        Me.WhiteButton.Name = "WhiteButton"
+        Me.WhiteButton.Size = New System.Drawing.Size(58, 21)
+        Me.WhiteButton.TabIndex = 43
+        Me.WhiteButton.TabStop = True
+        Me.WhiteButton.Text = "Light"
+        Me.WhiteButton.UseVisualStyleBackColor = True
+        '
+        'BlackButton
+        '
+        Me.BlackButton.AutoSize = True
+        Me.BlackButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BlackButton.ForeColor = System.Drawing.Color.White
+        Me.BlackButton.Location = New System.Drawing.Point(197, 11)
+        Me.BlackButton.Name = "BlackButton"
+        Me.BlackButton.Size = New System.Drawing.Size(58, 21)
+        Me.BlackButton.TabIndex = 46
+        Me.BlackButton.TabStop = True
+        Me.BlackButton.Text = "Onyx"
+        Me.BlackButton.UseVisualStyleBackColor = True
+        '
+        'GreyButton
+        '
+        Me.GreyButton.AutoSize = True
+        Me.GreyButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GreyButton.ForeColor = System.Drawing.Color.White
+        Me.GreyButton.Location = New System.Drawing.Point(81, 11)
+        Me.GreyButton.Name = "GreyButton"
+        Me.GreyButton.Size = New System.Drawing.Size(49, 21)
+        Me.GreyButton.TabIndex = 44
+        Me.GreyButton.TabStop = True
+        Me.GreyButton.Text = "Ash"
+        Me.GreyButton.UseVisualStyleBackColor = True
+        '
+        'ColourButton
+        '
+        Me.ColourButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.ColourButton.FlatAppearance.BorderSize = 0
+        Me.ColourButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ColourButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ColourButton.ForeColor = System.Drawing.Color.White
+        Me.ColourButton.Location = New System.Drawing.Point(452, 6)
+        Me.ColourButton.Name = "ColourButton"
+        Me.ColourButton.Size = New System.Drawing.Size(124, 30)
+        Me.ColourButton.TabIndex = 40
+        Me.ColourButton.Text = "Set Colour..."
+        Me.ColourButton.UseVisualStyleBackColor = False
+        '
+        'DarkButton
+        '
+        Me.DarkButton.AutoSize = True
+        Me.DarkButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DarkButton.ForeColor = System.Drawing.Color.White
+        Me.DarkButton.Location = New System.Drawing.Point(136, 11)
+        Me.DarkButton.Name = "DarkButton"
+        Me.DarkButton.Size = New System.Drawing.Size(55, 21)
+        Me.DarkButton.TabIndex = 45
+        Me.DarkButton.TabStop = True
+        Me.DarkButton.Text = "Dark"
+        Me.DarkButton.UseVisualStyleBackColor = True
+        '
+        'PictureBox14
+        '
+        Me.PictureBox14.Image = Global.VisCord.My.Resources.Resources.GreyLine
+        Me.PictureBox14.Location = New System.Drawing.Point(43, 191)
+        Me.PictureBox14.Name = "PictureBox14"
+        Me.PictureBox14.Size = New System.Drawing.Size(590, 1)
+        Me.PictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox14.TabIndex = 42
+        Me.PictureBox14.TabStop = False
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.White
+        Me.Label18.Location = New System.Drawing.Point(52, 226)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(290, 17)
+        Me.Label18.TabIndex = 41
+        Me.Label18.Text = "Set the colour of the native navigation / title bar."
+        '
+        'CLabel
+        '
+        Me.CLabel.AutoSize = True
+        Me.CLabel.BackColor = System.Drawing.Color.Transparent
+        Me.CLabel.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CLabel.ForeColor = System.Drawing.Color.White
+        Me.CLabel.Location = New System.Drawing.Point(52, 202)
+        Me.CLabel.Name = "CLabel"
+        Me.CLabel.Size = New System.Drawing.Size(182, 17)
+        Me.CLabel.TabIndex = 39
+        Me.CLabel.Text = "Navigation / title bar colour"
         '
         'Label9
         '
@@ -861,7 +1001,7 @@ Partial Class Settings
         '
         'PictureBox9
         '
-        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
+        Me.PictureBox9.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox9.Location = New System.Drawing.Point(43, 95)
         Me.PictureBox9.Name = "PictureBox9"
         Me.PictureBox9.Size = New System.Drawing.Size(590, 1)
@@ -916,7 +1056,7 @@ Partial Class Settings
         '
         'PictureBox8
         '
-        Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
+        Me.PictureBox8.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox8.Location = New System.Drawing.Point(43, 173)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(590, 1)
@@ -1014,7 +1154,7 @@ Partial Class Settings
         '
         'PictureBox7
         '
-        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
+        Me.PictureBox7.Image = Global.VisCord.My.Resources.Resources.GreyLine
         Me.PictureBox7.Location = New System.Drawing.Point(43, 93)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(590, 1)
@@ -1037,11 +1177,11 @@ Partial Class Settings
         Me.Controls.Add(Me.AdvButton)
         Me.Controls.Add(Me.PersonaliseButton)
         Me.Controls.Add(Me.NavButton)
+        Me.Controls.Add(Me.PersonalisePanel)
         Me.Controls.Add(Me.NavigationPanel)
         Me.Controls.Add(Me.NotifPanel)
         Me.Controls.Add(Me.GeneralPanel)
         Me.Controls.Add(Me.AdvancedPanel)
-        Me.Controls.Add(Me.PersonalisePanel)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -1063,12 +1203,16 @@ Partial Class Settings
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.NavigationPanel.ResumeLayout(False)
         Me.NavigationPanel.PerformLayout()
+        CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PersonalisePanel.ResumeLayout(False)
         Me.PersonalisePanel.PerformLayout()
+        Me.CCPanel.ResumeLayout(False)
+        Me.CCPanel.PerformLayout()
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.AdvancedPanel.ResumeLayout(False)
         Me.AdvancedPanel.PerformLayout()
@@ -1151,4 +1295,15 @@ Partial Class Settings
     Friend WithEvents CMLabel As Label
     Friend WithEvents CMCheckBox As CheckBox
     Friend WithEvents PictureBox12 As PictureBox
+    Friend WithEvents PictureBox13 As PictureBox
+    Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents PictureBox14 As PictureBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents ColourButton As Button
+    Friend WithEvents CLabel As Label
+    Friend WithEvents GreyButton As RadioButton
+    Friend WithEvents WhiteButton As RadioButton
+    Friend WithEvents BlackButton As RadioButton
+    Friend WithEvents DarkButton As RadioButton
+    Friend WithEvents CCPanel As Panel
 End Class
