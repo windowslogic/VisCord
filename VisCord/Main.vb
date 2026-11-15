@@ -101,6 +101,11 @@ Public Class Main
         Catch
         End Try
 
+        'Load custom colour settings.
+        If My.Settings.CustomColourEnable = 1 Then
+            Me.TitlePanel.BackColor = My.Settings.CustomColour
+        End If
+
         'Load settings from INI file.
         Try
 
