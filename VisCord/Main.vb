@@ -311,8 +311,7 @@ Public Class Main
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         If MsgBox("Would you like to exit VisCord?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            My.Settings.Save()
-            End
+            Me.Close()
         Else
         End If
     End Sub
@@ -581,7 +580,6 @@ Public Class Main
         Dim colourName = colorNameMatch.Groups(1).Value
 
         ' Get the names of the known colours.
-        'TODO: If this function is called frequently, consider creating allColours as a variable with a larger scope.
         Dim allColours = [Enum].GetNames(GetType(System.Drawing.KnownColor))
 
         ' Attempt a case-insensitive match to the known colours.
