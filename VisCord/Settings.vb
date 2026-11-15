@@ -142,7 +142,7 @@ Public Class Settings
         Select Case My.Settings.CustomColour
             Case Color.White
                 WhiteButton.Checked = True
-            Case Color.FromArgb(255, 50, 51, 57)
+            Case Color.FromArgb(255, 43, 44, 49)
                 GreyButton.Checked = True
             Case Color.FromArgb(255, 29, 29, 33)
                 DarkButton.Checked = True
@@ -336,6 +336,7 @@ Public Class Settings
     Private Sub NetworkCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles NetworkCheckbox.CheckedChanged
         If NetworkCheckbox.Checked = True Then
             My.Settings.EnableNetwork = 1
+            Main.ChromiumWebBrowser1.Enabled = True
             Main.ChromiumWebBrowser1.Visible = True
             Main.OfflinePanel.Visible = False
             Main.BackButton.Enabled = True
@@ -346,6 +347,7 @@ Public Class Settings
             Main.FixTitle.Start()
         Else
             My.Settings.EnableNetwork = 0
+            Main.ChromiumWebBrowser1.Enabled = False
             Main.ChromiumWebBrowser1.Visible = False
             Main.OfflinePanel.Visible = True
             Main.Text = "Offline Mode - VisCord"
@@ -463,7 +465,7 @@ Public Class Settings
             WhiteButton.Checked = False
         End If
 
-        If ColorDialog1.Color = Color.FromArgb(255, 50, 51, 57) Then
+        If ColorDialog1.Color = Color.FromArgb(255, 43, 44, 49) Then
             GreyButton.Checked = True
         Else
             GreyButton.Checked = False
@@ -488,15 +490,17 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.White
         Main.RecButton.BackColor = Color.White
         Main.ToolboxButton.BackColor = Color.White
+        Main.AreaLabel.ForeColor = Color.Black
         My.Settings.Save()
     End Sub
 
     Private Sub GreyButton_CheckedChanged(sender As Object, e As EventArgs) Handles GreyButton.CheckedChanged
-        My.Settings.CustomColour = Color.FromArgb(255, 50, 51, 57)
-        Main.TitlePanel.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.HelpButton.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.RecButton.BackColor = Color.FromArgb(255, 50, 51, 57)
-        Main.ToolboxButton.BackColor = Color.FromArgb(255, 50, 51, 57)
+        My.Settings.CustomColour = Color.FromArgb(255, 43, 44, 49)
+        Main.TitlePanel.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.HelpButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.RecButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.ToolboxButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 
@@ -506,6 +510,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.FromArgb(255, 29, 29, 33)
         Main.RecButton.BackColor = Color.FromArgb(255, 29, 29, 33)
         Main.ToolboxButton.BackColor = Color.FromArgb(255, 29, 29, 33)
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 
@@ -515,6 +520,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.Black
         Main.RecButton.BackColor = Color.Black
         Main.ToolboxButton.BackColor = Color.Black
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 #End Region

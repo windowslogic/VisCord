@@ -90,7 +90,6 @@ J:\Projects\VisCord\VisCord\bin\x64\Debug\CefSharp.Core.xml
 J:\Projects\VisCord\VisCord\bin\x64\Debug\CefSharp.WinForms.pdb
 J:\Projects\VisCord\VisCord\bin\x64\Debug\CefSharp.WinForms.xml
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.About.resources
-J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.AddPins.resources
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Injection.resources
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Main.resources
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Resources.resources
@@ -102,5 +101,6 @@ J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.exe
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.xml
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.pdb
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.vbprojAssemblyReference.cache
-J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Pins.resources
 J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.UpdaterPrompt.resources
+J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Recommended.resources
+J:\Projects\VisCord\VisCord\obj\x64\Debug\VisCord.Settings.resources

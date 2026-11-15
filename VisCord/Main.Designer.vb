@@ -224,7 +224,7 @@ Partial Class Main
         Me.UserSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UserSettingsToolStripMenuItem.Name = "UserSettingsToolStripMenuItem"
         Me.UserSettingsToolStripMenuItem.Size = New System.Drawing.Size(169, 32)
-        Me.UserSettingsToolStripMenuItem.Text = "User settings..."
+        Me.UserSettingsToolStripMenuItem.Text = "Settings..."
         '
         'AboutVisCordToolStripMenuItem
         '
