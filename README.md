@@ -1,7 +1,7 @@
 ## VisCord
 VisCord is a lightweight Discord client for Windows 10 & 11 using WebView2 and Visual Basic.NET.
 
-A 64-bit Windows 7 version is available which uses CefSharp 109 instead of WebView2 due to graphical issues (flickering). This version has some features omitted as CefSharp differs to WebView2 in terms of code. As a result, the CefSharp version has some minor features omitted.
+A 64-bit Windows 7 version is available which uses CefSharp 109 instead of WebView2 due to graphical issues (flickering). This version has some features omitted as CefSharp differs to WebView2 in terms of code.
 
 ## Features
 - Run at startup.

@@ -69,8 +69,7 @@ Public Class Main
         'Check Windows version.
         If My.Computer.Info.OSVersion.Contains("6.1") Then
             Me.Hide()
-            MsgBox("This version of VisCord is incompatible with Windows 7 due to WebView2 no longer being updated for Windows 7." + vbNewLine + vbNewLine + "Please use the Windows 7 version of VisCord.")
-            End
+            MsgBox("This version of VisCord is incompatible with Windows 7 due to a WebView2 bug that causes flickering." + vbNewLine + vbNewLine + "It is recommended you use the Windows 7 version of VisCord. Press 'OK' to continue anyway.")
         Else
 
         End If
@@ -757,10 +756,13 @@ Public Class Main
         Process.Start("https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer/")
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If Me.Text.Contains("Initialising...") Then
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles NoWVTimer.Tick
+        If Me.AreaLabel.Text = "" Then
             NoWVPanel.Visible = True
             NoWVPanel.BringToFront()
+        Else
+            NoWVPanel.Visible = False
+            NoWVPanel.SendToBack()
         End If
     End Sub
 

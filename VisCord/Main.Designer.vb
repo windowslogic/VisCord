@@ -60,7 +60,7 @@ Partial Class Main
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.NoWVLabel = New System.Windows.Forms.Label()
         Me.NoVWPic = New System.Windows.Forms.PictureBox()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.NoWVTimer = New System.Windows.Forms.Timer(Me.components)
         Me.TipLabel = New System.Windows.Forms.Label()
         Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.Updater = New System.ComponentModel.BackgroundWorker()
@@ -455,10 +455,10 @@ Partial Class Main
         Me.NoVWPic.TabIndex = 0
         Me.NoVWPic.TabStop = False
         '
-        'Timer1
+        'NoWVTimer
         '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 2500
+        Me.NoWVTimer.Enabled = True
+        Me.NoWVTimer.Interval = 2500
         '
         'TipLabel
         '
@@ -616,7 +616,7 @@ Partial Class Main
     Friend WithEvents GetWVLink As LinkLabel
     Friend WithEvents NoWVLabel As Label
     Friend WithEvents NoVWPic As PictureBox
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents NoWVTimer As Timer
     Friend WithEvents TipLabel As Label
     Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents RecButton As Button
