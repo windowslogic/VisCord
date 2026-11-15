@@ -601,6 +601,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.White
         Main.RecButton.BackColor = Color.White
         Main.ToolboxButton.BackColor = Color.White
+        Main.AreaLabel.ForeColor = Color.Black
         My.Settings.Save()
     End Sub
 
@@ -610,6 +611,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.FromArgb(255, 43, 44, 49)
         Main.RecButton.BackColor = Color.FromArgb(255, 43, 44, 49)
         Main.ToolboxButton.BackColor = Color.FromArgb(255, 43, 44, 49)
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 
@@ -619,6 +621,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.FromArgb(255, 29, 29, 33)
         Main.RecButton.BackColor = Color.FromArgb(255, 29, 29, 33)
         Main.ToolboxButton.BackColor = Color.FromArgb(255, 29, 29, 33)
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 
@@ -628,6 +631,7 @@ Public Class Settings
         Main.HelpButton.BackColor = Color.Black
         Main.RecButton.BackColor = Color.Black
         Main.ToolboxButton.BackColor = Color.Black
+        Main.AreaLabel.ForeColor = Color.White
         My.Settings.Save()
     End Sub
 #End Region
