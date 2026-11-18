@@ -560,6 +560,11 @@ Public Class Settings
     End Sub
 
     Private Sub ColourButton_Click(sender As Object, e As EventArgs) Handles ColourButton.Click
+        WhiteButton.Checked = False
+        GreyButton.Checked = False
+        DarkButton.Checked = False
+        BlackButton.Checked = False
+
         If ColorDialog1.ShowDialog() = DialogResult.OK Then
             My.Settings.CustomColour = ColorDialog1.Color
             Main.TitlePanel.BackColor = My.Settings.CustomColour
