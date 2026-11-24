@@ -121,37 +121,25 @@ Public Class Main
 
             TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(17).ToString()
 
-            My.Settings.PinList1Name = TextBox1.Text
+            My.Settings.Icon = (Convert.ToInt32(TextBox1.Text))
 
             TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(18).ToString()
 
-            My.Settings.PinList2Name = TextBox1.Text
+            My.Settings.NSFWFeatures = (Convert.ToInt32(TextBox1.Text))
 
             TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(19).ToString()
 
-            My.Settings.PinList3Name = TextBox1.Text
-
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(21).ToString()
-
-            My.Settings.Icon = (Convert.ToInt32(TextBox1.Text))
-
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(22).ToString()
-
-            My.Settings.NSFWFeatures = (Convert.ToInt32(TextBox1.Text))
-
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(23).ToString()
-
             My.Settings.NSFWContent = (Convert.ToInt32(TextBox1.Text))
 
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(24).ToString()
+            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(20).ToString()
 
             My.Settings.HideNav = (Convert.ToInt32(TextBox1.Text))
 
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(25).ToString()
+            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(21).ToString()
 
             My.Settings.CloseMinimise = (Convert.ToInt32(TextBox1.Text))
 
-            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(26).ToString()
+            TextBox1.Text = File.ReadAllLines(Application.StartupPath & "\VisCord.ini").ElementAt(22).ToString()
 
             Dim C = ColourConvert(TextBox1.Text)
             My.Settings.CustomColour = C
@@ -310,7 +298,7 @@ Public Class Main
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         If MsgBox("Would you like to exit VisCord?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            Me.Close()
+            SaveAndQuit()
         Else
         End If
     End Sub
@@ -612,6 +600,54 @@ Public Class Main
         Return fallbackColour
 
     End Function
+
+    Private Sub SaveAndQuit()
+        'Save all user settings to application settings.
+        My.Settings.Save()
+
+        'Save outbox to file.
+        File.Create(Application.StartupPath & "\Outbox.vco").Dispose()
+        System.IO.File.WriteAllText(Application.StartupPath & "\Outbox.vco", "")
+        Dim objWriter1 As New System.IO.StreamWriter(Application.StartupPath & "\Outbox.vco", True)
+        objWriter1.Write(My.Settings.OutboxList)
+
+        objWriter1.Close()
+
+        'Save all user settings to INI file.
+        File.Create(Application.StartupPath & "\VisCord.ini").Dispose()
+
+        System.IO.File.WriteAllText(Application.StartupPath & "\VisCord.ini", "")
+
+        Dim objWriter As New System.IO.StreamWriter(Application.StartupPath & "\VisCord.ini", True)
+
+        objWriter.WriteLine("[VisCord User Data - " & My.Application.Info.Version.ToString & "]")
+        objWriter.WriteLine("[General]")
+        objWriter.WriteLine(My.Settings.Startup.ToString())
+        objWriter.WriteLine(My.Settings.NotifBadge.ToString())
+        objWriter.WriteLine(My.Settings.AleTips.ToString())
+        objWriter.WriteLine("[System Tray]")
+        objWriter.WriteLine(My.Settings.SysTray.ToString())
+        objWriter.WriteLine("[Notifications]")
+        objWriter.WriteLine(My.Settings.Notify.ToString())
+        objWriter.WriteLine("[Navigation]")
+        objWriter.WriteLine(My.Settings.OpenExternal.ToString())
+        objWriter.WriteLine("[Performance / Cache / Updates]")
+        objWriter.WriteLine(My.Settings.HA.ToString())
+        objWriter.WriteLine(My.Settings.Updates.ToString())
+        objWriter.WriteLine("[Privacy]")
+        objWriter.WriteLine(My.Settings.EnableNetwork.ToString())
+        objWriter.WriteLine("[Other]")
+        objWriter.WriteLine(My.Settings.Icon.ToString())
+        objWriter.WriteLine(My.Settings.NSFWFeatures.ToString())
+        objWriter.WriteLine(My.Settings.NSFWContent.ToString())
+        objWriter.WriteLine(My.Settings.HideNav.ToString())
+        objWriter.WriteLine(My.Settings.CloseMinimise.ToString())
+        objWriter.WriteLine(My.Settings.CustomColour.ToString())
+
+        objWriter.Close()
+
+        End
+    End Sub
 #End Region
 #Region "Updater"
     Private Sub Updater_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Updater.DoWork
@@ -700,55 +736,7 @@ Public Class Main
             Me.WindowState = FormWindowState.Minimized
             e.Cancel = True
         Else
-            'Save all user settings to application settings.
-            My.Settings.Save()
-
-            'Save outbox to file.
-            File.Create(Application.StartupPath & "\Outbox.vco").Dispose()
-            System.IO.File.WriteAllText(Application.StartupPath & "\Outbox.vco", "")
-            Dim objWriter1 As New System.IO.StreamWriter(Application.StartupPath & "\Outbox.vco", True)
-            objWriter1.Write(My.Settings.OutboxList)
-
-            objWriter1.Close()
-
-            'Save all user settings to INI file.
-            File.Create(Application.StartupPath & "\VisCord.ini").Dispose()
-
-            System.IO.File.WriteAllText(Application.StartupPath & "\VisCord.ini", "")
-
-            Dim objWriter As New System.IO.StreamWriter(Application.StartupPath & "\VisCord.ini", True)
-
-            objWriter.WriteLine("[VisCord User Data - " & My.Application.Info.Version.ToString & "]")
-            objWriter.WriteLine("[General]")
-            objWriter.WriteLine(My.Settings.Startup.ToString())
-            objWriter.WriteLine(My.Settings.NotifBadge.ToString())
-            objWriter.WriteLine(My.Settings.AleTips.ToString())
-            objWriter.WriteLine("[System Tray]")
-            objWriter.WriteLine(My.Settings.SysTray.ToString())
-            objWriter.WriteLine("[Notifications]")
-            objWriter.WriteLine(My.Settings.Notify.ToString())
-            objWriter.WriteLine("[Navigation]")
-            objWriter.WriteLine(My.Settings.OpenExternal.ToString())
-            objWriter.WriteLine("[Performance / Cache / Updates]")
-            objWriter.WriteLine(My.Settings.HA.ToString())
-            objWriter.WriteLine(My.Settings.Updates.ToString())
-            objWriter.WriteLine("[Privacy]")
-            objWriter.WriteLine(My.Settings.EnableNetwork.ToString())
-            objWriter.WriteLine("[Pin List Names]")
-            objWriter.WriteLine(My.Settings.PinList1Name)
-            objWriter.WriteLine(My.Settings.PinList2Name)
-            objWriter.WriteLine(My.Settings.PinList3Name)
-            objWriter.WriteLine("[Other]")
-            objWriter.WriteLine(My.Settings.Icon.ToString())
-            objWriter.WriteLine(My.Settings.NSFWFeatures.ToString())
-            objWriter.WriteLine(My.Settings.NSFWContent.ToString())
-            objWriter.WriteLine(My.Settings.HideNav.ToString())
-            objWriter.WriteLine(My.Settings.CloseMinimise.ToString())
-            objWriter.WriteLine(My.Settings.CustomColour.ToString())
-
-            objWriter.Close()
-
-            End
+            SaveAndQuit()
         End If
     End Sub
 
