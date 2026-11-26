@@ -504,7 +504,7 @@ Public Class Main
     End Function
 
     Private Sub Ping()
-        For val As Integer = 0 To 1
+        For val As Integer = 0 To 0
             If WebView21.CoreWebView2.DocumentTitle.Contains("❀") Then
                 Exit For
             ElseIf WebView21.CoreWebView2.DocumentTitle.Contains("(1)") Then
@@ -518,7 +518,7 @@ Public Class Main
             ElseIf Not WebView21.CoreWebView2.DocumentTitle.Contains("(1)") Then
                 Exit For
             End If
-            If val = 1 Then
+            If val = 0 Then
                 ContentTimer.Stop()
                 Exit For
             End If
