@@ -160,7 +160,7 @@ Partial Class Main
         Me.ReloadLink.LinkColor = System.Drawing.Color.White
         Me.ReloadLink.Location = New System.Drawing.Point(178, 287)
         Me.ReloadLink.Name = "ReloadLink"
-        Me.ReloadLink.Size = New System.Drawing.Size(104, 13)
+        Me.ReloadLink.Size = New System.Drawing.Size(105, 13)
         Me.ReloadLink.TabIndex = 31
         Me.ReloadLink.TabStop = True
         Me.ReloadLink.Text = "Try loading again..."
@@ -482,9 +482,9 @@ Partial Class Main
         Me.WebView21.CreationProperties = Nothing
         Me.WebView21.DefaultBackgroundColor = System.Drawing.Color.White
         Me.WebView21.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebView21.Location = New System.Drawing.Point(0, 0)
+        Me.WebView21.Location = New System.Drawing.Point(0, 32)
         Me.WebView21.Name = "WebView21"
-        Me.WebView21.Size = New System.Drawing.Size(1264, 681)
+        Me.WebView21.Size = New System.Drawing.Size(1264, 639)
         Me.WebView21.Source = New System.Uri("https://discord.com/app", System.UriKind.Absolute)
         Me.WebView21.TabIndex = 24
         Me.WebView21.Visible = False
@@ -554,13 +554,13 @@ Partial Class Main
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.OfflinePanel)
+        Me.Controls.Add(Me.NoWVPanel)
+        Me.Controls.Add(Me.WebView21)
+        Me.Controls.Add(Me.TipLabel)
         Me.Controls.Add(Me.UDLabel)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TitlePanel)
-        Me.Controls.Add(Me.WebView21)
         Me.Controls.Add(Me.TipPic)
-        Me.Controls.Add(Me.TipLabel)
-        Me.Controls.Add(Me.NoWVPanel)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

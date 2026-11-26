@@ -73,9 +73,14 @@ Partial Class Settings
         Me.PersonaliseButton = New System.Windows.Forms.Button()
         Me.AdvButton = New System.Windows.Forms.Button()
         Me.PersonalisePanel = New System.Windows.Forms.Panel()
+        Me.CCPanel = New System.Windows.Forms.Panel()
+        Me.WhiteButton = New System.Windows.Forms.RadioButton()
+        Me.BlackButton = New System.Windows.Forms.RadioButton()
+        Me.GreyButton = New System.Windows.Forms.RadioButton()
+        Me.ColourButton = New System.Windows.Forms.Button()
+        Me.DarkButton = New System.Windows.Forms.RadioButton()
         Me.PictureBox14 = New System.Windows.Forms.PictureBox()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.ColourButton = New System.Windows.Forms.Button()
         Me.CLabel = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.NSFWCheckbox = New System.Windows.Forms.CheckBox()
@@ -101,11 +106,7 @@ Partial Class Settings
         Me.Label14 = New System.Windows.Forms.Label()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
-        Me.WhiteButton = New System.Windows.Forms.RadioButton()
-        Me.GreyButton = New System.Windows.Forms.RadioButton()
-        Me.DarkButton = New System.Windows.Forms.RadioButton()
-        Me.BlackButton = New System.Windows.Forms.RadioButton()
-        Me.CCPanel = New System.Windows.Forms.Panel()
+        Me.PictureBox15 = New System.Windows.Forms.PictureBox()
         Me.GeneralPanel.SuspendLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,12 +121,13 @@ Partial Class Settings
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PersonalisePanel.SuspendLayout()
+        Me.CCPanel.SuspendLayout()
         CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AdvancedPanel.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CCPanel.SuspendLayout()
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GeneralButton
@@ -148,6 +150,7 @@ Partial Class Settings
         '
         Me.GeneralPanel.AutoScroll = True
         Me.GeneralPanel.BackColor = System.Drawing.Color.Black
+        Me.GeneralPanel.Controls.Add(Me.PictureBox15)
         Me.GeneralPanel.Controls.Add(Me.CMLabel)
         Me.GeneralPanel.Controls.Add(Me.CMCheckBox)
         Me.GeneralPanel.Controls.Add(Me.PictureBox12)
@@ -374,6 +377,7 @@ Partial Class Settings
         'TitleLabel
         '
         Me.TitleLabel.AutoSize = True
+        Me.TitleLabel.BackColor = System.Drawing.Color.Transparent
         Me.TitleLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TitleLabel.ForeColor = System.Drawing.Color.White
         Me.TitleLabel.Location = New System.Drawing.Point(25, 33)
@@ -761,6 +765,84 @@ Partial Class Settings
         Me.PersonalisePanel.Size = New System.Drawing.Size(676, 360)
         Me.PersonalisePanel.TabIndex = 31
         '
+        'CCPanel
+        '
+        Me.CCPanel.Controls.Add(Me.WhiteButton)
+        Me.CCPanel.Controls.Add(Me.BlackButton)
+        Me.CCPanel.Controls.Add(Me.GreyButton)
+        Me.CCPanel.Controls.Add(Me.ColourButton)
+        Me.CCPanel.Controls.Add(Me.DarkButton)
+        Me.CCPanel.Location = New System.Drawing.Point(38, 251)
+        Me.CCPanel.Name = "CCPanel"
+        Me.CCPanel.Size = New System.Drawing.Size(595, 46)
+        Me.CCPanel.TabIndex = 47
+        '
+        'WhiteButton
+        '
+        Me.WhiteButton.AutoSize = True
+        Me.WhiteButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.WhiteButton.ForeColor = System.Drawing.Color.White
+        Me.WhiteButton.Location = New System.Drawing.Point(17, 11)
+        Me.WhiteButton.Name = "WhiteButton"
+        Me.WhiteButton.Size = New System.Drawing.Size(58, 21)
+        Me.WhiteButton.TabIndex = 43
+        Me.WhiteButton.TabStop = True
+        Me.WhiteButton.Text = "Light"
+        Me.WhiteButton.UseVisualStyleBackColor = True
+        '
+        'BlackButton
+        '
+        Me.BlackButton.AutoSize = True
+        Me.BlackButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BlackButton.ForeColor = System.Drawing.Color.White
+        Me.BlackButton.Location = New System.Drawing.Point(197, 11)
+        Me.BlackButton.Name = "BlackButton"
+        Me.BlackButton.Size = New System.Drawing.Size(58, 21)
+        Me.BlackButton.TabIndex = 46
+        Me.BlackButton.TabStop = True
+        Me.BlackButton.Text = "Onyx"
+        Me.BlackButton.UseVisualStyleBackColor = True
+        '
+        'GreyButton
+        '
+        Me.GreyButton.AutoSize = True
+        Me.GreyButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GreyButton.ForeColor = System.Drawing.Color.White
+        Me.GreyButton.Location = New System.Drawing.Point(81, 11)
+        Me.GreyButton.Name = "GreyButton"
+        Me.GreyButton.Size = New System.Drawing.Size(49, 21)
+        Me.GreyButton.TabIndex = 44
+        Me.GreyButton.TabStop = True
+        Me.GreyButton.Text = "Ash"
+        Me.GreyButton.UseVisualStyleBackColor = True
+        '
+        'ColourButton
+        '
+        Me.ColourButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.ColourButton.FlatAppearance.BorderSize = 0
+        Me.ColourButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ColourButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ColourButton.ForeColor = System.Drawing.Color.White
+        Me.ColourButton.Location = New System.Drawing.Point(452, 6)
+        Me.ColourButton.Name = "ColourButton"
+        Me.ColourButton.Size = New System.Drawing.Size(124, 30)
+        Me.ColourButton.TabIndex = 40
+        Me.ColourButton.Text = "Set Colour..."
+        Me.ColourButton.UseVisualStyleBackColor = False
+        '
+        'DarkButton
+        '
+        Me.DarkButton.AutoSize = True
+        Me.DarkButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DarkButton.ForeColor = System.Drawing.Color.White
+        Me.DarkButton.Location = New System.Drawing.Point(136, 11)
+        Me.DarkButton.Name = "DarkButton"
+        Me.DarkButton.Size = New System.Drawing.Size(55, 21)
+        Me.DarkButton.TabIndex = 45
+        Me.DarkButton.TabStop = True
+        Me.DarkButton.Text = "Dark"
+        Me.DarkButton.UseVisualStyleBackColor = True
+        '
         'PictureBox14
         '
         Me.PictureBox14.Image = Global.VisCord.My.Resources.Resources.GreyLine
@@ -781,20 +863,6 @@ Partial Class Settings
         Me.Label18.Size = New System.Drawing.Size(290, 17)
         Me.Label18.TabIndex = 41
         Me.Label18.Text = "Set the colour of the native navigation / title bar."
-        '
-        'ColourButton
-        '
-        Me.ColourButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.ColourButton.FlatAppearance.BorderSize = 0
-        Me.ColourButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ColourButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ColourButton.ForeColor = System.Drawing.Color.White
-        Me.ColourButton.Location = New System.Drawing.Point(452, 6)
-        Me.ColourButton.Name = "ColourButton"
-        Me.ColourButton.Size = New System.Drawing.Size(124, 30)
-        Me.ColourButton.TabIndex = 40
-        Me.ColourButton.Text = "Set Colour..."
-        Me.ColourButton.UseVisualStyleBackColor = False
         '
         'CLabel
         '
@@ -1095,69 +1163,15 @@ Partial Class Settings
         Me.PictureBox7.TabIndex = 9
         Me.PictureBox7.TabStop = False
         '
-        'WhiteButton
+        'PictureBox15
         '
-        Me.WhiteButton.AutoSize = True
-        Me.WhiteButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.WhiteButton.ForeColor = System.Drawing.Color.White
-        Me.WhiteButton.Location = New System.Drawing.Point(17, 11)
-        Me.WhiteButton.Name = "WhiteButton"
-        Me.WhiteButton.Size = New System.Drawing.Size(58, 21)
-        Me.WhiteButton.TabIndex = 43
-        Me.WhiteButton.TabStop = True
-        Me.WhiteButton.Text = "Light"
-        Me.WhiteButton.UseVisualStyleBackColor = True
-        '
-        'GreyButton
-        '
-        Me.GreyButton.AutoSize = True
-        Me.GreyButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GreyButton.ForeColor = System.Drawing.Color.White
-        Me.GreyButton.Location = New System.Drawing.Point(81, 11)
-        Me.GreyButton.Name = "GreyButton"
-        Me.GreyButton.Size = New System.Drawing.Size(49, 21)
-        Me.GreyButton.TabIndex = 44
-        Me.GreyButton.TabStop = True
-        Me.GreyButton.Text = "Ash"
-        Me.GreyButton.UseVisualStyleBackColor = True
-        '
-        'DarkButton
-        '
-        Me.DarkButton.AutoSize = True
-        Me.DarkButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DarkButton.ForeColor = System.Drawing.Color.White
-        Me.DarkButton.Location = New System.Drawing.Point(136, 11)
-        Me.DarkButton.Name = "DarkButton"
-        Me.DarkButton.Size = New System.Drawing.Size(55, 21)
-        Me.DarkButton.TabIndex = 45
-        Me.DarkButton.TabStop = True
-        Me.DarkButton.Text = "Dark"
-        Me.DarkButton.UseVisualStyleBackColor = True
-        '
-        'BlackButton
-        '
-        Me.BlackButton.AutoSize = True
-        Me.BlackButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BlackButton.ForeColor = System.Drawing.Color.White
-        Me.BlackButton.Location = New System.Drawing.Point(197, 11)
-        Me.BlackButton.Name = "BlackButton"
-        Me.BlackButton.Size = New System.Drawing.Size(58, 21)
-        Me.BlackButton.TabIndex = 46
-        Me.BlackButton.TabStop = True
-        Me.BlackButton.Text = "Onyx"
-        Me.BlackButton.UseVisualStyleBackColor = True
-        '
-        'CCPanel
-        '
-        Me.CCPanel.Controls.Add(Me.WhiteButton)
-        Me.CCPanel.Controls.Add(Me.BlackButton)
-        Me.CCPanel.Controls.Add(Me.GreyButton)
-        Me.CCPanel.Controls.Add(Me.ColourButton)
-        Me.CCPanel.Controls.Add(Me.DarkButton)
-        Me.CCPanel.Location = New System.Drawing.Point(38, 251)
-        Me.CCPanel.Name = "CCPanel"
-        Me.CCPanel.Size = New System.Drawing.Size(595, 46)
-        Me.CCPanel.TabIndex = 47
+        Me.PictureBox15.Image = Global.VisCord.My.Resources.Resources.GreyLine
+        Me.PictureBox15.Location = New System.Drawing.Point(42, 433)
+        Me.PictureBox15.Name = "PictureBox15"
+        Me.PictureBox15.Size = New System.Drawing.Size(590, 1)
+        Me.PictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox15.TabIndex = 35
+        Me.PictureBox15.TabStop = False
         '
         'Settings
         '
@@ -1174,11 +1188,11 @@ Partial Class Settings
         Me.Controls.Add(Me.AdvButton)
         Me.Controls.Add(Me.PersonaliseButton)
         Me.Controls.Add(Me.NavButton)
+        Me.Controls.Add(Me.GeneralPanel)
+        Me.Controls.Add(Me.AdvancedPanel)
         Me.Controls.Add(Me.PersonalisePanel)
         Me.Controls.Add(Me.NavigationPanel)
         Me.Controls.Add(Me.NotifPanel)
-        Me.Controls.Add(Me.GeneralPanel)
-        Me.Controls.Add(Me.AdvancedPanel)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -1207,14 +1221,15 @@ Partial Class Settings
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PersonalisePanel.ResumeLayout(False)
         Me.PersonalisePanel.PerformLayout()
+        Me.CCPanel.ResumeLayout(False)
+        Me.CCPanel.PerformLayout()
         CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.AdvancedPanel.ResumeLayout(False)
         Me.AdvancedPanel.PerformLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.CCPanel.ResumeLayout(False)
-        Me.CCPanel.PerformLayout()
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1303,4 +1318,5 @@ Partial Class Settings
     Friend WithEvents BlackButton As RadioButton
     Friend WithEvents DarkButton As RadioButton
     Friend WithEvents CCPanel As Panel
+    Friend WithEvents PictureBox15 As PictureBox
 End Class
