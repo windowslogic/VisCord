@@ -7,8 +7,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{4CC917F4-6535-412A-93EE-9D849FA437D0}
 AppName=VisCord
-AppVersion=1.6.1.3
-AppVerName=VisCord 1.6.1.3
+AppVersion=1.6.1.4
+AppVerName=VisCord 1.6.1.4
 AppPublisher=WindowsLogic Productions
 AppPublisherURL=http://www.windowslogic.co.uk/
 AppSupportURL=http://www.windowslogic.co.uk/

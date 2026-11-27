@@ -59,6 +59,7 @@ Partial Class Recommended
         '
         Me.TitleLink.ActiveLinkColor = System.Drawing.Color.Aqua
         Me.TitleLink.AutoSize = True
+        Me.TitleLink.BackColor = System.Drawing.Color.Transparent
         Me.TitleLink.Font = New System.Drawing.Font("Segoe UI", 15.75!)
         Me.TitleLink.LinkColor = System.Drawing.Color.White
         Me.TitleLink.Location = New System.Drawing.Point(256, 33)
@@ -138,6 +139,7 @@ Partial Class Recommended
         'TitleLabel
         '
         Me.TitleLabel.AutoSize = True
+        Me.TitleLabel.BackColor = System.Drawing.Color.Transparent
         Me.TitleLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TitleLabel.ForeColor = System.Drawing.Color.White
         Me.TitleLabel.Location = New System.Drawing.Point(25, 33)
