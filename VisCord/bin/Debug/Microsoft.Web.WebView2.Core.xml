@@ -26,8 +26,8 @@
             `ICoreWebView2Environment` associated to the failed process.</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds">
-            <summary>Specifies the datatype for the
-            `ICoreWebView2Profile2::ClearBrowsingData` method.</summary>
+            <summary>
+            Specifies the datatype for the <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearBrowsingDataAsync(Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds)" /> and <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearBrowsingDataAsync(Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds,System.DateTime,System.DateTime)" /> methods.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.FileSystems">
             <summary>Specifies file systems data.</summary>
@@ -45,24 +45,15 @@
             <summary>Specifies data stored by the CacheStorage DOM API.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.AllDomStorage">
-            <summary>Specifies DOM storage data, now and future. This browsing data kind is
-            inclusive of COREWEBVIEW2_BROWSING_DATA_KINDS_FILE_SYSTEMS,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_INDEXED_DB,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_LOCAL_STORAGE,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_WEB_SQL,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_SERVICE_WORKERS,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_CACHE_STORAGE,
-            and some other data kinds not listed yet to keep consistent with
-            [DOM-accessible storage](https://www.w3.org/TR/clear-site-data/#storage).</summary>
+            <summary>
+            Specifies DOM storage data, now and future. This browsing data kind is inclusive of <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.FileSystems" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.IndexedDb" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.LocalStorage" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.WebSql" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.ServiceWorkers" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.CacheStorage" />, and some other data kinds not listed yet to keep consistent with [DOM-accessible storage](https://www.w3.org/TR/clear-site-data/#storage).</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.Cookies">
             <summary>Specifies HTTP cookies data.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.AllSite">
-            <summary>Specifies all site data, now and future. This browsing data kind
-            is inclusive of COREWEBVIEW2_BROWSING_DATA_KINDS_ALL_DOM_STORAGE and
-            COREWEBVIEW2_BROWSING_DATA_KINDS_COOKIES. New site data types
-            may be added to this data kind in the future.</summary>
+            <summary>
+            Specifies all site data, now and future. This browsing data kind is inclusive of <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.AllDomStorage" /> and <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.Cookies" />. New site data types may be added to this data kind in the future.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.DiskCache">
             <summary>Specifies disk cache.</summary>
@@ -86,18 +77,8 @@
             <summary>Specifies settings data.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.AllProfile">
-            <summary>Specifies profile data that should be wiped to make it look like a new profile.
-            This does not delete account-scoped data like passwords but will remove access
-            to account-scoped data by signing the user out.
-            Specifies all profile data, now and future. New profile data types may be added
-            to this data kind in the future.
-            This browsing data kind is inclusive of COREWEBVIEW2_BROWSING_DATA_KINDS_ALL_SITE,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_DISK_CACHE,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_DOWNLOAD_HISTORY,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_GENERAL_AUTOFILL,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_PASSWORD_AUTOSAVE,
-            COREWEBVIEW2_BROWSING_DATA_KINDS_BROWSING_HISTORY, and
-            COREWEBVIEW2_BROWSING_DATA_KINDS_SETTINGS.</summary>
+            <summary>
+            Specifies profile data that should be wiped to make it look like a new profile. This does not delete account-scoped data like passwords but will remove access to account-scoped data by signing the user out. Specifies all profile data, now and future. New profile data types may be added to this data kind in the future. This browsing data kind is inclusive of <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.AllSite" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.DiskCache" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.DownloadHistory" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.GeneralAutofill" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.PasswordAutosave" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.BrowsingHistory" />, and <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.Settings" />.</summary>
         </member>
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds.ServiceWorkers">
             <summary>Specifies service workers registered for an origin, and clear will result in
@@ -1389,7 +1370,9 @@
             Gets the title for the current top-level document.
             </summary><remarks>
             If the document has no explicit title or is otherwise empty, a default that may or may not match the URI of the document is used.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DocumentTitle":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.Settings">
             <summary>
@@ -1419,7 +1402,9 @@
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.DocumentTitleChanged">
             <summary>
             DocumentTitleChanged is raised when the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DocumentTitle" /> property changes and may be raised before or after the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationCompleted" /> event.
-            </summary><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DocumentTitle" />
+            </summary><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DocumentTitle" /><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DocumentTitleChanged":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.FrameNavigationCompleted">
             <summary>
@@ -1441,14 +1426,19 @@
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationCompleted">
             <summary>
-            NavigationCompleted is raised when the WebView has completely loaded (<c>body.onload</c> has been raised) or loading stopped with error.</summary>
+            NavigationCompleted is raised when the WebView has completely loaded (<c>body.onload</c> has been raised) or loading stopped with error.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="NavigationCompleted":::
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DOMContentLoaded":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationStarting">
             <summary>
             NavigationStarting is raised when the WebView main frame is requesting permission to navigate to a different URI.
             </summary><remarks>
             Redirects raise this event as well, and the navigation id is the same as the original one. You may block corresponding navigations until the event handler returns.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="NavigationStarting":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.NewWindowRequested">
             <summary>
@@ -1540,7 +1530,9 @@
             Causes a navigation of the top level document to the specified URI.
             </summary><param name="uri">The URI to navigate to.</param><remarks>
             For more information, navigate to [Navigation event](/microsoft-edge/webview2/concepts/navigation-events). Note that this operation starts a navigation and the corresponding <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationStarting" /> event is raised sometime after Navigate runs.
-            </remarks><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationStarting" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationCompleted" />
+            </remarks><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationStarting" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationCompleted" /><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="Navigate":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.NavigateToString(System.String)">
             <summary>
@@ -1560,19 +1552,20 @@
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(System.String)">
             <summary>
             Adds the provided JavaScript to a list of scripts that should be run after the global object has been created, but before the HTML document has been parsed and before any other script included by the HTML document is run.
-            </summary><param name="javaScript">The JavaScript code to be run.</param><returns>A script ID that may be passed when calling <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)" />.</returns><remarks>
+            </summary><param name="javaScript">The JavaScript code to be run.</param><remarks>
             The injected script will apply to all future top level document and child frame navigations until removed with <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)" />.
-            This is applied asynchronously and you must wait for the returned IAsyncOperation to complete before you can be sure that the script is ready to execute on future navigations.
+            This is applied asynchronously and you must wait for the returned <see cref="T:System.Threading.Tasks.Task`1" /> to complete before you can be sure that the script is ready to execute on future navigations.
             If the method is run in <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NewWindowRequested" /> handler, it should be called before the new window is set. For more details see <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2NewWindowRequestedEventArgs.NewWindow" />.
             
             Note that if an HTML document has sandboxing of some kind via [sandbox](https://developer.mozilla.org/docs/Web/HTML/Element/iframe#attr-sandbox) properties or the [Content-Security-Policy HTTP header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy) this will affect the script run here. So, for example, if the <c>allow-modals</c> keyword is not set then calls to the <c>alert</c> function will be ignored.
-            </remarks><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)" />
+            </remarks><returns>A script ID that may be passed when calling <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)" />.</returns><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)" />
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveScriptToExecuteOnDocumentCreated(System.String)">
             <summary>
             Removes the corresponding JavaScript added via <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(System.String)" /> with the specified script ID.
-            </summary><param name="id">The ID corresponds to the JavaScript code to be removed from the list of scripts.</param>
+            </summary><param name="id">The ID corresponds to the JavaScript code to be removed from the list of scripts.</param><remarks>
             Both use <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(System.String)" /> and this method in <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NewWindowRequested" /> handler at the same time sometimes causes trouble. Since invalid scripts will be ignored, the script IDs you got may not be valid anymore.
+            </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.ExecuteScriptAsync(System.String)">
             <summary>
@@ -1581,7 +1574,9 @@
             If the result is <c>undefined</c>, contains a reference cycle, or otherwise is not able to be encoded into JSON, the JSON <c>null</c> value is returned as the <c>"null"</c> string.
             
             A function that has no explicit return value returns <c>undefined</c>. If the script that was run throws an unhandled exception, then the result is also <c>null</c>. This method is applied asynchronously. If the method is run after the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.NavigationStarting" /> event during a navigation, the script runs in the new document when loading it, around the time <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.ContentLoading" /> is run. This operation works even if <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsScriptEnabled" /> is set to <c>false</c>.
-            </remarks><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsScriptEnabled" />
+            </remarks><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsScriptEnabled" /><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ExecuteScript":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.CapturePreviewAsync(Microsoft.Web.WebView2.Core.CoreWebView2CapturePreviewImageFormat,System.IO.Stream)">
             <summary>
@@ -1801,14 +1796,18 @@
             BasicAuthenticationRequested event is raised when WebView encounters a Basic HTTP Authentication request as described in https://developer.mozilla.org/docs/Web/HTTP/Authentication, a Digest HTTP Authentication request as described in https://developer.mozilla.org/docs/Web/HTTP/Headers/Authorization#digest, an NTLM authentication or a Proxy Authentication request.
             </summary><remarks>
             The host can provide a response with credentials for the authentication or cancel the request. If the host sets the Cancel property to false but does not provide either UserName or Password properties on the Response property, then WebView2 will show the default authentication challenge dialog prompt to the user.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="BasicAuthenticationRequested":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.ContextMenuRequested">
             <summary>
             ContextMenuRequested is raised when a context menu is requested by the user and the content inside WebView hasn't disabled context menus.
             </summary><remarks>
             The host has the option to create their own context menu with the information provided in the event or can add items to or remove items from WebView context menu. If the host doesn't handle the event, WebView will display the default context menu.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="CustomContextMenu":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.CallDevToolsProtocolMethodForSessionAsync(System.String,System.String,System.String)">
             <summary>
@@ -1840,7 +1839,9 @@
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.Profile">
             <summary>
-            The associated <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile" /> object of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2" />.</summary>
+            The associated <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile" /> object of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2" />.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="Profile":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected">
             <summary>
@@ -1859,7 +1860,9 @@
             WebView2 caches the response when action is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2ServerCertificateErrorAction.AlwaysAllow" /> for the RequestUri's host and the server certificate in the session and the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected" /> event won't be raised again.
             
             To raise the event again you must clear the cache using <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.ClearServerCertificateErrorActionsAsync" />.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ServerCertificateErrorDetected":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.ClearServerCertificateErrorActionsAsync">
             <summary>
@@ -1901,7 +1904,9 @@
             See <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2PrintDialogKind" /> for descriptions of print dialog kinds.
             
             Invoking browser or system print dialog doesn't open new print dialog if it is already open.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ShowPrintUI":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfStreamAsync(Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)">
             <summary>
@@ -1912,7 +1917,9 @@
             See <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings" /> for description of settings. Passing null for <c>printSettings</c> results in default print settings used.
             
             The async PrintToPdfStream operation completes when it finishes writing to the stream. Only one <c>Printing</c> operation can be in progress at a time. If <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfStreamAsync(Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)" /> is called while a <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfStreamAsync(Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)" /> or <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfAsync(System.String,Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)" /> or <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintAsync(Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)" /> job is in progress, the <see cref="T:System.Threading.Tasks.Task`1" /> throws an exception. This is only for printing operation on one webview.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="PrintToPdfStream":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostSharedBufferToScript(Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer,Microsoft.Web.WebView2.Core.CoreWebView2SharedBufferAccess,System.String)">
             <summary>
@@ -1963,7 +1970,9 @@
             
             The WebView2 may not display the default dialog based on user settings, browser settings, and whether the origin is determined as a [trustworthy origin](https://w3c.github.io/webappsec-secure-contexts#potentially-trustworthy-origin); however, the event will still be raised.
             If the request is initiated by a cross-origin frame without a user gesture, the request will be blocked and the `LaunchingExternalUriScheme` event will not be raised.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="LaunchingExternalUriScheme":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel">
             <summary>
@@ -2003,7 +2012,9 @@
             DOMContentLoaded is raised when the initial HTML document has been parsed.
             </summary><remarks>
             This aligns with the the document's DOMContentLoaded event in HTML.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DOMContentLoaded":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceResponseReceived">
             <summary>
@@ -2011,14 +2022,20 @@
             </summary><remarks>
             The host app can use this event to view the actual request and response for a web resource. There is no guarantee about the order in which the WebView processes the response and the host app's handler runs. The app's handler will not block the WebView from processing the response.
             The event args include the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest" /> as sent by the wire and <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceResponse" /> received, including any additional headers added by the network stack that were not be included as part of the associated <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event, such as Authentication headers.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="WebResourceResponseReceived":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.NavigateWithWebResourceRequest(Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest)">
             <summary>
             Navigates using a constructed <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest" /> object.
             </summary><param name="Request">The constructed web resource object to provide post data or additional request headers during navigation.</param><remarks>
             The headers in the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest" /> override headers added by WebView2 runtime except for Cookie headers. Method can only be either <c>GET</c> or <c>POST</c>. Provided post data will only be sent only if the method is <c>POST</c> and the uri scheme is <c>HTTP(S)</c>.
-            </remarks>
+            
+            The headers are sent with the initial request and with every redirect, including redirects to a different origin. They are also stored with the navigation history entry, so reload and back or forward navigations send them again. Do not include credentials, such as an <c>Authorization</c> header, unless you trust every server to which the navigation might be redirected. To control which origins receive a header, omit it from the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest" /> and add it for trusted origins in a <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event handler. Alternatively, use <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> to remove the header when a redirect targets an untrusted origin.
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="NavigateWithWebResourceRequest":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.FrameId">
             <summary>
@@ -2029,14 +2046,17 @@
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.ExecuteScriptWithResultAsync(System.String)">
             <summary>
-            Runs JavaScript code from the <c>javaScript</c> parameter in the current top-level document rendered in the WebView, The result of the execution is returned asynchronously in the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ExecuteScriptResult" /> object which has methods and properties to obtain the successful result of script execution as well as any unhandled JavaScript exceptions.</summary>
+            Runs JavaScript code from the <c>javaScript</c> parameter in the current top-level document rendered in the WebView, The result of the execution is returned asynchronously in the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ExecuteScriptResult" /> object which has methods and properties to obtain the successful result of script execution as well as any unhandled JavaScript exceptions.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ExecuteScriptWithResult":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.AddWebResourceRequestedFilter(System.String,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceContext,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds)">
-            <summary /><param name="uri">A URI to be added to the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event.</param><param name="ResourceContext">A resource context filter to be added to the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event.</param><param name="requestSourceKinds">A mask of one or more <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds" />s.</param>
-            A web resource request with a resource context that matches this filter's resource context and a URI that matches this filter's URI wildcard string for corresponding request sources will be raised via the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event. To receive all raised events filters have to be added before main page navigation.<remarks>
+            <summary>
+            A web resource request with a resource context that matches this filter's resource context and a URI that matches this filter's URI wildcard string for corresponding request sources will be raised via the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event. To receive all raised events filters have to be added before main page navigation.
+            </summary><param name="uri">A URI to be added to the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event.</param><param name="ResourceContext">A resource context filter to be added to the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested" /> event.</param><param name="requestSourceKinds">A mask of one or more <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds" />s.</param><remarks>
             The <c>uri</c> parameter value is a wildcard string matched against the URI of the web resource request. This is a glob style wildcard string in which a <c>*</c> matches zero or more characters and a <c>?</c> matches exactly one character. These wildcard characters can be escaped using a backslash just before the wildcard character in order to represent the literal <c>*</c> or <c>?</c>. The matching occurs over the URI as a whole string and not limiting wildcard matches to particular parts of the URI. The wildcard filter is compared to the URI after the URI has been normalized, any URI fragment has been removed, and non-ASCII hostnames have been converted to punycode. Specifying a <c>null</c> for the uri is equivalent to an empty string which matches no URIs. For more information about resource context filters, navigate to <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceContext" />.
             <list type="table"><listheader><description>URI Filter String</description><description>Request URI</description><description>Match</description><description>Notes</description></listheader><item><description><c>*</c></description><description><c>https://contoso.com/a/b/c</c></description><description>Yes</description><description>A single * will match all URIs</description></item><item><description><c>*://contoso.com/*</c></description><description><c>https://contoso.com/a/b/c</c></description><description>Yes</description><description>Matches everything in contoso.com across all schemes</description></item><item><description><c>*://contoso.com/*</c></description><description><c>https://example.com/?https://contoso.com/</c></description><description>Yes</description><description>But also matches a URI with just the same text anywhere in the URI</description></item><item><description><c>example</c></description><description><c>https://contoso.com/example</c></description><description>No</description><description>The filter does not perform partial matches</description></item><item><description><c>*example</c></description><description><c>https://contoso.com/example</c></description><description>Yes</description><description>The filter matches across URI parts </description></item><item><description><c>*example</c></description><description><c>https://contoso.com/path/?example</c></description><description>Yes</description><description>The filter matches across URI parts</description></item><item><description><c>*example</c></description><description><c>https://contoso.com/path/?query#example</c></description><description>No</description><description>The filter is matched against the URI with no fragment</description></item><item><description><c>*example</c></description><description><c>https://example</c></description><description>No</description><description>The URI is normalized before filter matching so the actual URI used for comparison is <c>https://example.com/</c></description></item><item><description><c>*example/</c></description><description><c>https://example</c></description><description>Yes</description><description>Just like above, but this time the filter ends with a / just like the normalized URI</description></item><item><description><c>https://xn--qei.example/</c></description><description><c>https://❤.example/</c></description><description>Yes</description><description>Non-ASCII hostnames are normalized to punycode before wildcard comparison</description></item><item><description><c>https://❤.example/</c></description><description><c>https://xn--qei.example/</c></description><description>No</description><description>Non-ASCII hostnames are normalized to punycode before wildcard comparison</description></item></list>
-            To form the <c>requestSourceKinds</c> parameter OR operation(s) can be applied to multiple <c>CoreWebView2WebResourceRequestSourceKinds</c> to create a mask representing those source kinds. API will fail with <c>E_INVALIDARG</c> if <c>requestSourceKinds</c> equals to zero. Because service workers and shared workers run separately from any one HTML document their WebResourceRequested may be raised for any CoreWebView2 that has appropriate filters added in the same CoreWebView2Profile. WebResourceRequested is not raised for requests from service workers or shared workers that belong to a different CoreWebView2Profile, including an InPrivate profile, even if both profiles share the same CoreWebView2Environment. You should only add a WebResourceRequested filter for <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.ServiceWorker" /> or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.SharedWorker" /> on one CoreWebView2 per CoreWebView2Profile to avoid handling the same WebResourceRequested event multiple times.
+            To form the <c>requestSourceKinds</c> parameter OR operation(s) can be applied to multiple <c>CoreWebView2WebResourceRequestSourceKinds</c> to create a mask representing those source kinds. API will throw an <see cref="T:System.ArgumentException" /> if <c>requestSourceKinds</c> equals to zero. Because service workers and shared workers run separately from any one HTML document their WebResourceRequested may be raised for any CoreWebView2 that has appropriate filters added in the same CoreWebView2Profile. WebResourceRequested is not raised for requests from service workers or shared workers that belong to a different CoreWebView2Profile, including an InPrivate profile, even if both profiles share the same CoreWebView2Environment. You should only add a WebResourceRequested filter for <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.ServiceWorker" /> or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds.SharedWorker" /> on one CoreWebView2 per CoreWebView2Profile to avoid handling the same WebResourceRequested event multiple times.
             </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.RemoveWebResourceRequestedFilter(System.String,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceContext,Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequestSourceKinds)">
@@ -2049,13 +2069,14 @@
             the filter remains for the non-removed requestSourceKinds.</summary>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.SaveAsUIShowing">
-            <summary></summary>
+            <summary>
+            SaveAsUIShowing is raised when the browser tries to open a Save As dialog. It includes opening the dialog manually from the context menu or programmatically from <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.ShowSaveAsUIAsync" />.</summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.ShowSaveAsUIAsync">
             <summary>
             Async method to programmatically trigger a Save As action for the currently loaded document.
             </summary><remarks>
-            It opens a system modal dialog by default. If the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.SuppressDefaultDialog" /> property is `TRUE`, the system dialog is not opened. This method can return <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult" />.
+            It opens a system modal dialog by default. If the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.SuppressDefaultDialog" /> property is <c>true</c>, the system dialog is not opened. This method can return <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult" />.
             </remarks>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.ScreenCaptureStarting">
@@ -2115,7 +2136,9 @@
             The app can call <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume" /> and then <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.TrySuspendAsync" /> periodically for an invisible WebView so that the invisible WebView can sync up with latest data and the page ready to show fresh content when it becomes visible.
             
             All WebView APIs can still be accessed when a WebView is suspended. Some APIs like Navigate will auto resume the WebView. To avoid unexpected auto resume, check <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.IsSuspended" /> property before calling APIs that might change WebView state.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="TrySuspend":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume">
             <summary>
@@ -2126,7 +2149,9 @@
             The app can interact with the WebView immediately after <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume" />.
             
             WebView will be automatically resumed when it becomes visible.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="Resume":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.SetVirtualHostNameToFolderMapping(System.String,System.String,Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind)">
             <summary>
@@ -2204,7 +2229,9 @@
             DownloadStarting is raised when a download has begun, blocking the default download dialog, but not blocking the progress of the download.
             </summary><remarks>
             The host can choose to cancel a download, change the result file path, and hide the default download dialog. If download is not handled or canceled, the download is saved to the default path after the event completes with default download dialog shown.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DownloadStarting":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.FrameCreated">
             <summary>
@@ -2222,7 +2249,10 @@
             <list type="table"><listheader><description>Scenario</description><description>Handled</description><description>Cancel</description><description>SelectedCertificate</description></listheader><item><description>Respond to server with a certificate</description><description>True</description><description>False</description><description>MutuallyTrustedCertificate value</description></item><item><description>Respond to server without certificate</description><description>True</description><description>False</description><description>null</description></item><item><description>Display default client certificate selection dialog prompt</description><description>False</description><description>False</description><description>n/a</description></item><item><description>Cancel the request</description><description>n/a</description><description>True</description><description>n/a</description></item></list>
             
             If the host don't handle the event, WebView2 will show the default client certificate selection dialog prompt to the user.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ClientCertificateRequested1":::
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ClientCertificateRequested2":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.OpenTaskManagerWindow">
             <summary>
@@ -2233,35 +2263,47 @@
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfAsync(System.String,Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)">
             <summary>
-            Print the current page to PDF asynchronously with the provided settings.
-            </summary><remarks>
+            Print the current page to PDF asynchronously with the provided settings.</summary><remarks>
             See <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings" /> for description of settings. Passing null for <c>printSettings</c> results in default print settings used.
             
-            Use <c>resultFilePath</c> to specify the path to the PDF file. The host should provide an absolute path, including file name. If the path points to an existing file, the file will be overwritten. If the path is not valid, the method fails.
+            Use <c>resultFilePath</c> to specify the path to the PDF file. The host should provide an absolute path, including file name. If the path points to an existing file, the file will be overwritten. If the path is not valid, the method fails with <see cref="T:System.ArgumentException" />.
             
-            The async PrintToPdf operation completes when the data has been written to the PDF file. If the application exits before printing is complete, the file is not saved. Only one PrintToPdf operation can be in progress at a time.
-            If PrintToPdf is called while a print to PDF operation is in progress, the IAsyncOperation completes and returns false.
-            </remarks>
+            The async <c>PrintToPdfAsync</c> operation completes when the data has been written to the PDF file. At this time the awaitable <see cref="T:System.Threading.Tasks.Task`1" /> will complete and evaluate to <c>false</c> if printing failed. If the application exits before printing is complete, the file is not saved. Only one <c>PrintToPdfAsync</c> operation can be in progress at a time.
+            If <c>PrintToPdfAsync</c> is called while a print to PDF operation is in progress, the <see cref="T:System.Threading.Tasks.Task`1" /> completes and returns <c>false</c>.
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="PrintToPdf":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.IsDocumentPlayingAudio">
             <summary>
-            Indicates whether any audio output from this CoreWebView2 is playing. <c>true</c> if audio is playing even if <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.IsMuted" /> is true.</summary>
+            Indicates whether any audio output from this CoreWebView2 is playing. <c>true</c> if audio is playing even if <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.IsMuted" /> is true.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="UpdateTitleWithMuteState":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.IsMuted">
             <summary>
-            Indicates whether all audio output from this CoreWebView2 is muted or not. Set to true will mute this CoreWebView2, and set to false will unmute this CoreWebView2. <c>true</c> if audio is muted.</summary>
+            Indicates whether all audio output from this CoreWebView2 is muted or not. Set to true will mute this CoreWebView2, and set to false will unmute this CoreWebView2. <c>true</c> if audio is muted.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ToggleIsMuted":::
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="UpdateTitleWithMuteState":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.IsDocumentPlayingAudioChanged">
             <summary>
-            IsDocumentPlayingAudioChanged is raised when document starts or stops playing audio.</summary>
+            IsDocumentPlayingAudioChanged is raised when document starts or stops playing audio.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="IsDocumentPlayingAudioChanged":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.IsMutedChanged">
             <summary>
-            IsMutedChanged is raised when the mute state changes.</summary>
+            IsMutedChanged is raised when the mute state changes.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="IsMutedChanged":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.DefaultDownloadDialogCornerAlignment">
             <summary>
-            The default download dialog corner alignment.</summary>
+            The default download dialog corner alignment.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="SetDefaultDownloadDialogPosition":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.DefaultDownloadDialogMargin">
             <summary>
@@ -2275,7 +2317,9 @@
             True if the default download dialog is currently open.
             </summary><remarks>
             The value of this property changes only when the default download dialog is explicitly opened or closed. Hiding the WebView implicitly hides the dialog, but does not change the value of this property.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ToggleDefaultDownloadDialog":::
+            </example>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.IsDefaultDownloadDialogOpenChanged">
             <summary>
@@ -2673,9 +2717,9 @@
             </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2CompositionController.SendMouseInput(Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind,Microsoft.Web.WebView2.Core.CoreWebView2MouseEventVirtualKeys,System.UInt32,System.Drawing.Point)">
-            <summary /><param name="eventKind">The mouse event kind.</param><param name="virtualKeys">The virtual keys associated with the <c>eventKind</c>.</param><param name="mouseData">The amount of wheel movement.</param><param name="point">The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the <c>eventKind</c>.</param>
+            <summary>
             Sends mouse input to the WebView.
-            <remarks>
+            </summary><param name="eventKind">The mouse event kind.</param><param name="virtualKeys">The virtual keys associated with the <c>eventKind</c>.</param><param name="mouseData">The amount of wheel movement.</param><param name="point">The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the <c>eventKind</c>.</param><remarks>
             If <c>eventKind</c> is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.HorizontalWheel" /> or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.Wheel" />, then <c>mouseData</c> specifies the amount of wheel movement.
             A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user. One wheel click is defined as WHEEL_DELTA, which is 120. If <c>eventKind</c> is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.XButtonDoubleClick" />, <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.XButtonDown" />, or <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.XButtonUp" />, then <c>mouseData</c> specifies which X buttons were pressed or released. This value should be 1 if the first X button is pressed/released and 2 if the second X button is pressed/released. If <c>eventKind</c> is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.Leave" />, then <c>virtualKeys</c>, <c>mouseData</c>, and point should all be zero. If <c>eventKind</c> is any other value, then <c>mouseData</c> should be zero. <c>point</c> is expected to be in the client coordinate space of the WebView. To track mouse events that start in the WebView and can potentially move outside of the WebView and host application, calling SetCapture and ReleaseCapture is recommended. To dismiss hover popups, it is also recommended to send <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MouseEventKind.Leave" /> messages.
             </remarks>
@@ -2930,7 +2974,7 @@
             <summary>
             Determines whether to show or hide the WebView.
             </summary><remarks>
-            If `IsVisible` is set to `false`, the WebView is transparent and is not rendered. However, this does not affect the window containing the WebView (the `ParentWindow` parameter that was passed to <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateCoreWebView2ControllerAsync(System.IntPtr)" />).
+            If <c>IsVisible</c> is set to <c>false</c>, the WebView is transparent and is not rendered. However, this does not affect the window containing the WebView (the <c>ParentWindow</c> parameter that was passed to <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateCoreWebView2ControllerAsync(System.IntPtr)" />). If you want that window to disappear too, run the corresponding <c>Hide</c> method on it directly in addition to modifying the <c>IsVisible</c> property.
             WebView as a child window does not get window messages when the top window is minimized or restored. For performance reasons, developers should set the <c>IsVisible</c> property of the WebView to <c>false</c> when the app window is minimized and back to <c>true</c> when the app window is restored. The app window does this by handling <c>SIZE_MINIMIZED</c> and <c>SIZE_RESTORED</c> command upon receiving <c>WM_SIZE</c> message. There are CPU and memory benefits when the page is hidden. For instance Chromium has code that throttles activities on the page like animations and some tasks are run less frequently. Similarly, WebView2 will purge some caches to reduce memory usage.
             </remarks><seealso cref="M:System.Windows.Forms.Control.Hide" />
         </member>
@@ -3032,7 +3076,9 @@
             </summary><remarks>
             The `DefaultBackgroundColor` is the color that renders underneath all web content. This means WebView renders this color when there is no web content loaded such as before the initial navigation or between navigations. This also means web pages with undefined css background properties or background properties containing transparent pixels will render their contents over this color. Web pages with defined and opaque background properties that span the page will obscure the `DefaultBackgroundColor` and display normally. The default value for this property is white to resemble the native browser experience. Currently this API only supports opaque colors and transparency. It will fail for colors with alpha values that don't equal 0 or 255 ie. translucent colors are not supported. It also does not support transparency on Windows 7. On Windows 7, setting DefaultBackgroundColor to a Color with an Alpha value other than 255 will result in failure. On any OS above Win7, choosing a transparent color will result in showing hosting app content. This means webpages without explicit background properties defined will render web content over hosting app content.
             This property may also be set via the `WEBVIEW2_DEFAULT_BACKGROUND_COLOR` environment variable. There is a known issue with background color where just setting the color by property can still leave the app with a white flicker before the `DefaultBackgroundColor` property takes effect. Setting the color via environment variable solves this issue. The value must be a hex value that can optionally prepend a 0x. The value must account for the alpha value which is represented by the first 2 digits. So any hex value fewer than 8 digits will assume a prepended 00 to the hex value and result in a transparent color. `DefaultBackgroundColor` will return the result of this environment variable even if it has not been set directly. This environment variable can only set the `DefaultBackgroundColor` once. Subsequent updates to background color must be done by setting the property.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="DefaultBackgroundColor":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Controller.BoundsMode">
             <summary>
@@ -3067,7 +3113,9 @@
             Gets or sets the WebView allow external drop property.
             </summary><remarks>
             The AllowExternalDrop is to configure the capability that dropping files into webview2 is allowed or permitted. The default value is true.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ToggleAllowExternalDrop":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Controller.CoreWebView2">
             <summary>
@@ -3274,14 +3322,18 @@
             Gets a list of cookies matching the specific URI.
             </summary><remarks>
             You can modify the cookie objects by calling <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2CookieManager.AddOrUpdateCookie(Microsoft.Web.WebView2.Core.CoreWebView2Cookie)" />, and the changes will be applied to the webview.
-            </remarks><param name="uri">If uri is empty string or null, all cookies under the same profile are returned.</param>
+            </remarks><param name="uri">If uri is empty string or null, all cookies under the same profile are returned.</param><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GetCookies":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2CookieManager.AddOrUpdateCookie(Microsoft.Web.WebView2.Core.CoreWebView2Cookie)">
             <summary>
             Adds or updates a cookie with the given cookie data; may overwrite cookies with matching name, domain, and path if they exist.
             </summary><param name="cookie">The <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Cookie" /> to be added or updated.</param><remarks>
             This method will fail if the domain of the given cookie is not specified.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="AddOrUpdateCookie":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2CookieManager.DeleteCookie(Microsoft.Web.WebView2.Core.CoreWebView2Cookie)">
             <summary>
@@ -3629,36 +3681,16 @@
             </summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.PostWebMessageAsJson(System.String)">
-            <summary>Posts the specified webMessageAsJson to this worker.
-            The worker receives the message by subscribing to the `message` event of the
-            `self.chrome.webview` of the worker.
-            
-            ```cpp
+            <summary>
+            Posts the specified <c>webMessageAsJson</c> to this worker.
+            </summary><param name="webMessageAsJson">The web message to be posted to this worker.</param><remarks>
+            The event args is an instance of <c>MessageEvent</c>. The <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /> setting must be <c>true</c> or the message will not be sent. The event arg's <c>data</c> property of the event arg is the <c>webMessageAsJson</c> string parameter parsed as a JSON string into a JavaScript object. The event arg's <c>source</c> property of the event arg is the path to the worker script. For information about sending messages from the worker to the host, navigate to <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.WebMessageReceived" />. The message is sent asynchronously. If the worker is terminated or destroyed before the message is posted, the message is discarded.
+            </remarks><example>
+            Runs the message event of the <c>self.chrome.webview</c> of this worker. Worker Javascript may subscribe and unsubscribe to the event using the following code:
+            <code>
             self.chrome.webview.addEventListener('message', handler)
             self.chrome.webview.removeEventListener('message', handler)
-            ```
-            
-            The event args is an instance of `MessageEvent`. The
-            `ICoreWebView2Settings::IsWebMessageEnabled` setting must be `TRUE` or
-            the web message will not be sent. The `data` property of the event arg 
-            is the `webMessageAsJson` string parameter parsed as a JSON string into a 
-            JS object. The `source` property of the event arg is the path
-            to the worker script. The message is delivered asynchronously. 
-            If the worker is terminated or destroyed before the message is posted,
-            the message is discarded.
-            Worker Javascript may subscribe and unsubscribe to the event 
-            using the following code:
-            ```javascript
-            self.chrome.webview.addEventListener('message', handler)
-            self.chrome.webview.removeEventListener('message', handler)
-            ```
-            ```cpp
-            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
-            `ICoreWebView2Frame::PostWebMessageAsJson`,
-            `ICoreWebView2ServiceWorker::PostWebMessageAsJson`.
-            ```
-            
-            </summary>
+            </code></example><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.WebMessageReceived" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.PostWebMessageAsString(System.String)" />
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.PostWebMessageAsString(System.String)">
             <summary>Posts a message that is a simple string rather than a JSON string
@@ -3738,7 +3770,10 @@
             Represents a download operation. Gives access to a download's metadata and supports a user canceling, pausing, or resuming a download.</summary>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2DownloadOperation.BytesReceived">
-            <summary>The number of bytes that have been written to the download file.</summary>
+            <summary>The number of bytes that have been written to the download file.
+            </summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="BytesReceivedChanged":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2DownloadOperation.CanResume">
             <summary>
@@ -3789,7 +3824,9 @@
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2DownloadOperation.StateChanged">
             <summary>
             Event raised when the state of the download changes.
-            Use <c>CoreWebView2DownloadOperation.State</c> to get the current state, and <c>CoreWebView2DownloadOperation.InterruptReason</c> to get the reason if the download is interrupted.</summary>
+            Use <c>CoreWebView2DownloadOperation.State</c> to get the current state, and <c>CoreWebView2DownloadOperation.InterruptReason</c> to get the reason if the download is interrupted.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="StateChanged":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2DownloadOperation.Cancel">
             <summary>
@@ -3891,7 +3928,10 @@
             To use the newer version of the browser you must create a new environment and WebView. The event is only raised for new version from the same WebView2 Runtime from which the code is running. When not running with installed WebView2 Runtime, no event is raised.
             
             Because a user data folder is only able to be used by one browser process at a time, if you want to use the same user data folder in the WebViews using the new version of the browser, you must close the environment and instance of WebView that are using the older version of the browser first. Or simply prompt the user to restart the app.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="SubscribeToNewBrowserVersionAvailable":::
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="NewBrowserVersionAvailable":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateCoreWebView2ControllerAsync(System.IntPtr)">
             <summary>
@@ -3945,7 +3985,9 @@
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.GetProcessExtendedInfosAsync">
             <summary>
-            Returns a snapshot collection of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> corresponding to all currently running processes associated with this <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Environment" /> excludes crashpad process. This provides the same list of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> as what's provided in <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.GetProcessInfos" />, but additionally provides a list of associated <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2FrameInfo" /> which are actively running (showing or hiding UI elements) in the renderer process. See <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2ProcessExtendedInfo.AssociatedFrameInfos" /> for more information.</summary>
+            Returns a snapshot collection of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> corresponding to all currently running processes associated with this <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Environment" /> excludes crashpad process. This provides the same list of <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> as what's provided in <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.GetProcessInfos" />, but additionally provides a list of associated <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2FrameInfo" /> which are actively running (showing or hiding UI elements) in the renderer process. See <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2ProcessExtendedInfo.AssociatedFrameInfos" /> for more information.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GetProcessExtendedInfos":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateWebFileSystemFileHandle(System.String,Microsoft.Web.WebView2.Core.CoreWebView2FileSystemHandlePermission)">
             <summary>Create a `ICoreWebView2FileSystemHandle` object from a path that represents a Web
@@ -4112,11 +4154,15 @@
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2Environment.ProcessInfosChanged">
             <summary>
-            ProcessInfosChanged is raised when a collection of WebView2 Runtime processes changed due to new process being detected or when a existing process gone away.</summary>
+            ProcessInfosChanged is raised when a collection of WebView2 Runtime processes changed due to new process being detected or when a existing process gone away.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ProcessInfosChanged":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.GetProcessInfos">
             <summary>
-            Returns the list of all <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> using same user data folder except for crashpad process.</summary>
+            Returns the list of all <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessInfo" /> using same user data folder except for crashpad process.</summary><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GetProcessInfos":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateContextMenuItem(System.String,System.IO.Stream,Microsoft.Web.WebView2.Core.CoreWebView2ContextMenuItemKind)">
             <summary>
@@ -4548,7 +4594,11 @@
             </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions.ScrollBarStyle">
-            <summary></summary>
+            <summary>
+            Set ScrollBar style to be used.
+            </summary><remarks>
+            The default is <c>CoreWebView2ScrollbarStyle.Default</c> which specifies the default browser ScrollBar style. CSS styles that modify the ScrollBar applied on top of native ScrollBar styling that is selected with <c>CoreWebView2ScrollbarStyle</c>.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions.ChannelSearchKind">
             <summary>
@@ -4844,7 +4894,9 @@
             </summary><remarks>
             The <c>postMessage</c> function is <c>void postMessage(object)</c> where object is any object supported by JSON conversion.
             When <c>postMessage</c> is called, the handler's Invoke method will be called with the <c>object</c> parameter <c>postMessage</c> converted to a JSON string.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="WebMessageReceivedIFrame":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.ExecuteScriptAsync(System.String)">
             <summary>
@@ -4853,7 +4905,9 @@
             A function that has no explicit return value returns <c>undefined</c>. If the script that was run throws an unhandled exception, then the result is also <c>null</c>. This method is applied asynchronously.
             If the method is run before <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Frame.ContentLoading" />, the script will not be executed and the JSON <c>null</c> will be returned.
             This operation works even if <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsScriptEnabled" /> is set to <c>false</c>.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ExecuteScriptFrame":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsJson(System.String)">
             <summary>
@@ -4862,11 +4916,10 @@
             The event args is an instance of <c>MessageEvent</c>. The <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /> setting must be <c>true</c> or the message will not be sent. The event arg's <c>data</c> property of the event arg is the <c>webMessageAsJson</c> string parameter parsed as a JSON string into a JavaScript object. The event arg's <c>source</c> property of the event arg is a reference to the <c>window.chrome.webview</c> object. For information about sending messages from the iframe to the host, navigate to <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Frame.WebMessageReceived" />. The message is sent asynchronously. If a navigation occurs before the message is posted to the iframe, the message is not be sent.
             </remarks><example>
             Runs the message event of the <c>window.chrome.webview</c> of the iframe. JavaScript in that document may subscribe and unsubscribe to the event using the following code:
-            ```javascript
+            <code>
             window.chrome.webview.addEventListener('message', handler)
             window.chrome.webview.removeEventListener('message', handler)
-            ```
-            </example><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Frame.WebMessageReceived" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsString(System.String)" />
+            </code></example><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Frame.WebMessageReceived" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsString(System.String)" />
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsString(System.String)">
             <summary>
@@ -5006,7 +5059,7 @@
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2FrameInfo.Name">
             <summary>
-            Gets the name attribute of the frame, as in `<iframe name="frame-name">...</iframe>`.
+            Gets the name attribute of the frame, as in <c>&lt;iframe name="frame-name"&gt;...&lt;/iframe&gt;</c>.
             </summary><remarks>
             The returned string is empty when the frame has no name attribute.
             </remarks>
@@ -5083,7 +5136,7 @@
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2HttpRequestHeaders.GetHeaders(System.String)">
             <summary>
             Gets the header value matching the name using a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2HttpHeadersCollectionIterator" />.
-            <returns>The header value matching the name.</returns></summary>
+            </summary><param name="name">The header name.</param><returns>The header value matching the name.</returns>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2HttpRequestHeaders.Contains(System.String)">
             <summary>Checks whether the headers contain an entry that matches the header name.</summary>
@@ -5348,7 +5401,7 @@
             Gets the name of the new window.
             </summary><remarks>
             This window can be created via <c>window.open(url, windowName)</c>, where the windowName parameter corresponds to <c>Name</c> property.
-            If no windowName is passed to `window.open`, then the `Name` property will be set to an empty string. Additionally, if window is opened through other means, such as `<a target="windowName" />` or `<iframe name="windowName" />`, then the `Name` property will be set accordingly. In the case of target=_blank, the `Name` property will be an empty string.
+            If no windowName is passed to <c>window.open</c>, then the <c>Name</c> property will be set to an empty string. Additionally, if window is opened through other means, such as <c>&lt;a target="windowName"&gt;...&lt;/a&gt;</c> or <c>&lt;iframe name="windowName"&gt;...&lt;/iframe&gt;</c>, then the <c>Name</c> property will be set accordingly. In the case of target=_blank, the <c>Name</c> property will be an empty string.
             Opening a window via Ctrl+clicking a link would result in the <c>Name</c> property being set to an empty string.
             </remarks>
         </member>
@@ -5953,13 +6006,12 @@
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings.PrinterName">
             <summary>
-            The name of the printer to use.
-            </summary><remarks>
+            The name of the printer to use.</summary><remarks>
             Defaults to empty string. If the printer name is empty string or null, then it prints to the default printer on the user OS.
             
             If provided printer name doesn't match with the name of any installed printers on the user OS, the method returns with <c>CoreWebView2PrintStatus.PrinterUnavailable</c>.
             
-            Use [DeviceInformation.FindAllAsync](/uwp/api/windows.devices.enumeration.deviceinformation.findallasync) to get the list of local printers with AQS as "System.Devices.HardwareIds:~~"PRINTENUM\LocalPrintQueue""
+            Use [PrintCapabilities](/dotnet/api/system.printing.printcapabilities) to get the list of local printers and printer capabilities.
             
             This value is ignored in <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfStreamAsync(Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)" /> method.
             </remarks>
@@ -5972,7 +6024,9 @@
             Provides the collection of associated <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2FrameInfo" />s which are actively running (showing or hiding UI elements) in this renderer process.
             </summary><remarks>
             AssociatedFrameInfos will only be populated when this <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ProcessExtendedInfo" /> corresponds to a renderer process. Non-renderer processes will always have an empty AssociatedFrameInfo. AssociatedFrameInfos may also be empty for renderer processes that have no active frames.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="AssociatedFrameInfos":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2ProcessExtendedInfo.ProcessInfo">
             <summary>
@@ -6118,7 +6172,9 @@
             ClearBrowsingDataAsync(CoreWebView2BrowsingDataKinds dataKinds);
             ClearBrowsingDataAsync(CoreWebView2BrowsingDataKinds dataKinds, DateTime startTime, DateTime endTime);
             ClearBrowsingDataAsync();
-            </code></remarks>
+            </code></remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ClearBrowsingData":::
+            </example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearBrowsingDataAsync">
             <summary>
@@ -6150,7 +6206,9 @@
             Invokes the handler with a collection of all nondefault permission settings.
             </summary><remarks>
             Use this method to get the permission state set in the current and previous sessions.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GetNonDefaultPermissionSettings":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.CookieManager">
             <summary>
@@ -6225,25 +6283,50 @@
             <summary>The event args for `SaveAsUIShowing` event.</summary>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.AllowReplace">
-            <summary></summary>
+            <summary>
+            Indicates whether to allow replacing an existing file at the target save file path.
+            </summary><remarks>
+            Setting this property to <c>true</c> allows existing files to be replaced. Setting this property to <c>false</c> will not replace existing files and will return <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult.FileAlreadyExists" />.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.Cancel">
-            <summary></summary>
+            <summary>
+            Indicates whether to cancel the Save As action before download.
+            </summary><remarks>
+            Set this property to <c>true</c> to cancel the Save As action and prevent the download from starting. <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.ShowSaveAsUIAsync" /> returns <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult.Cancelled" />.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.ContentMimeType">
-            <summary></summary>
+            <summary>
+            Mime type of content to be saved.</summary>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.Kind">
-            <summary></summary>
+            <summary>
+            The option to save content as a different document kind. See <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsKind" />.
+            </summary><remarks>
+            If it is not allowed for the current document, <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.ShowSaveAsUIAsync" /> returns <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult.KindNotSupported" />.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.SaveAsFilePath">
-            <summary></summary>
+            <summary>
+            The absolute full path of the Save As location.
+            </summary><remarks>
+            It includes the file name and extension. If it is not valid (for example, the root drive does not exist), Save As is denied, and <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIResult.InvalidPath" /> is returned. If the associated download completes successfully, a target file is saved at this location. If the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.Kind" /> property is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsKind.Complete" />, there will be an additional directory with resource files.
+            </remarks>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.SuppressDefaultDialog">
-            <summary></summary>
+            <summary>
+            Indicates if the system default dialog will be suppressed.
+            </summary><remarks>
+            When this property is <c>false</c>, the default Save As dialog is shown and the values assigned through <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.SaveAsFilePath" />, <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.AllowReplace" />, and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.Kind" /> are ignored when the event args invoke completes. When it is <c>true</c>, the system dialog is skipped and all assigned values are used.
+            </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2SaveAsUIShowingEventArgs.GetDeferral">
-            <summary></summary>
+            <summary>
+            Gets a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Deferral" /> object.
+            </summary><remarks>
+            This will defer showing the default Save As dialog. Use this to <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Deferral.Complete" /> the event at a later time to perform a Save As operation.
+            </remarks>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2SaveFileSecurityCheckStartingEventArgs">
             <summary>The event args for `SaveFileSecurityCheckStarting` event.</summary>
@@ -6440,37 +6523,16 @@
             </summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.PostWebMessageAsJson(System.String)">
-            <summary>Posts the specified webMessageAsJson to this worker.
-            The worker receives the message by subscribing to the `message` event of the
-            `self.chrome.webview` of the worker.
-            
-            ```cpp
+            <summary>
+            Posts the specified <c>webMessageAsJson</c> to this worker.
+            </summary><param name="webMessageAsJson">The web message to be posted to this worker.</param><remarks>
+            The event args is an instance of <c>MessageEvent</c>. Both the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.AreWebViewScriptApisEnabledForServiceWorkers" /> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /> settings must be <c>true</c> or the message will not be sent. The event arg's <c>data</c> property of the event arg is the <c>webMessageAsJson</c> string parameter parsed as a JSON string into a JavaScript object. The event arg's <c>source</c> property of the event arg is the path to the worker script. For information about sending messages from the worker to the host, navigate to <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.WebMessageReceived" />. The message is sent asynchronously. If the worker is terminated or destroyed before the message is posted, the message is discarded.
+            </remarks><example>
+            Runs the message event of the <c>self.chrome.webview</c> of this worker. Worker Javascript may subscribe and unsubscribe to the event using the following code:
+            <code>
             self.chrome.webview.addEventListener('message', handler)
             self.chrome.webview.removeEventListener('message', handler)
-            ```
-            
-            The event args is an instance of `MessageEvent`. Both the
-            `ICoreWebView2Profile::AreWebViewScriptApisEnabledForServiceWorkers` and
-            `ICoreWebView2Settings::IsWebMessageEnabled` settings must be `TRUE` or
-            the web message will not be sent. The `data` property of the event arg 
-            is the `webMessageAsJson` string parameter parsed as a JSON string into a 
-            JS object. The `source` property of the event arg is the path
-            to the worker script. The message is delivered asynchronously. 
-            If the worker is terminated or destroyed before the message is posted,
-            the message is discarded.
-            Worker Javascript may subscribe and unsubscribe to the event 
-            using the following code:
-            ```javascript
-            self.chrome.webview.addEventListener('message', handler)
-            self.chrome.webview.removeEventListener('message', handler)
-            ```
-            ```cpp
-            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
-            `ICoreWebView2Frame::PostWebMessageAsJson`,
-            `ICoreWebView2DedicatedWorker::PostWebMessageAsJson`.
-            ```
-            
-            </summary>
+            </code></example><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.AreWebViewScriptApisEnabledForServiceWorkers" /><seealso cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsWebMessageEnabled" /><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.WebMessageReceived" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.PostWebMessageAsJson(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Frame.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorker.PostWebMessageAsString(System.String)" /><seealso cref="M:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.PostWebMessageAsString(System.String)" />
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorker.PostWebMessageAsString(System.String)">
             <summary>Posts a message that is a simple string rather than a JSON string
@@ -6699,7 +6761,9 @@
             Determines WebView2's User Agent.
             </summary><remarks>
             The default value is the default User Agent of the Edge browser. This property may be overridden if the User-Agent header is set in a request. If the parameter is empty the User Agent will not be updated and the current User Agent will remain. Setting this property may clear User Agent Client Hints headers Sec-CH-UA-* and script values from navigator.userAgentData. Current implementation behavior is subject to change. By default, the User Agent set will also be effective on the Service Worker associated with the WebView. If there are multiple WebViews associated with the same service worker, the last User Agent set will be used. To disable this behavior, disable the feature flag <c>msWebView2SetUserAgentOverrideOnServiceWorker</c>.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="SetUserAgent":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.AreBrowserAcceleratorKeysEnabled">
             <summary>
@@ -6717,7 +6781,9 @@
             This setting has no effect on the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Controller.AcceleratorKeyPressed" /> event. The event will be fired for all accelerator keys, whether they are enabled or not.
             
             The default value of <c>AreBrowserAcceleratorKeysEnabled</c> is true.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="AllowWebViewShortcutKeys":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsGeneralAutofillEnabled">
             <summary>
@@ -6726,7 +6792,9 @@
             General autofill information includes information like names, street and email addresses, phone numbers, and arbitrary input. This excludes password information. When disabled, no suggestions appear, and no new information is saved.
             When enabled, information is saved, suggestions appear, and clicking on one will populate the form fields. The default value is <c>true</c>. It will apply immediately after setting.
             This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled" />, and changing one will change the other. And all WebView2s that created with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile" /> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsGeneralAutofillEnabled" /> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled" /> will always have the same value.
-            </remarks><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Controller.AcceleratorKeyPressed" />
+            </remarks><seealso cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Controller.AcceleratorKeyPressed" /><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GeneralAutofillEnabled":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPasswordAutosaveEnabled">
             <summary>
@@ -6735,7 +6803,9 @@
             When disabled, no new password data is saved and no Save/Update Password prompts are displayed. However, if there was password data already saved before disabling this setting, then that password information is auto-populated, suggestions are shown and clicking on one will populate the fields.
             When enabled, password information is auto-populated, suggestions are shown and clicking on one will populate the fields, new data is saved, and a Save/Update Password prompt is displayed. The default value is <c>false</c>. It will apply immediately after setting.
             This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled" />, and changing one will change the other. All WebView2s with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile" /> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPasswordAutosaveEnabled" /> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled" /> will always have the same value.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="PasswordAutosaveEnabled":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPinchZoomEnabled">
             <summary>
@@ -6743,7 +6813,9 @@
             </summary><remarks>
             When disabled, the end users cannot use pinching motions on touch input enabled devices to scale the web content in the WebView2. The default value is <c>true</c>.
             Pinch-zoom, referred to as "Page Scale" zoom, is performed as a post-rendering step, it changes the page scale factor property and scales the surface the web page is rendered onto when user performs a pinch zooming action. It does not change the layout but rather changes the viewport and clips the web content, the content outside of the viewport isn't visible onscreen and users can't reach this content using mouse. This API only affects the Page Scale zoom and has no effect on the existing browser zoom properties (<see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsZoomControlEnabled" /> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Controller.ZoomFactor" />) or other end user mechanisms for zooming.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="TogglePinchZoomEnabled":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsSwipeNavigationEnabled">
             <summary>
@@ -6768,7 +6840,9 @@
             By default, it is <c>CoreWebView2PdfToolbarItems.None</c> and so it displays all of the items.
             Changes to this property apply to all CoreWebView2s in the same environment and using the same profile.
             Changes to this setting apply only after the next navigation.
-            </remarks>
+            </remarks><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ToggleHiddenPdfToolbarItems":::
+            </example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsReputationCheckingRequired">
             <summary>
@@ -6807,8 +6881,9 @@
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.Buffer">
             <summary>
-            A Windows.Foundation.IMemoryBufferReference object to access the underlying memory of the shared buffer as an array of bytes.
+            The raw memory address of the buffer.
             </summary><remarks>
+            You can cast it to pointer to real data types like <c>byte*</c> to access the memory from <c>unsafe</c> code region.
             Normal app should use <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.OpenStream" /> to get a stream object to access the buffer.
             </remarks>
         </member>
@@ -6821,7 +6896,19 @@
             Get an stream object that can be used to access the shared buffer.</summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.Close">
-            <summary></summary>
+            <summary>
+            Release the backing shared memory.
+            </summary><remarks>
+            The application should call <c>Close</c> or <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.Dispose" /> when no access to the buffer is needed any more, to ensure that the underlying resources are released timely even if the shared buffer object itself is not released due to some leaked reference.
+            After the shared buffer is closed, the buffer address and file mapping handle previously obtained becomes invalid and cannot be used anymore.
+            Properties of the object will also be unaccessible. Operations like <c>Read</c> or <c>Write</c> on the stream objects returned from <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.OpenStream" /> will also fail.
+            <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.PostSharedBufferToScript(Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer,Microsoft.Web.WebView2.Core.CoreWebView2SharedBufferAccess,System.String)" /> will also fail. The failures will be represented as <see cref="T:System.Runtime.InteropServices.COMException" /> with error code of <c>RO_E_CLOSED</c>.
+            
+            The script code should call <c>chrome.webview.releaseBuffer</c> with the shared buffer as the parameter to release underlying resources as soon as it does not need access the shared buffer any more.
+            When script tries to access the buffer after calling <c>chrome.webview.releaseBuffer</c>, JavaScript <c>TypeError</c> exception will be raised complaining about accessing a detached ArrayBuffer, the same exception when trying to access a transferred ArrayBuffer.
+            
+            Closing the buffer object on native side doesn't impact access from Script and releasing the buffer from script doesn't impact access to the buffer from native side. The underlying shared memory will be released by the OS when both native and script side release the buffer.
+            </remarks>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2SharedBuffer.Dispose">
             <inheritdoc/>
@@ -6945,14 +7032,28 @@
             Gets the message posted from the WebView content to the host converted to a JSON string.
             </summary><remarks>
             Run this operation to communicate using JavaScript objects.
-            </remarks>
+            </remarks><example>
+            For example, the following <c>postMessage</c> runs result in the following WebMessageAsJson values:
+            
+            <code>
+            postMessage({'a': 'b'})      "{\"a\": \"b\"}"
+            postMessage(1.2)             "1.2"
+            postMessage('example')       "\"example\""
+            </code></example>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs.TryGetWebMessageAsString">
             <summary>
             Gets the message posted from the WebView content to the host as a string.
-            <returns>The message posted from the WebView content to the host.</returns><exception cref="T:System.ArgumentException">The message posted is some other kind of JavaScript type.</exception></summary><remarks>
+            </summary><remarks>
             Run this operation to communicate using simple strings.
-            </remarks>
+            </remarks><returns>The message posted from the WebView content to the host.</returns><exception cref="T:System.ArgumentException">The message posted is some other kind of JavaScript type.</exception><example>
+            For example the following <c>postMessage</c> runs result in the following values returned by TryGetWebMessageAsString:
+            
+            <code>
+            postMessage({'a': 'b'})      ArgumentException
+            postMessage(1.2)             ArgumentException
+            postMessage('example')       "example"
+            </code></example>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs.AdditionalObjects">
             <summary>
@@ -6960,7 +7061,13 @@
             </summary><remarks>
             To pass <c>AdditionalObjects</c> via WebMessage to the app, use the <c>chrome.webview.postMessageWithAdditionalObjects</c> content API. Any DOM object type that can be natively representable that has been passed in to <c>additionalObjects</c> parameter will be accessible here. Currently a WebMessage object can be the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2File" /> type.
             Entries in the collection can be <c>nullptr</c> if <c>null</c> or <c>undefined</c> was passed. Cast the object to the native type to access its specific properties.
-            </remarks>
+            </remarks><example><code>
+            object additionalObject = eventArgs.AdditionalObjects[0];
+            if (additionalObject is CoreWebView2File)
+            {
+              CoreWebView2File file = additionalObject as CoreWebView2File;
+            }
+            </code></example>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceRequest">
             <summary>
@@ -7067,37 +7174,23 @@
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2WebResourceResponseView.GetContentAsync">
             <summary>
             Gets the response content stream asynchronously.
-            <exception cref="T:System.Runtime.InteropServices.COMException">The content failed to load.</exception></summary><remarks>
+            </summary><remarks>
             A <c>null</c> stream means no content was found. Note content (if any) for redirect responses is ignored.
             This method returns <c>null</c> if content size is more than 123MB. If <c>msWebView2EnableDownloadContentInWebResourceResponseReceived</c> feature flag is disabled, for navigations that become downloads or if response is downloadable content type (e.g., application/octet-stream), this method also returns <c>null</c>. See <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.DownloadStarting" /> event to handle the response or enable the feature flag. The Stream object that is returned will be thread-safe and as reads will be blocking while waiting for data to be available, it is recommended to read from a background thread.
             If this method is being called again before a first call has completed, it will complete at the same time all prior calls do.
             If this method is being called after a first call has completed, it will return immediately (asynchronously).
-            </remarks>
+            </remarks><exception cref="T:System.Runtime.InteropServices.COMException">The content failed to load.</exception><example>
+            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="WebResourceResponseReceived":::
+            </example>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2WindowFeatures">
             <summary>
             The window features for a WebView popup window.
             </summary><remarks>
             The fields match the <c>windowFeatures</c> passed to <c>window.open()</c> as specified in [Window features](https://developer.mozilla.org/docs/Web/API/Window/open#Window_features) on MDN.
+            There is no requirement for you to respect the values. If your app does not have corresponding UI features (for example, no toolbar) or if all instance of WebView are opened in tabs and do not have distinct size or positions, then your app does not respect the values. You may want to respect values, but perhaps only some apply to the UI of you app. Accordingly, you may respect all, some, or none of the properties as appropriate for your app. For all numeric properties, if the value that is passed to <c>window.open</c> is outside the range of an unsigned 32bit int, the resulting value is the absolute value of the maximum for unsigned 32bit integer. If you are not able to parse the value an integer, it is considered <c>0</c>. If the value is a floating point value, it is rounded down to an integer.
+            In runtime versions 98 or later, the values of <c>ShouldDisplayMenuBar</c>, <c>ShouldDisplayStatus</c>, <c>ShouldDisplayToolbar</c>, and <c>ShouldDisplayScrollBars</c> will not directly depend on the equivalent fields in the <c>windowFeatures</c> string. Instead, they will all be false if the window is expected to be a popup, and true if it is not.
             </remarks>
-            There is no requirement for you to respect the values.  If your app does
-            not have corresponding UI features (for example, no toolbar) or if all
-            instance of WebView are opened in tabs and do not have distinct size or
-            positions, then your app does not respect the values.  You may want to
-            respect values, but perhaps only some apply to the UI of you app.
-            Accordingly, you may respect all, some, or none of the properties as
-            appropriate for your app.  For all numeric properties, if the value that is
-            passed to `window.open` is outside the range of an unsigned 32bit int, the
-            resulting value is the absolute value of the maximum for unsigned 32bit
-            integer.  If you are not able to parse the value an integer, it is
-            considered `0`.  If the value is a floating point value, it is rounded down
-            to an integer.
-            
-            In runtime versions 98 or later, the values of `ShouldDisplayMenuBar`,
-            `ShouldDisplayStatus`, `ShouldDisplayToolbar`, and `ShouldDisplayScrollBars`
-            will not directly depend on the equivalent fields in the `windowFeatures`
-            string.  Instead, they will all be false if the window is expected to be a
-            popup, and true if it is not.
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2WindowFeatures.HasPosition">
             <summary>Indicates whether the left and top values are specified.</summary>
