@@ -335,7 +335,10 @@ Public Class Settings
         If NetworkCheckbox.Checked = True Then
             My.Settings.EnableNetwork = 1
             Main.WebView21.Enabled = True
-            Main.WebView21.Visible = True
+            If Main.ReloadLink.Enabled = True Then
+            Else
+                Main.WebView21.Visible = True
+            End If
             Main.OfflinePanel.Visible = False
             Main.BackButton.Enabled = True
             Main.ForwardButton.Enabled = True
@@ -348,7 +351,7 @@ Public Class Settings
             Main.WebView21.Enabled = False
             Main.WebView21.Visible = False
             Main.OfflinePanel.Visible = True
-            Main.Text = "Offline Mode - VisCord"
+            Main.Text = "Offline Mode (Forced) - VisCord"
             Main.AreaLabel.Text = ""
             Main.BackButton.Enabled = False
             Main.ForwardButton.Enabled = False
