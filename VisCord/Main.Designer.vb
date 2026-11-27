@@ -555,13 +555,13 @@ Partial Class Main
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.UDLabel)
         Me.Controls.Add(Me.TitlePanel)
         Me.Controls.Add(Me.OfflinePanel)
         Me.Controls.Add(Me.NoWVPanel)
         Me.Controls.Add(Me.WebView21)
         Me.Controls.Add(Me.TipLabel)
-        Me.Controls.Add(Me.UDLabel)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TipPic)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
